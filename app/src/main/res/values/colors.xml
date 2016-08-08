@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--这里为系统参数-->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--标题栏主色调和状态栏背景色  新增指针颜色 新增了背景颜色 -->
+    <color name="main_style_dark_color">#0b8043</color>
+    <color name="main_style_color">#0f9d58</color>
+    <color name="main_accent_color">#1bdb7b</color>
+    <color name="main_background">#f5f5f5</color>
+    <color name="main_text_hint_color">#8c1bdb7b</color>
+    <!--文字分三层颜色 大标题为main，次级标题为second，次要标题为third-->
+    <color name="main_text_color">#444444</color>
+    <color name="second_text_color">#848484</color>
+    <color name="third_text_color">#A3A3A3</color>
+    <!--按钮的颜色 主要按钮为Main，次要即边框颜色为second-->
+    <color name="main_button_bg">#45C01A</color>
+    <color name="second_button_bg">#F1F1F1</color>
+    <color name="second_button_frame">#DADADA</color>
+    <!--朋友圈发送动态按钮颜色-->
+    <color name="pyq_button_color">#ff5454</color>
+</resources>

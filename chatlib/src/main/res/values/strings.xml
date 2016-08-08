@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ChengziLib_master</string>
+	<string name="slidingMenu_home">首页</string>
+    <string name="slidingMenu_msg">消息</string>
+    <string name="slidingMenu_Notifi">通知</string>
+    <string name="slidingMenu_disc">发现</string>
+    <string name="slidingMenu_favo">收藏</string>
+    <string name="slidingMenu_trend">推送</string>
+    <string name="slidingMenu_sett">设置</string>
+</resources>
