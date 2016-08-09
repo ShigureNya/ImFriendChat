@@ -29,7 +29,7 @@ public class InputPhoneFragment extends Fragment {
     private View mView = null;
 
     public interface MyInputPhoneListener {
-        public void showMessage(int index);
+        void showMessage(int index);
     }
 
     private MyInputPhoneListener mListener;
