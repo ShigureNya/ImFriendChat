@@ -12,11 +12,10 @@ import java.util.List;
  */
 public class SignPageAdapter extends FragmentPagerAdapter {
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
-    private List<String> titleList = new ArrayList<String>();
-    public SignPageAdapter(FragmentManager fm , List<Fragment> fragmentList , List<String> titleList) {
+
+    public SignPageAdapter(FragmentManager fm , List<Fragment> fragmentList) {
         super(fm);
         this.fragmentList = fragmentList ;
-        this.titleList =  titleList;
     }
 
     @Override

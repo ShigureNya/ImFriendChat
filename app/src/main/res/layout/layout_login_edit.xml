@@ -40,10 +40,10 @@
     <RelativeLayout
         android:id="@+id/login_ripple_button"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="@dimen/main_btn_height"
         android:layout_marginTop="35dp"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/login_edit_btn_shape"
+        android:background="@drawable/login_not_btn_shape"
         android:elevation="2dp"
         android:layout_margin="4dp">
         <TextView
