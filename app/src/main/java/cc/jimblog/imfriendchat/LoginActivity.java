@@ -65,15 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                loginBtn();
                break;
            case R.id.login_signup_btn:
-               Bundle intentBundle = new Bundle();
                Intent intent = new Intent(LoginActivity.this,SignActivity.class);
-               String accountStr = loginInputUsername.getText().toString().trim();
-               if(accountStr != null && !accountStr.equals("")){
-                    intentBundle.putString("Account",accountStr);
-               }else{
-                    intentBundle.putString("Account","");
-               }
-               intent.putExtras(intentBundle);
                startActivity(intent);
                break;
        };

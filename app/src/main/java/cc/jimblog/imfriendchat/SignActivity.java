@@ -18,15 +18,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import fragment.InputPasswordFragment;
 import fragment.InputPhoneFragment;
+import view.MyViewPager;
 
 /**
  * Created by Ran on 2016/8/8.
  */
-public class SignActivity extends AppCompatActivity {
+public class SignActivity extends AppCompatActivity implements InputPhoneFragment.MyInputPhoneListener{
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
     @BindView(R.id.login_view_pager)
-    ViewPager loginViewPager;
+    MyViewPager loginViewPager;
 
     private SignPageAdapter adapter ;
     private InputPhoneFragment phoneFragment ;
@@ -60,8 +61,16 @@ public class SignActivity extends AppCompatActivity {
         mFragmentList.add(phoneFragment);
         mFragmentList.add(passwordFragment);
 
-        adapter = new SignPageAdapter(getSupportFragmentManager(),mFragmentList);
+        adapter = new SignPageAdapter(this.getSupportFragmentManager(),mFragmentList);
         loginViewPager.setAdapter(adapter);
         loginViewPager.setCurrentItem(0);
+        loginViewPager.setScrollble(false);
+    }
+
+    @Override
+    public void showMessage(int index) {
+        if(index == 1){
+            loginViewPager.setCurrentItem(1);
+        }
     }
 }

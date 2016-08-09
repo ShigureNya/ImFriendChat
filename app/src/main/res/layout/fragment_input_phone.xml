@@ -10,6 +10,8 @@
     android:paddingRight="16dp"
     android:paddingTop="10dp"
     tools:context=".SignActivity"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     >
     <TextView
         android:layout_width="match_parent"
@@ -20,11 +22,12 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="@string/register_input_number_edit_hint"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:inputType="phone"/>
     <com.andexert.library.RippleView
         android:id="@+id/sign_send_btn"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/main_btn_height"
+        android:layout_height="?attr/actionBarSize"
         android:layout_marginTop="15dp"
         android:background="@drawable/login_not_btn_shape"
         app:rv_type="rectangle"

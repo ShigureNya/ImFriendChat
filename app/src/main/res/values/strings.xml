@@ -21,7 +21,9 @@
     <string name="register_input_pwd_hint">Please input a password.Not less than six in length.</string>
     <string name="register_input_pwd_edit_hint">Please input your password</string>
     <string name="register_checked_pwd_edit_hint">Please enter a password again</string>
-    <string name="register_input_code_hint">Input VerificationCode</string>
+    <string name="register_input_code_hint">Please Input VerificationCode</string>
+    <string name="register_two_input_pwd_error_toast">Passwords are not consistent!</string>
+    <string name="register_verificationCode_error_toast">VerificationCode is Error!</string>
     <string-array name="country_name_list">
         <item>+86</item>
 
