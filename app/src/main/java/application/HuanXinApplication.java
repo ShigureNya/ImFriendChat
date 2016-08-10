@@ -6,6 +6,8 @@ import android.content.Context;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
 
+import util.LogUtils;
+
 /**
  * Created by Kotori on 2016/8/5.
  */

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     private ContactsFragment contactsFragment = null ;
     private FuncationFragment funcationFragment = null ;
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();
-    private long exit_time = 0 ;
     private ActionBarDrawerToggle mDrawerToggle ;
     private MainPageAdapter mAdapter ;
     /**
@@ -78,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         //initTabLayout
         mainTabLayout.setTabMode(TabLayout.MODE_FIXED);
-        for(int i = 0 ; i <= mTitleList.size(); i ++){
+        for(int i = 0 ; i < mTitleList.size(); i ++){
             mainTabLayout.addTab(mainTabLayout.newTab().setText(mTitleList.get(i)));
         }
 
@@ -87,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         mainViewpager.setCurrentItem(0);    //设置默认加载为聊天窗口
         mainTabLayout.setupWithViewPager(mainViewpager);
         mainTabLayout.setTabsFromPagerAdapter(mAdapter);
+        mainViewpager.setAdapter(mAdapter);
+        mainTabLayout.setOnTabSelectedListener(tabSelectedListener);
     }
 
     @OnClick(R.id.main_navigation_view)
@@ -105,4 +106,22 @@ public class MainActivity extends AppCompatActivity {
             return true ;
         }
     }
+    TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener(){
+        @Override
+        public void onTabSelected(TabLayout.Tab tab) {
+            int position = tab.getPosition();
+            mainViewpager.setCurrentItem(position);
+            mainToolBar.setTitle(mTitleList.get(position));
+        }
+
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
+
+        }
+
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
+
+        }
+    };
 }

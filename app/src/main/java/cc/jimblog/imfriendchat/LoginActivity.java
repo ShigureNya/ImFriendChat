@@ -30,6 +30,7 @@ import rx.schedulers.Schedulers;
 import util.JianPanUtils;
 import util.LogUtils;
 import util.NetWorkUtils;
+import util.StorageUtils;
 import util.ToastUtils;
 
 /**
@@ -57,6 +58,12 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         loginInputUsername.addTextChangedListener(new InputContentChangeListener());
         loginInputPassword.addTextChangedListener(new InputContentChangeListener());
+        //将数据从SharedPreferences中取出
+        String saveAccount = (String) StorageUtils.get(this,"SaveAccount","");
+
+        if(!saveAccount.equals("") || saveAccount != null){
+            loginInputUsername.setText(saveAccount);
+        }
     }
 
     @OnClick({R.id.login_ripple_button , R.id.login_signup_btn})
@@ -132,6 +139,8 @@ public class LoginActivity extends AppCompatActivity {
                         EMClient.getInstance().groupManager().loadAllGroups();
                         EMClient.getInstance().chatManager().loadAllConversations();
                         LogUtils.d("main", "登录聊天服务器成功！");
+                        //将数据存入SharedPreferences中
+                        StorageUtils.put(LoginActivity.this,"SaveAccount",account);
 
                         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                         startActivity(intent);

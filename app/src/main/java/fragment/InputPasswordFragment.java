@@ -172,13 +172,13 @@ public class InputPasswordFragment extends Fragment {
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
-                        alphaAnimationFrom.setDuration(700);
-                        signProgressLayout.setAnimation(alphaAnimationFrom);
-                        signProgressLayout.setVisibility(View.GONE);
                         mListener.closeMessage(2);
                     }
                 },500,500);
+                AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
+                alphaAnimationFrom.setDuration(700);
+                signProgressLayout.setAnimation(alphaAnimationFrom);
+                signProgressLayout.setVisibility(View.GONE);
             }
 
             @Override

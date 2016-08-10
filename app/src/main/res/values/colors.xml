@@ -10,6 +10,7 @@
     <color name="main_accent_color">#1bdb7b</color>
     <color name="main_background">#f5f5f5</color>
     <color name="main_text_hint_color">#8c1bdb7b</color>
+    <color name="main_fragment_background">#eaeaea</color>
     <!--文字分三层颜色 大标题为main，次级标题为second，次要标题为third-->
     <color name="main_text_color">#444444</color>
     <color name="second_text_color">#848484</color>
