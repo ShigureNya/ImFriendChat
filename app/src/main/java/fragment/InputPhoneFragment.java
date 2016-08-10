@@ -15,7 +15,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.andexert.library.RippleView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,6 +23,7 @@ import cc.jimblog.imfriendchat.R;
 import util.JianPanUtils;
 import util.StorageUtils;
 import util.ToastUtils;
+import view.RippleView;
 
 /**
  * Created by Ran on 2016/8/8.

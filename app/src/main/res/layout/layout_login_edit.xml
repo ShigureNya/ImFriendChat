@@ -37,7 +37,7 @@
             android:textColorHint="@color/main_text_hint_color"
             />
     </android.support.design.widget.TextInputLayout>
-    <RelativeLayout
+    <view.RippleView
         android:id="@+id/login_ripple_button"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -52,5 +52,5 @@
             android:gravity="center"
             android:text="@string/login_button_text"
             android:textSize="@dimen/main_text_size"/>
-    </RelativeLayout>
+    </view.RippleView>
 </RelativeLayout>

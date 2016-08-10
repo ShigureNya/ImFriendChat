@@ -24,7 +24,7 @@
         android:hint="@string/register_input_number_edit_hint"
         android:layout_marginTop="5dp"
         android:inputType="phone"/>
-    <com.andexert.library.RippleView
+    <view.RippleView
         android:id="@+id/sign_send_btn"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -40,5 +40,5 @@
             android:text="@string/register_send_code_btn_text"
             android:gravity="center"
             android:textSize="@dimen/main_text_size"/>
-    </com.andexert.library.RippleView>
+    </view.RippleView>
 </LinearLayout>

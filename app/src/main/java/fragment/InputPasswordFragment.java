@@ -21,7 +21,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
@@ -43,6 +42,7 @@ import util.NetWorkUtils;
 import util.StorageUtils;
 import util.ToastUtils;
 import view.GetVerificationCode;
+import view.RippleView;
 
 /**
  * Created by Ran on 2016/8/8.

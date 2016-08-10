@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/ImFriendChat.iml" filepath="$PROJECT_DIR$/ImFriendChat.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/chatlib/chatlib.iml" filepath="$PROJECT_DIR$/chatlib/chatlib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ripplelib/ripplelib.iml" filepath="$PROJECT_DIR$/ripplelib/ripplelib.iml" />
     </modules>
   </component>
 </project>
