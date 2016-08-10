@@ -1,8 +1,8 @@
 package fragment;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,6 +17,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.andexert.library.RippleView;
@@ -24,6 +26,8 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,7 +35,6 @@ import butterknife.OnClick;
 import cc.jimblog.imfriendchat.R;
 import rx.Observable;
 import rx.Observer;
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -59,12 +62,20 @@ public class InputPasswordFragment extends Fragment {
     TextView signSubmitButtonText;
     @BindView(R.id.sign_submit_btn)
     RippleView signSubmitBtn;
+    @BindView(R.id.sign_progress_layout)
+    RelativeLayout signProgressLayout;
     private View mView = null;
-    private Bitmap codeMap = null ; //验证码图片
+    private Bitmap codeMap = null; //验证码图片
     private String code = null; //验证码值
 
+    public interface MyInputPwdListener {
+        void closeMessage(int index);
+    }
+
+    private MyInputPwdListener mListener;
+
     @Override
-    public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_input_password, container, false);
         ButterKnife.bind(this, mView);
         return mView;
@@ -85,62 +96,70 @@ public class InputPasswordFragment extends Fragment {
 
     @OnClick(R.id.sign_submit_btn)
     public void onClick() {
-        if(!NetWorkUtils.isConnected(mView.getContext())){
-            ToastUtils.showShort(getContext(),getString(R.string.login_connect_error_toast));
-            return ;
+        if (!NetWorkUtils.isConnected(mView.getContext())) {
+            ToastUtils.showShort(getContext(), getString(R.string.login_connect_error_toast));
+            return;
         }
         String password = signInputPwd.getText().toString().trim();
         String checkedPassword = signCheckedPwd.getText().toString().trim();
 
-        if(password == null || password.equals("")){
-            ToastUtils.showShort(getContext(),getString(R.string.register_input_pwd_edit_hint));
+        if (password == null || password.equals("")) {
+            ToastUtils.showShort(getContext(), getString(R.string.register_input_pwd_edit_hint));
             setAnimation(signInputPwd);
-            return ;
+            return;
         }
-        if(checkedPassword == null || checkedPassword.equals("")){
-            ToastUtils.showShort(getContext(),getString(R.string.register_input_code_hint));
+        if (checkedPassword == null || checkedPassword.equals("")) {
+            ToastUtils.showShort(getContext(), getString(R.string.register_input_code_hint));
             setAnimation(signCheckedPwd);
-            return ;
+            return;
         }
-        if(!password.equals(checkedPassword)){
-            ToastUtils.showShort(getContext(),getString(R.string.register_two_input_pwd_error_toast));
+        if (!password.equals(checkedPassword)) {
+            ToastUtils.showShort(getContext(), getString(R.string.register_two_input_pwd_error_toast));
             setAnimation(signCheckedPwd);
             signCheckedPwd.setText("");
-            return ;
+            return;
         }
         String codeStr = signInputCode.getText().toString().trim();
 
-        if(codeStr == null || codeStr.equals("")){
-            ToastUtils.showShort(getContext(),getString(R.string.register_input_code_hint));
+        if (codeStr == null || codeStr.equals("")) {
+            ToastUtils.showShort(getContext(), getString(R.string.register_input_code_hint));
             setAnimation(signInputCode);
-            return ;
+            return;
         }
 
-        if(!codeStr.equalsIgnoreCase(code)){
-            ToastUtils.showShort(getContext(),getString(R.string.register_verificationCode_error_toast));
+        if (!codeStr.equalsIgnoreCase(code)) {
+            ToastUtils.showShort(getContext(), getString(R.string.register_verificationCode_error_toast));
             setAnimation(signInputCode);
             signInputCode.setText("");
-            return ;
+            return;
         }
-        HashMap<String,String> map = new HashMap<String,String>();
-        String account = (String) StorageUtils.get(getContext(),"Account","");
-        map.put("Account",account);
-        map.put("Password",password);
+        HashMap<String, String> map = new HashMap<String, String>();
+        String account = (String) StorageUtils.get(getContext(), "Account", "");
+        map.put("Account", account);
+        map.put("Password", password);
         registerToHuanXin(map);
     }
-    private void registerToHuanXin(HashMap<String,String> map){
+
+    /**
+     * 注册方法
+     * @param map 封装了HashMap
+     */
+    private void registerToHuanXin(HashMap<String, String> map) {
+        signProgressLayout.setVisibility(View.VISIBLE);
+        AlphaAnimation alphaAnimationFrom = new AlphaAnimation(0f,1.0f);
+        alphaAnimationFrom.setDuration(700);
+        signProgressLayout.setAnimation(alphaAnimationFrom);
+
         final String account = map.get("Account");
         final String password = map.get("Password");
         Observable<Integer> observable = Observable.create(new Observable.OnSubscribe<Integer>() {
             @Override
             public void call(final Subscriber<? super Integer> subscriber) {
                 try {
-                    EMClient.getInstance().createAccount(account,password);
-                    subscriber.onNext(1);
+                    EMClient.getInstance().createAccount(account, password);
                     subscriber.onCompleted();
                 } catch (HyphenateException e) {
                     e.printStackTrace();
-                    subscriber.onNext(2);
                     subscriber.onError(new Throwable(e.toString()));
                 }
             }
@@ -148,12 +167,29 @@ public class InputPasswordFragment extends Fragment {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Integer>() {
             @Override
             public void onCompleted() {
-                ToastUtils.showShort(mView.getContext(),"Sign Ok");
+                ToastUtils.showShort(mView.getContext(), "Sign Ok");
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
+                        alphaAnimationFrom.setDuration(700);
+                        signProgressLayout.setAnimation(alphaAnimationFrom);
+                        signProgressLayout.setVisibility(View.GONE);
+                        mListener.closeMessage(2);
+                    }
+                },500,500);
             }
 
             @Override
             public void onError(Throwable throwable) {
-                ToastUtils.showShort(mView.getContext(),"Sign Error");
+                AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
+                alphaAnimationFrom.setDuration(700);
+                signProgressLayout.setAnimation(alphaAnimationFrom);
+                signProgressLayout.setVisibility(View.GONE);
+
+                ToastUtils.showShort(mView.getContext(), "User already exist"+throwable.toString());
+                LogUtils.e(throwable.toString());
             }
 
             @Override
@@ -162,13 +198,24 @@ public class InputPasswordFragment extends Fragment {
             }
         });
     }
-    private boolean isShow = false ;    //是否显示的标记
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (MyInputPwdListener) activity;
+        }catch (ClassCastException e) {
+            throw new ClassCastException(getActivity().getClass().getName()
+                    +" must implements interface MyListener");
+        }
+    }
+    private boolean isShow = false;    //是否显示的标记
 
     public class InputPwdEditListener implements TextWatcher {
-        CharSequence temp ;
+        CharSequence temp;
+
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            temp = charSequence ;
+            temp = charSequence;
         }
 
         @Override
@@ -178,19 +225,24 @@ public class InputPasswordFragment extends Fragment {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            if(temp.length() > 0 ){
-                if(!isShow){
+            if (temp.length() > 0) {
+                if (!isShow) {
                     signCheckedLayout.setVisibility(View.VISIBLE);
                     startAnimationSet(signCheckedLayout);
-                    isShow = true ; 
+                    isShow = true;
                 }
             }
         }
     }
-    private void startAnimationSet(LinearLayout layout){
+
+    /**
+     * Layout动画
+     * @param layout
+     */
+    private void startAnimationSet(LinearLayout layout) {
         LogUtils.d("以下方法已被执行");
-        Animation translateAnimation = new TranslateAnimation(0,0,-110f,0f);
-        Animation alphaAnimation = new AlphaAnimation(0f,1.0f);
+        Animation translateAnimation = new TranslateAnimation(0, 0, -110f, 0f);
+        Animation alphaAnimation = new AlphaAnimation(0f, 1.0f);
         AnimationSet animSet = new AnimationSet(true);
         animSet.addAnimation(alphaAnimation);
         animSet.addAnimation(translateAnimation);
@@ -204,17 +256,22 @@ public class InputPasswordFragment extends Fragment {
     /**
      * 用于初始化二维码图片
      */
-    private void initCodeBitmap(ImageView v){
-        if(codeMap != null){
+    private void initCodeBitmap(ImageView v) {
+        if (codeMap != null) {
             codeMap.recycle();
             this.codeMap = null;
         }
         codeMap = GetVerificationCode.getInstance().createBitmap();
-        if(codeMap != null){
+        if (codeMap != null) {
             v.setImageBitmap(codeMap);
             this.code = GetVerificationCode.getInstance().getCode();
         }
     }
+
+    /**
+     * 抖动动画
+     * @param v
+     */
     private void setAnimation(View v) {
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.view_shake);
         v.startAnimation(animation);

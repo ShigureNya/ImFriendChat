@@ -27,6 +27,7 @@ import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import util.JianPanUtils;
 import util.LogUtils;
 import util.NetWorkUtils;
 import util.ToastUtils;
@@ -131,6 +132,10 @@ public class LoginActivity extends AppCompatActivity {
                         EMClient.getInstance().groupManager().loadAllGroups();
                         EMClient.getInstance().chatManager().loadAllConversations();
                         LogUtils.d("main", "登录聊天服务器成功！");
+
+                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
 
                     @Override

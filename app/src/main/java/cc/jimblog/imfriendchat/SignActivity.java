@@ -23,7 +23,7 @@ import view.MyViewPager;
 /**
  * Created by Ran on 2016/8/8.
  */
-public class SignActivity extends AppCompatActivity implements InputPhoneFragment.MyInputPhoneListener{
+public class SignActivity extends AppCompatActivity implements InputPhoneFragment.MyInputPhoneListener , InputPasswordFragment.MyInputPwdListener{
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
     @BindView(R.id.login_view_pager)
@@ -71,6 +71,13 @@ public class SignActivity extends AppCompatActivity implements InputPhoneFragmen
     public void showMessage(int index) {
         if(index == 1){
             loginViewPager.setCurrentItem(1);
+        }
+    }
+
+    @Override
+    public void closeMessage(int index) {
+        if(index == 2){
+            SignActivity.this.finish();
         }
     }
 }

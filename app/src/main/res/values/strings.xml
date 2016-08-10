@@ -24,6 +24,12 @@
     <string name="register_input_code_hint">Please Input VerificationCode</string>
     <string name="register_two_input_pwd_error_toast">Passwords are not consistent!</string>
     <string name="register_verificationCode_error_toast">VerificationCode is Error!</string>
+    <!--Fragment主页切换窗口-->
+    <string name="main_chat_fragment_title">Chat</string>
+    <string name="main_contacts_fragment_title">Contacts</string>
+    <string name="main_function_fragment_title">Function</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string-array name="country_name_list">
         <item>+86</item>
 
