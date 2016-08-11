@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 主页Fragment适配器
  * Created by Ran on 2016/8/10.
  */
 public class MainPageAdapter extends FragmentPagerAdapter {

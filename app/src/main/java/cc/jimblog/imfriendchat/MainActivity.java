@@ -36,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.main_drawer_layout)
     DrawerLayout mainDrawerLayout;
 
-    private List<String> mTitleList = new ArrayList<String>();
-    private ChatFragment chatFragment = null ;
-    private ContactsFragment contactsFragment = null ;
-    private FuncationFragment funcationFragment = null ;
-    private List<Fragment> mFragmentList = new ArrayList<Fragment>();
-    private ActionBarDrawerToggle mDrawerToggle ;
-    private MainPageAdapter mAdapter ;
+    private List<String> mTitleList = new ArrayList<String>();  //存放标题
+    private ChatFragment chatFragment = null ;  //聊天选项卡
+    private ContactsFragment contactsFragment = null ;  //联系人
+    private FuncationFragment funcationFragment = null ;       //功能页面
+    private List<Fragment> mFragmentList = new ArrayList<Fragment>();   //存放Fragment对象
+    private ActionBarDrawerToggle mDrawerToggle ;   //监听DrawerLayout滑动和弹出事件
+    private MainPageAdapter mAdapter ;  //主页适配器
+
     /**
      * 初始化数据的方法
      */
@@ -110,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             int position = tab.getPosition();
-            mainViewpager.setCurrentItem(position);
+            mainViewpager.setCurrentItem(position); //点击TabLayout时切换页卡，并设置标题，根据得到的Position可以统一进行设置
             mainToolBar.setTitle(mTitleList.get(position));
         }
 

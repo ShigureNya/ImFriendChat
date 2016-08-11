@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 注册页的Fragment适配器
  * Created by Ran on 2016/8/8.
  */
 public class SignPageAdapter extends FragmentPagerAdapter {

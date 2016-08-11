@@ -56,11 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        //将EditText注册到 TextWatcher
         loginInputUsername.addTextChangedListener(new InputContentChangeListener());
         loginInputPassword.addTextChangedListener(new InputContentChangeListener());
         //将数据从SharedPreferences中取出
         String saveAccount = (String) StorageUtils.get(this,"SaveAccount","");
-
+        //如果sharedPreferences中存在数据，则直接设置给EditText
         if(!saveAccount.equals("") || saveAccount != null){
             loginInputUsername.setText(saveAccount);
         }
@@ -70,14 +71,18 @@ public class LoginActivity extends AppCompatActivity {
     public void onClick(View view) {
        switch (view.getId()){
            case R.id.login_ripple_button:
-               loginBtn();
+               loginBtn();  //登陆按钮
                break;
            case R.id.login_signup_btn:
                Intent intent = new Intent(LoginActivity.this,SignActivity.class);
-               startActivity(intent);
+               startActivity(intent);   //跳转到页面
                break;
        };
     }
+
+    /**
+     *  登陆的各种判断
+     */
     public void loginBtn(){
         String account = loginInputUsername.getText().toString().trim();
         String password = loginInputPassword.getText().toString().trim();
@@ -95,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
             ToastUtils.showShort(this, getString(R.string.login_connect_error_toast));
             return;
         }
+        //将账号和密码封装成HashMap
         HashMap<String, String> userMap = new HashMap<String, String>();
         userMap.put("Account", account);
         userMap.put("Password", password);
@@ -163,6 +169,10 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    /**
+     * 处理输入数据的回调
+     */
     class InputContentChangeListener implements TextWatcher {
         CharSequence temp;
 
@@ -186,6 +196,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 开启一个动画
+     * @param v
+     */
     private void setAnimation(View v) {
         Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.view_shake);
         v.startAnimation(animation);

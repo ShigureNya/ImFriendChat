@@ -21,15 +21,17 @@ import fragment.InputPhoneFragment;
 import view.MyViewPager;
 
 /**
+ * 注册页面使用Fragment回调控制
  * Created by Ran on 2016/8/8.
+ * 实现的接口为两个回调方法
  */
 public class SignActivity extends AppCompatActivity implements InputPhoneFragment.MyInputPhoneListener , InputPasswordFragment.MyInputPwdListener{
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
     @BindView(R.id.login_view_pager)
-    MyViewPager loginViewPager;
+    MyViewPager loginViewPager;     //此处自定义了ViewPager对象 原因是需要屏蔽ViewPager的滑动事件
 
-    private SignPageAdapter adapter ;
+    private SignPageAdapter adapter ;   //Adapter适配器
     private InputPhoneFragment phoneFragment ;
     private InputPasswordFragment passwordFragment ;
 

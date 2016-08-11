@@ -37,6 +37,7 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        //测试！测试！测试！
         LogUtils.i("全舰弹幕装填！");
         LogUtils.i("　　 へ　　　　　／|\n" +
                 "　　/＼7　　　 ∠＿/\n" +
