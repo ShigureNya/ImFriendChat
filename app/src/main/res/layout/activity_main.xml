@@ -28,13 +28,16 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/main_tabview_height"
             android:background="@color/main_style_color"
+            app:tabTextAppearance="@style/MyTabTextStyle"
             app:tabIndicatorColor="@color/main_bg"
             app:tabSelectedTextColor="@color/main_bg"
-            app:tabTextColor="@color/main_bg"></android.support.design.widget.TabLayout>
+            app:tabTextColor="@color/main_bg"
+            />
         <android.support.v4.view.ViewPager
             android:id="@+id/main_viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+            android:layout_height="match_parent"
+            />
     </LinearLayout>
     <!--  headerLayout：加载一个头部的Layout文件-->
     <!-- menu：加载一个菜单文件-->
@@ -44,9 +47,9 @@
         android:layout_height="match_parent"
         android:layout_gravity="left"
         app:headerLayout="@layout/layout_main_header"
-        ></android.support.design.widget.NavigationView>
-        <!--
-        app:headerLayout=""  设置侧滑菜单的头部layout
-        app:menu="" 下方的菜单按钮
-        -->
+        />
+    <!--
+    app:headerLayout=""  设置侧滑菜单的头部layout
+    app:menu="" 下方的菜单按钮
+    -->
 </android.support.v4.widget.DrawerLayout>

@@ -11,5 +11,13 @@
                 <item name="android:windowTranslucentStatus">true</item>
                 <item name="android:windowTranslucentNavigation">false</item>
                 <item name="android:textAllCaps">false</item>
+                <item name="android:listDivider">@drawable/chat_item_divider_shape</item>
+        </style>
+
+        <style name="MyTabTextStyle" parent="TextAppearance.Design.Tab">
+                <!--Tab字体的大小-->
+                <item name="android:textSize">@dimen/main_text_size</item>
+                <!--Tab字体是否为大写-->
+                <item name="textAllCaps">false</item>
         </style>
 </resources>

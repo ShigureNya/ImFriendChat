@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         mainTabLayout.setTabsFromPagerAdapter(mAdapter);
         mainViewpager.setAdapter(mAdapter);
         mainTabLayout.setOnTabSelectedListener(tabSelectedListener);
+
     }
 
     @OnClick(R.id.main_navigation_view)
