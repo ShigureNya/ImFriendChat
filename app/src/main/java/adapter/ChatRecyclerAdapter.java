@@ -59,6 +59,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             holder.mUserMsg.setText(getMessage(conversation.getLastMessage()));
             //设置时间
             Date date = new Date(conversation.getLastMessage().getMsgTime());
+            //此处最好可以优化一下  优化为当天则显示时间  昨天则显示 昨天12:50 前天12:50  在此之前则显示日期2016-12-2
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             holder.mMessageTime.setText(sdf.format(date));
         }
@@ -136,4 +137,5 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
         }
         return str;
     }
+
 }

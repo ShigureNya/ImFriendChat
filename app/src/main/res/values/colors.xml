@@ -7,7 +7,7 @@
     <color name="colorAccent">#FF4081</color>
     <!--标题栏主色调和状态栏背景色  新增指针颜色 新增了背景颜色 -->
     <color name="main_style_dark_color">#0b8043</color>
-    <color name="main_style_color">#0f9d58</color>
+    <color name="main_style_color">#0F9D58</color>
     <color name="main_accent_color">#1bdb7b</color>
     <color name="main_background">#f5f5f5</color>
     <color name="main_text_hint_color">#8c1bdb7b</color>

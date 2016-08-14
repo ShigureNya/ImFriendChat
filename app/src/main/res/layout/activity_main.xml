@@ -32,6 +32,7 @@
             app:tabIndicatorColor="@color/main_bg"
             app:tabSelectedTextColor="@color/main_bg"
             app:tabTextColor="@color/main_bg"
+            android:elevation="3dp"
             />
         <android.support.v4.view.ViewPager
             android:id="@+id/main_viewpager"

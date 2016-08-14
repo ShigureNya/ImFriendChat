@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity"
+    >
+    <LinearLayout
+        android:id="@+id/chat_toolbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include layout="@layout/layout_toolbar"/>
+    </LinearLayout>
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/chat_edit_layout"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/chat_edit_layout_shape"
+        android:gravity="center_vertical"
+        >
+        <ImageButton
+            android:id="@+id/chat_edit_voice_btn"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="8dp"
+            />
+        <ImageButton
+            android:id="@+id/chat_edit_function_btn"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/chat_edit_voice_btn"
+            />
+        <Button
+            android:id="@+id/chat_edit_send_btn"
+            android:layout_width="46dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/chat_edit_btn_shape"
+            android:elevation="2dp"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/chat_edit_function_btn"
+            android:layout_toLeftOf="@id/chat_edit_send_btn"
+            android:background="@drawable/chat_edit_shape"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            />
+    </RelativeLayout>
+    <ListView
+        android:id="@+id/chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chat_toolbar_layout"
+        android:layout_above="@id/chat_edit_layout">
+    </ListView>
+</RelativeLayout>

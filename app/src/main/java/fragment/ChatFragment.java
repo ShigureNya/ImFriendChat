@@ -13,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
+import com.hyphenate.chat.EMMessage;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,6 +24,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import adapter.ChatRecyclerAdapter;
 import butterknife.BindView;
@@ -52,12 +56,13 @@ public class ChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_chat, container, false);
         ButterKnife.bind(this, mView);
+        //刷新数据
+        chatUpdate();
         return mView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         //直接加在会话列表
         conversationList.addAll(loadConversationWithRecentChat());
         //设置adapter
@@ -82,6 +87,8 @@ public class ChatFragment extends Fragment {
         LogUtils.v("Count Total", count + "");
         //设置下拉刷新
         chatRefreshLayout.setOnRefreshListener(new OnRefreshListener());
+
+        super.onActivityCreated(savedInstanceState);
     }
 
     /**
@@ -176,8 +183,48 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onResume() {
-        super.onResume();
         //Fragment每次加载Resume方法时调用refrush方法
         refresh();
+        super.onResume();
+    }
+    private void chatUpdate(){
+        EMClient.getInstance().chatManager().addMessageListener(msgListener);
+    }
+    EMMessageListener msgListener = new EMMessageListener() {
+
+        @Override
+        public void onMessageReceived(List<EMMessage> messages) {
+            //收到消息
+            conversationList.clear();   //先将会话列表清空
+            conversationList.addAll(loadConversationWithRecentChat());  //加载会话列表
+            adapter.notifyDataSetChanged();
+            //试试放在Handler里
+        }
+
+        @Override
+        public void onCmdMessageReceived(List<EMMessage> messages) {
+            //收到透传消息
+        }
+
+        @Override
+        public void onMessageReadAckReceived(List<EMMessage> messages) {
+            //收到已读回执
+        }
+
+        @Override
+        public void onMessageDeliveryAckReceived(List<EMMessage> message) {
+            //收到已送达回执
+        }
+
+        @Override
+        public void onMessageChanged(EMMessage message, Object change) {
+            //消息状态变动
+        }
+    };
+
+    @Override
+    public void onDestroyView() {
+        EMClient.getInstance().chatManager().removeMessageListener(msgListener);
+        super.onDestroyView();
     }
 }

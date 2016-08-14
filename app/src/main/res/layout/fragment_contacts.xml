@@ -3,9 +3,5 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_fragment_background">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Contacts Fragment"
-        android:gravity="center"/>
+
 </LinearLayout>
