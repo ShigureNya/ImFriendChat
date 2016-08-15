@@ -11,6 +11,7 @@ import com.hyphenate.chat.EMContact;
 import java.util.List;
 
 /**
+ * 联系人页面Adapter适配器
  * Created by Ran on 2016/8/12.
  */
 public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecyclerAdapter.MyViewHolder> {

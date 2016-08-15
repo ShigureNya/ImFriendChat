@@ -23,6 +23,7 @@ import cc.jimblog.imfriendchat.R;
 import view.CircleImageView;
 
 /**
+ * 会话页面Adapter适配器
  * Created by Ran on 2016/8/11.
  */
 public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapter.ViewHolder> {
