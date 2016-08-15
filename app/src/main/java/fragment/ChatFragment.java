@@ -2,6 +2,8 @@ package fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
@@ -194,11 +196,8 @@ public class ChatFragment extends Fragment {
 
         @Override
         public void onMessageReceived(List<EMMessage> messages) {
-            //收到消息
-            conversationList.clear();   //先将会话列表清空
-            conversationList.addAll(loadConversationWithRecentChat());  //加载会话列表
-            adapter.notifyDataSetChanged();
-            //试试放在Handler里
+            Message msg = mMsgHandler.obtainMessage() ;
+            msg.sendToTarget();
         }
 
         @Override
@@ -221,7 +220,16 @@ public class ChatFragment extends Fragment {
             //消息状态变动
         }
     };
-
+    Handler mMsgHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            //收到消息
+            conversationList.clear();   //先将会话列表清空
+            conversationList.addAll(loadConversationWithRecentChat());  //加载会话列表
+            adapter.notifyDataSetChanged();
+            //试试放在Handler里
+        }
+    };
     @Override
     public void onDestroyView() {
         EMClient.getInstance().chatManager().removeMessageListener(msgListener);
