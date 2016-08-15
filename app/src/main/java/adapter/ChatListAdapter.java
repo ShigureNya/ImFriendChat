@@ -60,7 +60,7 @@ public class ChatListAdapter extends BaseAdapter {
 
         if(convertView == null){
             viewHolder = new ViewHolder() ;
-            convertView = mInflater.inflate(R.layout.layout_constaion_item,viewGroup);
+            convertView = mInflater.inflate(R.layout.layout_constaion_item,null);
             viewHolder.messageLeftText = (TextView) convertView.findViewById(R.id.chat_left_text);
             viewHolder.userLeftImg = (CircleImageView) convertView.findViewById(R.id.chat_left_img);
             viewHolder.tokenLeftLayout = (RelativeLayout) convertView.findViewById(R.id.chat_left_msg_layout);

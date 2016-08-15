@@ -53,6 +53,7 @@ public class ChatFragment extends Fragment {
     //数据适配器
     private ChatRecyclerAdapter adapter;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -124,7 +125,8 @@ public class ChatFragment extends Fragment {
      * @return
      */
     private Collection<? extends EMConversation> loadConversationWithRecentChat() {
-        Hashtable<String, EMConversation> conversations = (Hashtable<String, EMConversation>) EMClient.getInstance().chatManager().getAllConversations();
+        Hashtable<String, EMConversation> conversations = (Hashtable<String, EMConversation>)
+                EMClient.getInstance().chatManager().getAllConversations();
 
         List<Pair<Long, EMConversation>> sortList = new ArrayList<Pair<Long, EMConversation>>();
 
@@ -146,6 +148,12 @@ public class ChatFragment extends Fragment {
 
         List<EMConversation> list = new ArrayList<EMConversation>();
         for (Pair<Long, EMConversation> sortItem : sortList) {
+            EMConversation conversation = sortItem.second;
+            String name = conversation.getUserName();
+            if(name.equals("") ||  name.contentEquals("")){ //此处需要contentEquals方法去过滤空值内容
+                break ;
+            }
+            LogUtils.i("名字"+name);
             list.add(sortItem.second);
         }
         return list;
