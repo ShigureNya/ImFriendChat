@@ -66,19 +66,25 @@
         <activity android:name=".MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" >
+            android:windowSoftInputMode="adjustPan">
         </activity>
         <!--注册页-->
         <activity android:name=".SignActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
         </activity>
         <!--聊天页-->
         <activity android:name=".ChatActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="stateHidden"
+            >
+        </activity>
+        <activity android:name=".ChatListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
     </application>
 

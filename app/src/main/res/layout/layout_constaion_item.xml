@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:layout_marginTop="7dp"
         >
         <view.CircleImageView
             android:id="@+id/chat_left_img"
@@ -36,7 +37,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="HelloWorld"
-                android:autoLink="email|phone"/>
+                android:autoLink="email|phone"
+                android:textColor="#fff"
+                android:textSize="16sp"/>
         </LinearLayout>
         <TextView
             android:id="@+id/chat_left_time"
@@ -54,6 +57,7 @@
         android:id="@+id/chat_right_msg_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         >
         <view.CircleImageView
             android:id="@+id/chat_right_img"
@@ -79,6 +83,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="hey!"
+                android:textSize="16sp"
+                android:textColor="@color/main_text_color"
                 android:autoLink="email|phone"/>
         </LinearLayout>
         <TextView

@@ -1,21 +1,22 @@
 package cc.jimblog.imfriendchat;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-import com.hyphenate.EMCallBack;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
@@ -28,6 +29,7 @@ import adapter.ChatListAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import util.LogUtils;
 
 /**
  * Created by Ran on 2016/8/11.
@@ -35,20 +37,20 @@ import butterknife.OnClick;
 public class ChatActivity extends AppCompatActivity {
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
-    @BindView(R.id.chat_toolbar_layout)
-    LinearLayout chatToolbarLayout;
+    @BindView(R.id.chat_list)
+    ListView chatList;
     @BindView(R.id.chat_edit_voice_btn)
     ImageButton chatEditVoiceBtn;
     @BindView(R.id.chat_edit_function_btn)
     ImageButton chatEditFunctionBtn;
     @BindView(R.id.chat_edit_send_btn)
     Button chatEditSendBtn;
-    @BindView(R.id.chat_edit_layout)
-    RelativeLayout chatEditLayout;
-    @BindView(R.id.chat_list)
-    ListView chatList;
     @BindView(R.id.chat_edit_editText)
     EditText chatEditEditText;
+    @BindView(R.id.chat_edit_layout)
+    RelativeLayout chatEditLayout;
+    @BindView(R.id.chat_layout)
+    DrawerLayout chatLayout;
 
     private String userName;       //用户名
 
@@ -59,17 +61,19 @@ public class ChatActivity extends AppCompatActivity {
     private List<EMMessage> mList = new ArrayList<EMMessage>();
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         ButterKnife.bind(this);
+
         initToolBar();
         initAdapter();
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
         //将chatList设置为展示最后一条消息
-        if(chatList!=null){
-            chatList.setSelection(chatList.getCount()-1);
+        if (chatList != null) {
+            chatList.setSelection(chatList.getCount() - 1);
         }
+        chatList.setDivider(null);
     }
 
     @OnClick({R.id.chat_edit_voice_btn, R.id.chat_edit_function_btn, R.id.chat_edit_send_btn})
@@ -87,8 +91,8 @@ public class ChatActivity extends AppCompatActivity {
                 EMClient.getInstance().chatManager().sendMessage(message);
                 mList.add(message);
                 adapter.notifyDataSetChanged();
-                chatList.setSelection(chatList.getCount()-1);
-                chatEditEditText.setText("") ;
+                chatList.setSelection(chatList.getCount() - 1);
+                chatEditEditText.setText("");
                 break;
         }
     }
@@ -100,6 +104,7 @@ public class ChatActivity extends AppCompatActivity {
         userName = getIntent().getStringExtra("Username");
         toolBar.setTitle(userName);
         toolBar.setNavigationIcon(R.mipmap.ic_keyboard_arrow_left_white_36dp);
+        setSupportActionBar(toolBar);
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

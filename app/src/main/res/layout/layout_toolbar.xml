@@ -9,5 +9,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/main_style_color"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:theme="@style/AppTheme.PopupOverlay" />
 </android.support.design.widget.AppBarLayout>

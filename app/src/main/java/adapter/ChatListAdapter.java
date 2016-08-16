@@ -115,4 +115,13 @@ public class ChatListAdapter extends BaseAdapter {
         public TextView messageRightText ;  //自己消息实体
         public RelativeLayout tokenRightLayout ;  //自己Layout 作显示和隐藏
     }
+    @Override
+    public boolean areAllItemsEnabled() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return false;
+    }
 }

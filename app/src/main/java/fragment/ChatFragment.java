@@ -29,10 +29,12 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import adapter.ChatListAdapter;
 import adapter.ChatRecyclerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cc.jimblog.imfriendchat.ChatActivity;
+import cc.jimblog.imfriendchat.ChatListActivity;
 import cc.jimblog.imfriendchat.R;
 import util.LogUtils;
 import view.DividerItemDecoration;
