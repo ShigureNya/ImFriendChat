@@ -22,12 +22,11 @@
             android:layout_marginRight="14dp"
             android:src="@drawable/head_img"
             app:border_color="#0000"/>
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/chat_left_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
             android:layout_toRightOf="@id/chat_left_img"
             android:background="@drawable/chat_from_bg_normal"
             >
@@ -40,7 +39,13 @@
                 android:autoLink="email|phone"
                 android:textColor="#fff"
                 android:textSize="16sp"/>
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/chat_left_text_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:scaleType="centerCrop"/>
+        </RelativeLayout>
         <TextView
             android:id="@+id/chat_left_time"
             android:layout_width="wrap_content"
@@ -69,13 +74,12 @@
             android:layout_marginRight="14dp"
             android:src="@drawable/head_img"
             app:border_color="#0000"/>
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/chat_right_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/chat_to_bg_normal"
             android:gravity="center"
-            android:orientation="vertical"
             android:layout_toLeftOf="@id/chat_right_img">
             <TextView
                 android:id="@+id/chat_right_text"
@@ -86,7 +90,13 @@
                 android:textSize="16sp"
                 android:textColor="@color/main_text_color"
                 android:autoLink="email|phone"/>
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/chat_right_text_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:scaleType="centerCrop"/>
+        </RelativeLayout>
         <TextView
             android:id="@+id/chat_right_time"
             android:layout_width="wrap_content"
