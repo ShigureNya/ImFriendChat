@@ -2,23 +2,15 @@ package adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.Request;
-import com.bumptech.glide.request.target.Target;
-import com.hyphenate.EMCallBack;
-import com.hyphenate.chat.EMClient;
-import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
@@ -27,13 +19,13 @@ import java.io.IOException;
 import java.util.List;
 
 import cc.jimblog.imfriendchat.R;
+import image.ImageManager;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.schedulers.Schedulers;
-import util.ImageDownload;
+import image.ImageDownload;
 import util.LogUtils;
 import view.CircleImageView;
 
@@ -46,11 +38,13 @@ public class ChatListAdapter extends BaseAdapter {
     public Context mContext ;   //上下文
     public List<EMMessage> mMessageList ; //处理消息和接收消息的对象
     public LayoutInflater mInflater = null ;
+    public ImageManager imageManager ;
 
     public ChatListAdapter(Context context , List<EMMessage> list){
         this.mContext = context ;
         this.mMessageList = list;
         mInflater = LayoutInflater.from(context);
+        imageManager = new ImageManager() ;
     }
     private static final int DEFAULT_WIDTH = 350 ;
     private static final int DEFAULT_HEIGHT = 350 ;
@@ -106,7 +100,7 @@ public class ChatListAdapter extends BaseAdapter {
                 viewHolder.messageLeftImage.setVisibility(View.VISIBLE);
                 viewHolder.messageLeftText.setVisibility(View.GONE);
                 EMImageMessageBody imageBody = (EMImageMessageBody) emMessage.getBody();
-                netLoadChatImage(imageBody,viewHolder.messageLeftImage);
+                imageLoader(imageBody,viewHolder.messageLeftImage);
             }
         }else{ //如果是自己发送的消息
             viewHolder.tokenRightLayout.setVisibility(View.VISIBLE);
@@ -122,7 +116,7 @@ public class ChatListAdapter extends BaseAdapter {
                 viewHolder.messageRightImage.setVisibility(View.VISIBLE);
                 viewHolder.messageRightText.setVisibility(View.GONE);
                 EMImageMessageBody imageBody = (EMImageMessageBody) emMessage.getBody();
-                netLoadChatImage(imageBody,viewHolder.messageRightImage);
+                imageLoader(imageBody,viewHolder.messageRightImage);
             }
         }
 
@@ -151,26 +145,20 @@ public class ChatListAdapter extends BaseAdapter {
     }
 
     /**
-     * 为了保证ListView流畅滚动,这里是用谷歌官方推荐的Glide图片加载库来实现
-     * update 因为发现是用EMImageMessageBody 无法加载图片的实际大小
-     * 决定用RxJava异步download图片,从Bitmap中得到准确的大小
-     *
-     * 这边的数据保存算法需要修改,需要增加三级缓存模型,即 cache → Storage → NetWork
-     * @param imageBody 图像实体
-     */
-    private void netLoadChatImage(EMImageMessageBody imageBody, final ImageView imageView){
-        final String url = imageBody.getThumbnailUrl(); //调用此方法SDK会自动下载图片到本地,此URL为本地存储的路径
-        //创建被监听者对象
-        Observable<Bitmap> observable = Observable.create(new Observable.OnSubscribe<Bitmap>() {
+     * 是用RxJava异步加载图像并进行相关处理
+     * */
+    public void imageLoader(EMImageMessageBody imageBody , final ImageView imageView){
+        final String imgUrl = imageBody.getThumbnailUrl() ; //得到SDK图片的下载地址
+        Observable<Bitmap> observable = Observable.create(new Observable.OnSubscribe<Bitmap>(){
+
             @Override
             public void call(Subscriber<? super Bitmap> subscriber) {
-                try {
-                    Bitmap bitmap = ImageDownload.getBitmap(url);
+                Bitmap bitmap = imageManager.getBitmap(imgUrl);
+                if(bitmap != null){
                     subscriber.onNext(bitmap);
                     subscriber.onCompleted();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    subscriber.onError(new Throwable(e.toString()));
+                }else{
+                    subscriber.onError(new Throwable("图像下载失败"));
                 }
             }
         });
@@ -178,46 +166,58 @@ public class ChatListAdapter extends BaseAdapter {
                 .subscribe(new Observer<Bitmap>() {
                     @Override
                     public void onCompleted() {
-                        LogUtils.i("图片下载成功");
+                        LogUtils.i("图像下载完成");
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
-                        LogUtils.e("图片下载失败:"+throwable.toString());
+                        LogUtils.e(throwable.toString());
                     }
 
                     @Override
                     public void onNext(Bitmap bitmap) {
-                        int width = bitmap.getWidth() ;
-                        int height = bitmap.getHeight();
-                        LogUtils.d("Width:"+width+",height:"+height);
-                        int displayWidth = 0 ;
-                        int displayHeight = 0 ;
-                        if(width > height){
-                            float dpi = (float)width / height ;
-                            if(width > DEFAULT_WIDTH){
-                                displayWidth = DEFAULT_WIDTH;
-                                displayHeight = (int) (displayWidth / dpi);
-                            }else{
-                                displayWidth = width ;
-                                displayHeight = height ;
-                            }
-                        }else{
-                            float dpi = (float)height / width ;
-                            if(height > DEFAULT_HEIGHT){
-                                displayHeight = DEFAULT_HEIGHT ;
-                                displayWidth = (int) (displayHeight / dpi);
-                            }else{
-                                displayWidth = width ;
-                                displayHeight = height ;
-                            }
-                        }
-                        Glide.with(mContext)
-                                .load(url)
-                                .override(displayWidth,displayHeight)
-                                .centerCrop()
-                                .into(imageView);
+                        djustImageSize(bitmap,imageView);   //如果得到了这个Bitmap 则将其交给处理方法处理大小
                     }
                 });
     }
+    /**
+     * 处理图像大小
+     * @param  bitmap 图片
+     * @return Bitmap 处理完成后的图片
+     **/
+    private void djustImageSize(Bitmap bitmap,ImageView imageView){
+        int width = bitmap.getWidth() ;
+        int height = bitmap.getHeight();
+        LogUtils.d("Width:"+width+",height:"+height);
+        //对图片的大小进行限制
+        int displayWidth = 0 ;
+        int displayHeight = 0 ;
+        if(width > height){
+            float dpi = (float)width / height ;
+            if(width > DEFAULT_WIDTH){
+                displayWidth = DEFAULT_WIDTH;
+                displayHeight = (int) (displayWidth / dpi);
+            }else{
+                displayWidth = width ;
+                displayHeight = height ;
+            }
+        }else{
+            float dpi = (float)height / width ;
+            if(height > DEFAULT_HEIGHT){
+                displayHeight = DEFAULT_HEIGHT ;
+                displayWidth = (int) (displayHeight / dpi);
+            }else{
+                displayWidth = width ;
+                displayHeight = height ;
+            }
+        }
+        //使用Google官方推荐的Glide图片加载库对图片进行加载
+        try {
+            byte[] bitmapBytes = imageManager.getByteArray4Bitmap(bitmap);
+            Glide.with(mContext).load(bitmapBytes).override(displayWidth,displayHeight).into(imageView);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
