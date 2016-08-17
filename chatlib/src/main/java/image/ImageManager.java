@@ -23,6 +23,8 @@ import java.util.Map;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 
+import util.LogUtils;
+
 /*
  * 图片管理
  * 异步获取图片，直接调用loadImage()函数，该函数自己判断是从缓存还是网络加载
@@ -145,17 +147,21 @@ public class ImageManager {
         {
             // 文件缓存中获取
             bitmap = imageFileCache.getBitmap4File(url);
+            LogUtils.i("从文件缓存中得到图片");
             if (bitmap != null)
             {
                 // 添加到内存缓存
                 imageMemoryCache.addBitmapCache(url, bitmap);
+                LogUtils.i("添加到内存缓存");
             }
             else
             {
                 // 从网络获取
                 bitmap = getBitmapFromHttp(url);
+                LogUtils.i("从网络获取图片");
             }
         }
+        LogUtils.i("从内存中得到图片");
         return bitmap;
     }
 
