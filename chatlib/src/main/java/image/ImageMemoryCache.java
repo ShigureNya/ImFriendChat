@@ -45,7 +45,6 @@ public class ImageMemoryCache {
                     /**
                      * 强引用缓存容量满的时候，会根据LRU算法把最近没有被使用的图片转入此软引用缓存
                      * */
-                    LogUtils.e("缓存空间已满");
                     mSoftCache.put(key,new SoftReference<Bitmap>(oldValue));
                 }
             }
@@ -82,6 +81,7 @@ public class ImageMemoryCache {
                 LogUtils.i("Get Bitmap from LruCache url:"+url);
                 return bitmap ;
             }
+            LogUtils.e("Bitmap没有从内存中读取到");
         }
         //如果强引用中找不到,就去软引用里找,找到后将其移动到强引用中
         synchronized (mSoftCache){

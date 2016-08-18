@@ -30,6 +30,8 @@
     <string name="main_function_fragment_title">Function</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!--ChatActivity聊天页面-->
+    <string name="chat_send_btn_text">Send</string>
     <string-array name="country_name_list">
         <item>+86</item>
 

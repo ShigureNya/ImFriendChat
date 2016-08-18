@@ -1,5 +1,6 @@
 package image;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,6 +12,9 @@ import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Message;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -45,6 +49,7 @@ public class ImageManager {
     public static HashMap<String, android.os.Handler> waitingImgTaskMap = new HashMap<String, android.os.Handler>();
     //同时下载的线程个数
     public static final int MAX_DOWNLOAD_IMAGE_THREAD = 4 ;
+
 
     public ImageManager(){
         imageFileCache = new ImageFileCache() ;
@@ -147,21 +152,18 @@ public class ImageManager {
         {
             // 文件缓存中获取
             bitmap = imageFileCache.getBitmap4File(url);
-            LogUtils.i("从文件缓存中得到图片");
-            if (bitmap != null)
-            {
+            LogUtils.d("1.从文件缓存里得到图片");
+            if (bitmap != null){
                 // 添加到内存缓存
                 imageMemoryCache.addBitmapCache(url, bitmap);
-                LogUtils.i("添加到内存缓存");
-            }
-            else
+                LogUtils.i("2.添加到内存缓存");
+            }else
             {
                 // 从网络获取
                 bitmap = getBitmapFromHttp(url);
-                LogUtils.i("从网络获取图片");
+                LogUtils.i("3.从网络获取图片");
             }
         }
-        LogUtils.i("从内存中得到图片");
         return bitmap;
     }
 
@@ -338,4 +340,5 @@ public class ImageManager {
 
         return bytes;
     }
+
 }

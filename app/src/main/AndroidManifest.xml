@@ -78,7 +78,7 @@
         <activity android:name=".ChatActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
+            android:windowSoftInputMode="stateVisible|adjustResize"
             >
         </activity>
         <activity android:name=".ChatListActivity"

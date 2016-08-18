@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/chat_left_msg_layout"
         android:layout_width="match_parent"
@@ -17,9 +17,11 @@
             android:id="@+id/chat_left_img"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="14dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/head_img"
             app:border_color="#0000"/>
         <RelativeLayout

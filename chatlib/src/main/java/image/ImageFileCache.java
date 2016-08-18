@@ -20,7 +20,7 @@ import util.LogUtils;
 public class ImageFileCache {
     public static final String TAG = ImageFileCache.class.getSimpleName() ;
     //图片缓存目录
-    private static final String IMAGE_CACHE_DIR = Environment.getExternalStorageDirectory().getPath()+"/"+"JimBlog";
+    private static final String IMAGE_CACHE_DIR = "/sdcard"+File.separator+"JimBlog"+File.separator;
     //保存的cache文件拓展名
     private static final String CACHE_FILE_NAME = ".cache";
     //定义M的大小
@@ -49,18 +49,21 @@ public class ImageFileCache {
         }
         String filename = convertUrlToFileName(url);
         File dirFile = new File(IMAGE_CACHE_DIR);
-        if(!dirFile.exists()){
-            dirFile.mkdirs();
-        }
-        File file = new File(IMAGE_CACHE_DIR + "/" + filename);
-        try {
-            file.createNewFile();
-            OutputStream out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,out);
-            out.flush();
-            out.close();
-        }catch (IOException e){
-            LogUtils.e("保存错误:"+e.toString());
+        if(!dirFile.exists() || !dirFile.isDirectory()){
+            boolean flag = dirFile.mkdirs();
+            LogUtils.d("是否创建成功",String.valueOf(flag)+"，目录地址:"+dirFile.getName());
+            if(flag){
+                File file = new File(IMAGE_CACHE_DIR + "/" + filename);
+                try {
+                    file.createNewFile();
+                    OutputStream out = new FileOutputStream(file);
+                    bitmap.compress(Bitmap.CompressFormat.JPEG,100,out);
+                    out.flush();
+                    out.close();
+                }catch (IOException e){
+                    LogUtils.e("保存错误:"+e.toString());
+                }
+            }
         }
     }
     /**
