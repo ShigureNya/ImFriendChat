@@ -11,13 +11,19 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 
 public class BitmapUtils {
+	private static final int DEFAULT_WIDTH = 350 ;
+	private static final int DEFAULT_HEIGHT = 350 ;
+
 	/*
 	* 将Bitmap转换为Drawable
 	*
@@ -159,6 +165,43 @@ public class BitmapUtils {
 		Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmapWidth, bitmapHeight,matrix,true);
 
 		return newBitmap;
+	}
+	/**
+	 * 处理图像大小
+	 * @param  bitmap 图片
+	 * @return Bitmap 处理完成后的图片
+	 **/
+	public static HashMap<String,Integer> djustImageSize(Bitmap bitmap){
+		int width = bitmap.getWidth() ;
+		int height = bitmap.getHeight();
+		LogUtils.d("Width:"+width+",height:"+height);
+		//对图片的大小进行限制
+		int displayWidth = 0 ;
+		int displayHeight = 0 ;
+		if(width > height){
+			float dpi = (float)width / height ;
+			if(width > DEFAULT_WIDTH){
+				displayWidth = DEFAULT_WIDTH;
+				displayHeight = (int) (displayWidth / dpi);
+			}else{
+				displayWidth = width ;
+				displayHeight = height ;
+			}
+		}else{
+			float dpi = (float)height / width ;
+			if(height > DEFAULT_HEIGHT){
+				displayHeight = DEFAULT_HEIGHT ;
+				displayWidth = (int) (displayHeight / dpi);
+			}else{
+				displayWidth = width ;
+				displayHeight = height ;
+			}
+		}
+		HashMap<String,Integer> map = new HashMap<String,Integer>();
+		map.put("Width",displayWidth);
+		map.put("Height",displayHeight);
+
+		return map ;
 	}
 	/**
 	 * 将Bitmap保存到硬盘

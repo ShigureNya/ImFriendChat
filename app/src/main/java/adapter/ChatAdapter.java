@@ -10,22 +10,18 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
 
-import java.io.IOException;
-
 import cc.jimblog.imfriendchat.R;
-import image.ImageManager;
+import image.MyBitmapCacheUtil;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import util.BitmapUtils;
 import util.LogUtils;
 import view.CircleImageView;
 
@@ -37,10 +33,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public Context mContext ;
     public EMConversation mConversation ;
     public LayoutInflater mInflater ;
-    public ImageManager manager ;
-
-    private static final int DEFAULT_WIDTH = 350 ;
-    private static final int DEFAULT_HEIGHT = 350 ;
+    public MyBitmapCacheUtil bitmapCacheUtil ;
 
     public ChatAdapter(Context context , EMConversation mConversation){
         mContext = context ;
@@ -49,7 +42,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         if(mContext != null){
             mInflater = LayoutInflater.from(mContext);
         }
-        manager = new ImageManager();
+        bitmapCacheUtil = new MyBitmapCacheUtil();
     }
 
     @Override
@@ -82,7 +75,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                 //为图片设置Tag防止错误加载
                 holder.messageLeftImage.setTag(url);
                 if(holder.messageLeftImage.getTag()!=null && holder.messageLeftImage.getTag().equals(url)){
-                    imageLoader(url,holder.messageLeftImage);
+                    bitmapCacheUtil.disPlay(holder.messageLeftImage,url);
                 }
             }
         }else{ //如果是自己发送的消息
@@ -105,7 +98,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                 //为图片设置Tag防止错误加载
                 holder.messageRightImage.setTag(url);
                 if(holder.messageRightImage.getTag()!=null && holder.messageRightImage.getTag().equals(url)){
-                    imageLoader(url,holder.messageRightImage);
+                    bitmapCacheUtil.disPlay(holder.messageRightImage,url);
                 }
             }
         }
@@ -141,73 +134,5 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
         }
     }
-    /**
-     * 是用RxJava异步加载图像并进行相关处理
-     * */
-    public void imageLoader(final String url , final ImageView imageView){
-        Observable<Bitmap> observable = Observable.create(new Observable.OnSubscribe<Bitmap>(){
 
-            @Override
-            public void call(Subscriber<? super Bitmap> subscriber) {
-                Bitmap bitmap = manager.getBitmap(url);
-                if(bitmap != null){
-                    subscriber.onNext(bitmap);
-                    subscriber.onCompleted();
-                }else{
-                    subscriber.onError(new Throwable("图像下载失败"));
-                }
-            }
-        });
-        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Bitmap>() {
-                    @Override
-                    public void onCompleted() {
-                        LogUtils.i("图像下载完成");
-                    }
-
-                    @Override
-                    public void onError(Throwable throwable) {
-                        LogUtils.e(throwable.toString());
-                    }
-
-                    @Override
-                    public void onNext(Bitmap bitmap) {
-                        djustImageSize(bitmap,imageView);   //如果得到了这个Bitmap 则将其交给处理方法处理大小
-                    }
-                });
-    }
-    /**
-     * 处理图像大小
-     * @param  bitmap 图片
-     * @return Bitmap 处理完成后的图片
-     **/
-    private void djustImageSize(Bitmap bitmap,ImageView imageView){
-        int width = bitmap.getWidth() ;
-        int height = bitmap.getHeight();
-        LogUtils.d("Width:"+width+",height:"+height);
-        //对图片的大小进行限制
-        int displayWidth = 0 ;
-        int displayHeight = 0 ;
-        if(width > height){
-            float dpi = (float)width / height ;
-            if(width > DEFAULT_WIDTH){
-                displayWidth = DEFAULT_WIDTH;
-                displayHeight = (int) (displayWidth / dpi);
-            }else{
-                displayWidth = width ;
-                displayHeight = height ;
-            }
-        }else{
-            float dpi = (float)height / width ;
-            if(height > DEFAULT_HEIGHT){
-                displayHeight = DEFAULT_HEIGHT ;
-                displayWidth = (int) (displayHeight / dpi);
-            }else{
-                displayWidth = width ;
-                displayHeight = height ;
-            }
-        }
-        imageView.setLayoutParams(new RelativeLayout.LayoutParams(displayWidth,displayHeight));
-        imageView.setImageBitmap(bitmap);
-    }
 }
