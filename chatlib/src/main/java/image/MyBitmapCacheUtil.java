@@ -45,6 +45,6 @@ public class MyBitmapCacheUtil {
             return;
         }
         //网络缓存
-        netCacheUtil.bitmapTask(url,ivPic);
+        netCacheUtil.downloadBitmapFromNet(url,ivPic);
     }
 }

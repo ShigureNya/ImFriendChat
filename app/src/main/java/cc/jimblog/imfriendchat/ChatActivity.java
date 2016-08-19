@@ -1,33 +1,28 @@
 package cc.jimblog.imfriendchat;
 
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.hyphenate.EMMessageListener;
-import com.hyphenate.chat.EMChatService;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import adapter.ChatListAdapter;
+import adapter.ChatAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -37,10 +32,11 @@ import util.LogUtils;
  * Created by Ran on 2016/8/11.
  */
 public class ChatActivity extends AppCompatActivity {
+
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
-    @BindView(R.id.chat_list)
-    ListView chatList;
+    @BindView(R.id.chat_toolbar_layout)
+    RelativeLayout chatToolbarLayout;
     @BindView(R.id.chat_edit_voice_btn)
     ImageButton chatEditVoiceBtn;
     @BindView(R.id.chat_edit_function_btn)
@@ -51,31 +47,28 @@ public class ChatActivity extends AppCompatActivity {
     EditText chatEditEditText;
     @BindView(R.id.chat_edit_layout)
     RelativeLayout chatEditLayout;
-    @BindView(R.id.chat_layout)
-    DrawerLayout chatLayout;
-
+    @BindView(R.id.chat_list)
+    RecyclerView chatList;
     private String userName;       //用户名
 
     private EMConversation conversation;    //联系人对象
 
-    private ChatListAdapter adapter;   //适配器
+    private ChatAdapter adapter;   //适配器
 
-    private List<EMMessage> mList = new ArrayList<EMMessage>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
+        setContentView(R.layout.activity_chat_beta);
         ButterKnife.bind(this);
-
         initToolBar();
         initAdapter();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
-        //将chatList设置为展示最后一条消息
-        if (chatList != null) {
-            chatList.setSelection(chatList.getCount() - 1);
-        }
-        chatList.setDivider(null);
     }
 
     @OnClick({R.id.chat_edit_voice_btn, R.id.chat_edit_function_btn, R.id.chat_edit_send_btn})
@@ -91,9 +84,12 @@ public class ChatActivity extends AppCompatActivity {
                 final EMMessage message = EMMessage.createTxtSendMessage(content, userName);
                 //发送消息
                 EMClient.getInstance().chatManager().sendMessage(message);
-                mList.add(message);
+                //将消息对象放入conversation中
+                conversation.appendMessage(message);
+
                 adapter.notifyDataSetChanged();
-                chatList.setSelection(chatList.getCount() - 1);
+                chatList.scrollToPosition(adapter.getItemCount()-1);
+
                 chatEditEditText.setText("");
                 break;
         }
@@ -124,15 +120,18 @@ public class ChatActivity extends AppCompatActivity {
     private void initAdapter() {
         //从chatManager中取出conversation对象，需要传递当前聊天用户的名字
         conversation = EMClient.getInstance().chatManager().getConversation(userName);
-        //将conversation对象的EMMessage的List直接交给adapter初始化
-        adapter = new ChatListAdapter(getApplicationContext(), mList);
+        //设置adapter
+        adapter = new ChatAdapter(this, conversation);
+        //通过New一个LinearLayoutManager的布局管理器对象来设置RecycleView的布局管理器
+        chatList.setLayoutManager(new LinearLayoutManager(this));
+        //设置Item的过渡动画，使用默认的即可
+        chatList.setItemAnimator(new DefaultItemAnimator());
+        //设置item为固定大小
+        chatList.setHasFixedSize(true);
+        //加载数据
         chatList.setAdapter(adapter);
-        chatList.setSelection(chatList.getCount() - 1);   //当前adapter的位置在最后一页
-
-        for (EMMessage msg : conversation.getAllMessages()) {     //从消息中遍历出每一条消息数据
-            mList.add(msg);
-        }
-        adapter.notifyDataSetChanged(); //刷新数据
+        //当前adapter的位置在最后一页
+        chatList.scrollToPosition(adapter.getItemCount()-1);
     }
 
     /**
@@ -174,11 +173,16 @@ public class ChatActivity extends AppCompatActivity {
             List<EMMessage> list = (List<EMMessage>) msg.obj;
             //收到消息
             for (EMMessage emsg : list) {
-                mList.add(emsg);
+                String userFrom = emsg.getFrom();
+                if(!userFrom.equals(userName)){
+                    return ;
+                }
+                conversation.appendMessage(emsg);
             }
             adapter.notifyDataSetChanged();
-            chatList.setSelection(chatList.getCount() - 1);
-            LogUtils.i("状态","刷新了ListView");
+            chatList.scrollToPosition(adapter.getItemCount()-1);
+
+            LogUtils.i("状态", "刷新了ListView");
         }
     };
 

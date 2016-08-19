@@ -22,6 +22,7 @@ import butterknife.OnClick;
 import fragment.ChatFragment;
 import fragment.ContactsFragment;
 import fragment.FuncationFragment;
+import fragment.SettingFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private ChatFragment chatFragment = null ;  //聊天选项卡
     private ContactsFragment contactsFragment = null ;  //联系人
     private FuncationFragment funcationFragment = null ;       //功能页面
+    private SettingFragment settingFragment = null ;    //设置页面
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();   //存放Fragment对象
     private ActionBarDrawerToggle mDrawerToggle ;   //监听DrawerLayout滑动和弹出事件
     private MainPageAdapter mAdapter ;  //主页适配器
@@ -51,14 +53,16 @@ public class MainActivity extends AppCompatActivity {
         chatFragment = new ChatFragment();
         contactsFragment = new ContactsFragment() ;
         funcationFragment = new FuncationFragment();
-
+        settingFragment = new SettingFragment() ;
         mFragmentList.add(chatFragment);
         mFragmentList.add(contactsFragment);
         mFragmentList.add(funcationFragment);
+        mFragmentList.add(settingFragment);
 
         mTitleList.add(getString(R.string.main_chat_fragment_title));
         mTitleList.add(getString(R.string.main_contacts_fragment_title));
         mTitleList.add(getString(R.string.main_function_fragment_title));
+        mTitleList.add(getString(R.string.main_setting_fragment_title));
     }
 
     @Override

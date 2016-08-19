@@ -3,6 +3,8 @@ package image;
 import android.graphics.Bitmap;
 import android.util.LruCache;
 
+import util.LogUtils;
+
 /**
  * Created by jimhao on 16/8/19.
  */
@@ -38,6 +40,9 @@ public class MemoryCacheUtil {
      * @param bitmap
      */
     public void saveBitmapToMemory(String url , Bitmap bitmap ){
-        mMemoryCache.put(url,bitmap);
+        if(getBitmapFromMemory(url) == null){
+            LogUtils.i("存到本地了");
+            mMemoryCache.put(url,bitmap);
+        }
     }
 }

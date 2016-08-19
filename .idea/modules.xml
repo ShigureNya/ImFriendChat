@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ImFriendChat.iml" filepath="$PROJECT_DIR$/ImFriendChat.iml" />
       <module fileurl="file://$PROJECT_DIR$/ImFriendChatPro.iml" filepath="$PROJECT_DIR$/ImFriendChatPro.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/chatlib/chatlib.iml" filepath="$PROJECT_DIR$/chatlib/chatlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wave/wave.iml" filepath="$PROJECT_DIR$/wave/wave.iml" />
     </modules>
   </component>
 </project>

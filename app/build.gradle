@@ -37,4 +37,5 @@ dependencies {
     compile files('src/main/jniLibs/rxjava-1.1.6.jar')
     compile project(':chatlib')
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile project(':wave')
 }
