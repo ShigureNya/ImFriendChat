@@ -1,7 +1,11 @@
 package cc.jimblog.imfriendchat;
 
+import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,8 +18,10 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.hyphenate.EMMessageListener;
@@ -31,6 +37,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.imid.swipebacklayout.lib.SwipeBackLayout;
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+import util.JianPanUtils;
 import util.LogUtils;
 import util.ToastUtils;
 
@@ -52,32 +59,93 @@ public class ChatActivity extends SwipeBackActivity {
     @BindView(R.id.chat_edit_editText)
     EditText chatEditEditText;
     @BindView(R.id.chat_edit_layout)
-    RelativeLayout chatEditLayout;
+    LinearLayout chatEditLayout;
     @BindView(R.id.chat_list)
     RecyclerView chatList;
+    @BindView(R.id.chat_function_photo)
+    Button chatFunctionPhoto;
+    @BindView(R.id.chat_function_video)
+    Button chatFunctionVideo;
+    @BindView(R.id.chat_function_file)
+    Button chatFunctionFile;
+    @BindView(R.id.chat_function_location)
+    Button chatFunctionLocation;
+    @BindView(R.id.chat_function_layout)
+    LinearLayout chatFunctionLayout;
     private String userName;       //用户名
 
     private EMConversation conversation;    //联系人对象
 
     private ChatAdapter adapter;   //适配器
 
-    private SwipeBackLayout mBackLayout ;   //侧滑关闭Activity所用
+    private SwipeBackLayout mBackLayout;   //侧滑关闭Activity所用
+
+    private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_beta);
         ButterKnife.bind(this);
+        if(Build.VERSION.SDK_INT >= 23){
+            checkedPermission();
+        }
         initToolBar();
         initAdapter();
-
+        //侧滑关闭Activity的重要方法
         mBackLayout = getSwipeBackLayout();
         mBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkedPermission() {
+        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
+            return;
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
+        //捕获ChatList的点击事件
+        chatList.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+
+                if(chatFunctionLayout.getVisibility() == View.VISIBLE){
+                    chatFunctionLayout.setVisibility(View.GONE);
+                }
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    //关闭软键盘的重要方法
+                    imm.hideSoftInputFromWindow(chatEditEditText.getWindowToken(), 0);
+                    //关闭后使EditText失去焦点
+                    chatEditEditText.clearFocus();
+                }
+                return false;
+            }
+        });
+        //拦截editText或得到焦点的事件
+        chatEditEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b){
+                    if(chatFunctionLayout.getVisibility() == View.VISIBLE){
+                        chatFunctionLayout.setVisibility(View.GONE);
+                    }
+                    if(adapter != null && adapter.getItemCount()!= 0){
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                chatList.scrollToPosition(adapter.getItemCount() - 1);
+                            }
+                        },200);
+                    }
+                }
+            }
+        });
     }
 
     @OnClick({R.id.chat_edit_voice_btn, R.id.chat_edit_function_btn, R.id.chat_edit_send_btn})
@@ -86,25 +154,33 @@ public class ChatActivity extends SwipeBackActivity {
             case R.id.chat_edit_voice_btn:
                 break;
             case R.id.chat_edit_function_btn:
+                JianPanUtils.closeKeybord(chatEditEditText, this);
+                if (chatFunctionLayout.getVisibility() == View.VISIBLE) {
+                    chatFunctionLayout.setVisibility(View.GONE);
+                } else {
+                    chatEditEditText.clearFocus();
+                    chatFunctionLayout.setVisibility(View.VISIBLE);
+                }
                 break;
             case R.id.chat_edit_send_btn:
                 String content = chatEditEditText.getText().toString();
-                if(content == null || content.equals("")){
-                    return ;
+                if (content == null || content.equals("")) {
+                    return;
                 }
                 //创建一条文本消息，content为消息文字内容，toChatUsername为对方用户或者群聊的id，后文皆是如此
                 final EMMessage message = EMMessage.createTxtSendMessage(content, userName);
                 //发送消息
                 EMClient.getInstance().chatManager().sendMessage(message);
 
-                if(conversation == null){
+                if (conversation == null) {
                     conversation = EMClient.getInstance().chatManager().getConversation(userName);
+                    adapter = new ChatAdapter(ChatActivity.this,conversation);
                 }
                 //将消息对象放入conversation中
                 conversation.appendMessage(message);
 
                 adapter.notifyDataSetChanged();
-                chatList.scrollToPosition(adapter.getItemCount()-1);
+                chatList.scrollToPosition(adapter.getItemCount() - 1);
 
                 chatEditEditText.setText("");
                 break;
@@ -131,12 +207,12 @@ public class ChatActivity extends SwipeBackActivity {
         toolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.chat_menu_person:
-                        ToastUtils.showShort(ChatActivity.this,"点击了按钮");
+                        ToastUtils.showShort(ChatActivity.this, "点击了按钮");
                         break;
                 }
-                return true ;
+                return true;
             }
         });
 
@@ -144,9 +220,9 @@ public class ChatActivity extends SwipeBackActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.chat_menu,menu);
+        getMenuInflater().inflate(R.menu.chat_menu, menu);
         //创建menu菜单
-        return true ;
+        return true;
     }
 
     /**
@@ -156,10 +232,10 @@ public class ChatActivity extends SwipeBackActivity {
         //从chatManager中取出conversation对象，需要传递当前聊天用户的名字
         conversation = EMClient.getInstance().chatManager().getConversation(userName);
         //设置adapter
-        if(conversation != null){
+        if (conversation != null) {
             adapter = new ChatAdapter(this, conversation);
-        }else{
-            adapter = new ChatAdapter(this,null);
+        } else {
+            adapter = new ChatAdapter(this, null);
         }
         //通过New一个LinearLayoutManager的布局管理器对象来设置RecycleView的布局管理器
         chatList.setLayoutManager(new LinearLayoutManager(this));
@@ -170,8 +246,8 @@ public class ChatActivity extends SwipeBackActivity {
         //加载数据
         chatList.setAdapter(adapter);
         //当前adapter的位置在最后一页
-        if(conversation != null){
-            chatList.scrollToPosition(adapter.getItemCount()-1);
+        if (conversation != null) {
+            chatList.scrollToPosition(adapter.getItemCount() - 1);
         }
     }
 
@@ -215,16 +291,16 @@ public class ChatActivity extends SwipeBackActivity {
             //收到消息
             for (EMMessage emsg : list) {
                 String userFrom = emsg.getFrom();
-                if(!userFrom.equals(userName)){
-                    return ;
+                if (!userFrom.equals(userName)) {
+                    return;
                 }
-                if(conversation == null){
+                if (conversation == null) {
                     conversation = EMClient.getInstance().chatManager().getConversation(userName);
                 }
                 conversation.appendMessage(emsg);
             }
             adapter.notifyDataSetChanged();
-            chatList.scrollToPosition(adapter.getItemCount()-1);
+            chatList.scrollToPosition(adapter.getItemCount() - 1);
 
             LogUtils.i("状态", "刷新了ListView");
         }
@@ -236,53 +312,5 @@ public class ChatActivity extends SwipeBackActivity {
         EMClient.getInstance().chatManager().removeMessageListener(msgListener);
     }
 
-    //拦截处理软键盘弹出事件
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if (isShouldHideInput(v, ev)) {
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                if (imm != null) {
-                    //关闭软键盘的重要方法
-                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    //关闭后使EditText失去焦点
-                    chatEditEditText.clearFocus();
-                }
-            }
-            return super.dispatchTouchEvent(ev);
-        }
-        // 必不可少，否则所有的组件都不会有TouchEvent了
-        if (getWindow().superDispatchTouchEvent(ev)) {
-            return true;
-        }
-        return onTouchEvent(ev);
-    }
-
-    /**
-     * 使软键盘隐藏
-     * @param v
-     * @param event
-     * @return
-     */
-    public  boolean isShouldHideInput(View v, MotionEvent event) {
-        if (v != null && (v instanceof EditText)) {
-            int[] leftTop = { 0, 0 };
-            //获取输入框当前的location位置
-            v.getLocationInWindow(leftTop);
-            int left = leftTop[0];
-            int top = leftTop[1];
-            int bottom = top + v.getHeight();
-            int right = left + v.getWidth();
-            if (event.getX() > left && event.getX() < right
-                    && event.getY() > top && event.getY() < bottom) {
-                // 点击的是输入框区域，保留点击EditText的事件
-                return false;
-            } else {
-                return true;
-            }
-        }
-        return false;
-    }
 
 }

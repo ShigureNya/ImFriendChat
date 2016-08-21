@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">YuChat</string>
+
+    <!--登陆页-->
+    <string name="login_edit_account_hint">TelPhone</string>
+    <string name="login_edit_password_hint">Password</string>
+    <string name="login_button_text">Sign in</string>
+    <string name="login_not_account_hints">Don\'t have an account</string>
+    <string name="login_sign_btn_text">Sign up</string>
+    <string name="login_not_account_toast">Please Input Account</string>
+    <string name="login_not_password_toast">Please Input Password</string>
+    <string name="login_connect_error_toast">disconnect</string>
+    <!--注册页-->
+    <string name="register_account_hint">Input Account</string>
+    <string name="register_password_hint">Input Password</string>
+    <string name="register_button_text">Sign up</string>
+    <string name="register_input_phone_hint">Please confirm your country or region and enter your mobile phone number.</string>
+    <string name="register_input_number_edit_hint">Please input your number</string>
+    <string name="register_send_code_btn_text">Continue</string>
+    <string name="register_submit_btn_text">Sign up</string>
+    <string name="register_input_pwd_hint">Please input a password.Not less than six in length.</string>
+    <string name="register_input_pwd_edit_hint">Please input your password</string>
+    <string name="register_checked_pwd_edit_hint">Please enter a password again</string>
+    <string name="register_input_code_hint">Please Input VerificationCode</string>
+    <string name="register_two_input_pwd_error_toast">Passwords are not consistent!</string>
+    <string name="register_verificationCode_error_toast">VerificationCode is Error!</string>
+    <!--Fragment主页切换窗口-->
+    <string name="main_chat_fragment_title">Chat</string>
+    <string name="main_contacts_fragment_title">Contact</string>
+    <string name="main_function_fragment_title">Function</string>
+    <string name="main_setting_fragment_title">Setting</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!--ChatActivity聊天页面-->
+    <string name="chat_send_btn_text">Send</string>
+    <string name="chat_function_img_btn_text">Photo</string>
+    <string name="chat_function_media_btn_text">Video</string>
+    <string name="chat_function_file_btn_text">File</string>
+    <string name="chat_function_location_btn_text">Local</string>
+    <!--ContactFragment联系人窗口-->
+    <string name="contact_add_friend_text">Recommended  Friends</string>
+    <string name="contact_ground_text">Groups</string>
+    <string name="contact_fwh_text">Service  Accounts</string>
+    <string-array name="country_name_list">
+        <item>+86</item>
+
+    </string-array>
+</resources>

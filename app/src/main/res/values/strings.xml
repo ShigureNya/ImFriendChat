@@ -2,28 +2,28 @@
     <string name="app_name">友信</string>
 
     <!--登陆页-->
-    <string name="login_edit_account_hint">TelPhone</string>
-    <string name="login_edit_password_hint">Password</string>
-    <string name="login_button_text">Sign in</string>
-    <string name="login_not_account_hints">Don\'t have an account</string>
-    <string name="login_sign_btn_text">Sign up</string>
-    <string name="login_not_account_toast">Please Input Account</string>
-    <string name="login_not_password_toast">Please Input Password</string>
-    <string name="login_connect_error_toast">disconnect</string>
+    <string name="login_edit_account_hint">手机号</string>
+    <string name="login_edit_password_hint">密码</string>
+    <string name="login_button_text">登 录</string>
+    <string name="login_not_account_hints">是不是还没有账号呢？</string>
+    <string name="login_sign_btn_text">注册账号</string>
+    <string name="login_not_account_toast">请输入账号</string>
+    <string name="login_not_password_toast">请输入密码</string>
+    <string name="login_connect_error_toast">无网络连接！</string>
     <!--注册页-->
-    <string name="register_account_hint">Input Account</string>
-    <string name="register_password_hint">Input Password</string>
-    <string name="register_button_text">Sign up</string>
-    <string name="register_input_phone_hint">Please confirm your country or region and enter your mobile phone number.</string>
-    <string name="register_input_number_edit_hint">Please input your number</string>
-    <string name="register_send_code_btn_text">Continue</string>
-    <string name="register_submit_btn_text">Sign up</string>
-    <string name="register_input_pwd_hint">Please input a password.Not less than six in length.</string>
-    <string name="register_input_pwd_edit_hint">Please input your password</string>
-    <string name="register_checked_pwd_edit_hint">Please enter a password again</string>
-    <string name="register_input_code_hint">Please Input VerificationCode</string>
-    <string name="register_two_input_pwd_error_toast">Passwords are not consistent!</string>
-    <string name="register_verificationCode_error_toast">VerificationCode is Error!</string>
+    <string name="register_account_hint">请输入账号</string>
+    <string name="register_password_hint">请输入密码</string>
+    <string name="register_button_text">注册</string>
+    <string name="register_input_phone_hint">请确认您的国家或地区，并输入您的手机号码。</string>
+    <string name="register_input_number_edit_hint">请输入你的账号</string>
+    <string name="register_send_code_btn_text">确认并下一步</string>
+    <string name="register_submit_btn_text">提 交</string>
+    <string name="register_input_pwd_hint">请输入您的密码，长度不少于6位。</string>
+    <string name="register_input_pwd_edit_hint">请输入你的密码</string>
+    <string name="register_checked_pwd_edit_hint">请确认你的密码</string>
+    <string name="register_input_code_hint">请填写验证码</string>
+    <string name="register_two_input_pwd_error_toast">两次密码输入不符！</string>
+    <string name="register_verificationCode_error_toast">验证码输入错误！</string>
     <!--Fragment主页切换窗口-->
     <string name="main_chat_fragment_title">聊天</string>
     <string name="main_contacts_fragment_title">联系人</string>
@@ -32,8 +32,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!--ChatActivity聊天页面-->
-    <string name="chat_send_btn_text">Send</string>
-
+    <string name="chat_send_btn_text">发送</string>
+    <string name="chat_function_img_btn_text">图册</string>
+    <string name="chat_function_media_btn_text">视频</string>
+    <string name="chat_function_file_btn_text">文件</string>
+    <string name="chat_function_location_btn_text">位置</string>
+    <!--ContactFragment联系人窗口-->
+    <string name="contact_add_friend_text">添加新的朋友</string>
+    <string name="contact_ground_text">我的群组</string>
+    <string name="contact_fwh_text">公众号</string>
     <string-array name="country_name_list">
         <item>+86</item>
 

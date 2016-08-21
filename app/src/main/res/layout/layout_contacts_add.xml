@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/main_text_color"
             android:textSize="@dimen/main_text_size"
-            android:text="Recommended  Friends"
+            android:text="@string/contact_add_friend_text"
             android:layout_centerVertical="true"
             android:layout_marginLeft="70dp"/>
     </RelativeLayout>
@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/main_text_color"
             android:textSize="@dimen/main_text_size"
-            android:text="Groups"
+            android:text="@string/contact_ground_text"
             android:layout_centerVertical="true"
             android:layout_marginLeft="70dp"/>
     </RelativeLayout>
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/main_text_color"
             android:textSize="@dimen/main_text_size"
-            android:text="Service  Accounts"
+            android:text="@string/contact_fwh_text"
             android:layout_centerVertical="true"
             android:layout_marginLeft="70dp"/>
     </RelativeLayout>

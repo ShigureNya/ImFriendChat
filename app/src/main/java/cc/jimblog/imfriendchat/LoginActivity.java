@@ -3,11 +3,14 @@ package cc.jimblog.imfriendchat;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -31,7 +34,6 @@ import util.JianPanUtils;
 import util.LogUtils;
 import util.NetWorkUtils;
 import util.StorageUtils;
-import util.ToastUtils;
 
 /**
  * Created by Kotori on 2016/8/6.
@@ -50,54 +52,69 @@ public class LoginActivity extends AppCompatActivity {
     RelativeLayout loginRippleButton;
     @BindView(R.id.login_signup_btn)
     TextView loginSignupBtn;
+    @BindView(R.id.login_snackbar_layout)
+    CoordinatorLayout loginSnackbarLayout;
+    @BindView(R.id.login_progress_layout)
+    RelativeLayout loginProgressLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-        //将EditText注册到 TextWatcher
-        loginInputUsername.addTextChangedListener(new InputContentChangeListener());
-        loginInputPassword.addTextChangedListener(new InputContentChangeListener());
         //将数据从SharedPreferences中取出
-        String saveAccount = (String) StorageUtils.get(this,"SaveAccount","");
+        String saveAccount = (String) StorageUtils.get(this, "SaveAccount", "");
         //如果sharedPreferences中存在数据，则直接设置给EditText
-        if(!saveAccount.equals("") || saveAccount != null){
+        if (!saveAccount.equals("") || saveAccount != null) {
             loginInputUsername.setText(saveAccount);
         }
     }
 
-    @OnClick({R.id.login_ripple_button , R.id.login_signup_btn})
+    @Override
+    protected void onResume() {
+        //将EditText注册到 TextWatcher
+        loginInputUsername.addTextChangedListener(new InputContentChangeListener());
+        loginInputPassword.addTextChangedListener(new InputContentChangeListener());
+        super.onResume();
+    }
+
+    @OnClick({R.id.login_ripple_button, R.id.login_signup_btn})
     public void onClick(View view) {
-       switch (view.getId()){
-           case R.id.login_ripple_button:
-               loginBtn();  //登陆按钮
-               break;
-           case R.id.login_signup_btn:
-               Intent intent = new Intent(LoginActivity.this,SignActivity.class);
-               startActivity(intent);   //跳转到页面
-               break;
-       };
+        switch (view.getId()) {
+            case R.id.login_ripple_button:
+                loginBtn();  //登陆按钮
+                break;
+            case R.id.login_signup_btn:
+                Intent intent = new Intent(LoginActivity.this, SignActivity.class);
+                startActivity(intent);   //跳转到页面
+                break;
+        }
+        ;
     }
 
     /**
-     *  登陆的各种判断
+     * 登陆的各种判断
      */
-    public void loginBtn(){
+    public void loginBtn() {
+        //按下按钮时关闭软键盘
+        JianPanUtils.closeKeybord(loginInputUsername, LoginActivity.this);
+        JianPanUtils.closeKeybord(loginInputPassword, LoginActivity.this);
+        //从EditText中取值
         String account = loginInputUsername.getText().toString().trim();
         String password = loginInputPassword.getText().toString().trim();
 
         if (account == null || account.trim().equals("")) {
             setAnimation(loginUsernameLayout);
+            showSnackBar(getString(R.string.login_not_account_toast));
             return;
         }
         if (password == null || password.trim().equals("")) {
             setAnimation(loginPasswordLayout);
-            ToastUtils.showShort(this, getString(R.string.login_not_password_toast));
+            showSnackBar(getString(R.string.login_not_password_toast));
             return;
         }
         if (!NetWorkUtils.isConnected(this)) {
-            ToastUtils.showShort(this, getString(R.string.login_connect_error_toast));
+            showSnackBar(getString(R.string.login_connect_error_toast));
             return;
         }
         //将账号和密码封装成HashMap
@@ -109,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
     //登录接口采用RxJava异步的方式构成 EMClient实现消息后台分发 Rxjava负责后台消息处理和前台接收
     public void login(HashMap<String, String> map) {
+        showProgrssLayout(true);    //显示progressLayout
         final String account = map.get("Account");
         final String password = map.get("Password");
         //创建被监听者对象
@@ -118,16 +136,14 @@ public class LoginActivity extends AppCompatActivity {
                 EMClient.getInstance().login(account, password, new EMCallBack() {
                     @Override
                     public void onSuccess() {
-                        Integer position = 1;
-                        subscriber.onNext(position);
+                        LogUtils.i("登录成功");
                         subscriber.onCompleted();
                     }
 
                     @Override
                     public void onError(int i, String s) {
-                        Integer position = 2;
-                        subscriber.onNext(position);
-                        subscriber.onError(new Throwable(s));
+                        LogUtils.i("抛异常了");
+                        subscriber.onError(new Throwable("异常信息为登录失败:"+s));
                     }
 
                     @Override
@@ -142,30 +158,28 @@ public class LoginActivity extends AppCompatActivity {
                 .subscribe(new Observer<Integer>() {
                     @Override
                     public void onCompleted() {
+                        showProgrssLayout(false);
                         EMClient.getInstance().groupManager().loadAllGroups();
                         EMClient.getInstance().chatManager().loadAllConversations();
                         LogUtils.d("main", "登录聊天服务器成功！");
                         //将数据存入SharedPreferences中
-                        StorageUtils.put(LoginActivity.this,"SaveAccount",account);
+                        StorageUtils.put(LoginActivity.this, "SaveAccount", account);
 
-                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
+                        showProgrssLayout(false);
                         LogUtils.e("main", "登录聊天服务器失败！" + throwable.toString());
+                        showSnackBar("您可能是密码错误的受害者！Σ(っ°Д°;)っ");
                     }
 
                     @Override
                     public void onNext(Integer integer) {
-                        if (integer == 1) {
-                            //登陆聊天服务器成功
-                            ToastUtils.showShort(getApplicationContext(), "登录聊天服务器成功");
-                        } else {
-                            ToastUtils.showShort(getApplicationContext(), "登录聊天服务器失败");
-                        }
+
                     }
                 });
     }
@@ -198,10 +212,36 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * 开启一个动画
-     * @param v
+     *
+     * @param v 开启动画的View
      */
     private void setAnimation(View v) {
         Animation animation = AnimationUtils.loadAnimation(LoginActivity.this, R.anim.view_shake);
         v.startAnimation(animation);
+    }
+
+    /**
+     * 展示SnackBar
+     * @param message 消息对象
+     */
+    public void showSnackBar(String message) {
+        Snackbar.make(loginSnackbarLayout, message, 1300).show();
+    }
+
+    /**
+     * @param flag 控制ProgressLayout的显示动画
+     */
+    public void showProgrssLayout(boolean flag){
+        if(flag){
+            loginProgressLayout.setVisibility(View.VISIBLE);
+            AlphaAnimation alphaAnimationFrom = new AlphaAnimation(0f,1.0f);
+            alphaAnimationFrom.setDuration(700);
+            loginProgressLayout.setAnimation(alphaAnimationFrom);
+        }else{
+            AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
+            alphaAnimationFrom.setDuration(700);
+            loginProgressLayout.setAnimation(alphaAnimationFrom);
+            loginProgressLayout.setVisibility(View.GONE);
+        }
     }
 }

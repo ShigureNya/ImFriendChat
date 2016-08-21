@@ -1,6 +1,8 @@
 package adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +16,11 @@ import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
 
+import java.io.File;
+
 import cc.jimblog.imfriendchat.R;
+import cc.jimblog.imfriendchat.TouchImageActivity;
+import image.LocalCacheUtil;
 import image.MyBitmapCacheUtil;
 import view.CircleImageView;
 
@@ -128,7 +134,32 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             tokenRightLayout = (RelativeLayout) itemView.findViewById(R.id.chat_right_msg_layout);
             messageRightImage = (ImageView) itemView.findViewById(R.id.chat_right_text_img);
 
+            messageLeftImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getPosition();
+                    goToImageClick(position);
+                }
+            });
+            messageRightImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getPosition();
+                    goToImageClick(position);
+                }
+            });
         }
     }
+    private void goToImageClick(int position){
+        EMMessage message = mConversation.getAllMessages().get(position);
+        if(message.getType() == EMMessage.Type.IMAGE){
+            EMImageMessageBody imageBody = (EMImageMessageBody) message.getBody();
+            String url = imageBody.getThumbnailUrl() ;
 
+            Intent intent = new Intent();
+            intent.setClass(mContext, TouchImageActivity.class);
+            intent.setData(Uri.fromFile(new File(LocalCacheUtil.getBitmapNameURL(url))));
+            mContext.startActivity(intent);
+        }
+    }
 }

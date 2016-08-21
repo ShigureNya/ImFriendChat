@@ -21,6 +21,17 @@ public class LocalCacheUtil {
             File.separator+"JimBlog";
 
     /**
+     * 取出图片在本机的地址
+     * @param url 图片的网络地址
+     * @return
+     */
+    public static String getBitmapNameURL(String url){
+        String filename = null ;
+        filename = MD5Utils.md5(url);
+        File file = new File(CACHE_PATH,filename);
+        return file.getAbsolutePath();
+    }
+    /**
      * 从本地得到图片
      * @param url 图片地址
      * @return 图片

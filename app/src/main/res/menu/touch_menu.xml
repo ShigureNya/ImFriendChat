@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TouchImageActivity">
+    <item android:id="@+id/touch_menu_share"
+        android:title="Share"
+        android:orderInCategory="80"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_share_white_18dp"/>
+    <item android:id="@+id/touch_menu_save"
+        android:title="Save"
+        android:orderInCategory="90"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_save_white_18dp"/>
+</menu>

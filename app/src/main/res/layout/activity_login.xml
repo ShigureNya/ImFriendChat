@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".LoginActivity"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
     android:paddingTop="10dp"
     >
     <RelativeLayout
@@ -14,39 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="235dp"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         >
         <include
             layout="@layout/layout_login_edit"></include>
     </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/login_progress_layout"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/progress_hub_shape"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        >
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
-            android:layout_centerHorizontal="true"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Please wait"
-            android:layout_below="@id/progress_bar"
-            android:layout_marginTop="13dp"
-            android:textColor="@color/main_bg"
-            android:layout_centerHorizontal="true"
-            />
-    </RelativeLayout>
     <LinearLayout
+        android:id="@+id/login_sign_layout"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:gravity="center"
@@ -68,4 +41,38 @@
             android:layout_marginLeft="25dp"
             android:textSize="@dimen/main_text_size"/>
     </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/login_progress_layout"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/progress_hub_shape"
+        android:layout_below="@id/login_sign_layout"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"
+        >
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please wait"
+            android:layout_below="@id/progress_bar"
+            android:layout_marginTop="13dp"
+            android:textColor="@color/main_bg"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/login_snackbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+    </android.support.design.widget.CoordinatorLayout>
 </RelativeLayout>

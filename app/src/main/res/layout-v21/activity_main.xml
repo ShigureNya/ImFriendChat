@@ -50,7 +50,7 @@
     <!-- menu：加载一个菜单文件-->
     <android.support.design.widget.NavigationView
         android:id="@+id/main_navigation_view"
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
         app:headerLayout="@layout/layout_main_header"

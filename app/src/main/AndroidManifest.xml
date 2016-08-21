@@ -78,11 +78,15 @@
         <activity android:name=".ChatActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-
             >
         </activity>
         <!--测试-->
         <activity android:name=".TestActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <!-- 图片查看器 -->
+        <activity android:name=".TouchImageActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>

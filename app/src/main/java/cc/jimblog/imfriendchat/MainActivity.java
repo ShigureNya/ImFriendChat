@@ -1,5 +1,9 @@
 package cc.jimblog.imfriendchat;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle mDrawerToggle;   //监听DrawerLayout滑动和弹出事件
     private MainPageAdapter mAdapter;  //主页适配器
 
+    public static final int NET_STATE_PERMISSION = 1;  //权限管理
     /**
      * 初始化数据的方法
      */
@@ -71,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        //Android 6.0权限适配
+        if(Build.VERSION.SDK_INT >= 23){
+            checkedPermission();
+        }
+
         mainToolBar.setTitle(R.string.main_chat_fragment_title);
         setSupportActionBar(mainToolBar);
         mainToolBar.setOnMenuItemClickListener(new OnToolBarListener());
@@ -159,6 +169,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
             return true;
+        }
+    }
+    @TargetApi(Build.VERSION_CODES.M)
+    private void checkedPermission() {
+        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.INTERNET);
+        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[] {Manifest.permission.INTERNET}, NET_STATE_PERMISSION);
+            return;
         }
     }
 }
