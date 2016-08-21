@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ChatActivity">
+    <item
+        android:id="@+id/chat_menu_person"
+        android:title="Person"
+        android:icon="@mipmap/ic_chat_person_btn"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="80"/>
+</menu>

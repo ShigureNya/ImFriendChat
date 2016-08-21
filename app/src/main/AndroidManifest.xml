@@ -23,7 +23,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_lanuch"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/NoTitleActionStyle"
@@ -78,13 +78,13 @@
         <activity android:name=".ChatActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible|adjustResize"
+
             >
         </activity>
-        <activity android:name=".ChatListActivity"
+        <!--测试-->
+        <activity android:name=".TestActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|adjustResize">
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

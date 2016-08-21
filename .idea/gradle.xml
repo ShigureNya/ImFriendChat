@@ -11,7 +11,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/chatlib" />
-            <option value="$PROJECT_DIR$/wave" />
+            <option value="$PROJECT_DIR$/swipeback" />
           </set>
         </option>
         <option name="myModules">
@@ -19,7 +19,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/chatlib" />
-            <option value="$PROJECT_DIR$/wave" />
+            <option value="$PROJECT_DIR$/swipeback" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -2,31 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
-    <LinearLayout
-        android:id="@+id/editLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:paddingLeft="5dp"
-        android:paddingTop="3dp"
-        android:paddingBottom="1dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"/>
-        <Button
-            android:id="@+id/sendButton"
-            android:layout_width="0dp"
+    android:fitsSystemWindows="true"
+    android:gravity="center">
+    <RadioGroup
+        android:id="@+id/tracking_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/mode_left"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发送文本"
-            android:layout_weight="0.5"/>
-    </LinearLayout>
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/editLayout"/>
+            android:checked="true"
+            android:text="Left"/>
+
+        <RadioButton
+            android:id="@+id/mode_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Right"/>
+
+        <RadioButton
+            android:id="@+id/mode_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Buttom"/>
+
+        <RadioButton
+            android:id="@+id/mode_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="all"/>
+    </RadioGroup>
 </RelativeLayout>

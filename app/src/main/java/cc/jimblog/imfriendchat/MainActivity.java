@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
@@ -18,11 +19,11 @@ import java.util.List;
 import adapter.MainPageAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import fragment.ChatFragment;
 import fragment.ContactsFragment;
 import fragment.FuncationFragment;
 import fragment.SettingFragment;
+import util.ToastUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,22 +39,22 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout mainDrawerLayout;
 
     private List<String> mTitleList = new ArrayList<String>();  //存放标题
-    private ChatFragment chatFragment = null ;  //聊天选项卡
-    private ContactsFragment contactsFragment = null ;  //联系人
-    private FuncationFragment funcationFragment = null ;       //功能页面
-    private SettingFragment settingFragment = null ;    //设置页面
+    private ChatFragment chatFragment = null;  //聊天选项卡
+    private ContactsFragment contactsFragment = null;  //联系人
+    private FuncationFragment funcationFragment = null;       //功能页面
+    private SettingFragment settingFragment = null;    //设置页面
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();   //存放Fragment对象
-    private ActionBarDrawerToggle mDrawerToggle ;   //监听DrawerLayout滑动和弹出事件
-    private MainPageAdapter mAdapter ;  //主页适配器
+    private ActionBarDrawerToggle mDrawerToggle;   //监听DrawerLayout滑动和弹出事件
+    private MainPageAdapter mAdapter;  //主页适配器
 
     /**
      * 初始化数据的方法
      */
     private void initData() {
         chatFragment = new ChatFragment();
-        contactsFragment = new ContactsFragment() ;
+        contactsFragment = new ContactsFragment();
         funcationFragment = new FuncationFragment();
-        settingFragment = new SettingFragment() ;
+        settingFragment = new SettingFragment();
         mFragmentList.add(chatFragment);
         mFragmentList.add(contactsFragment);
         mFragmentList.add(funcationFragment);
@@ -72,22 +73,33 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mainToolBar.setTitle(R.string.main_chat_fragment_title);
         setSupportActionBar(mainToolBar);
+        mainToolBar.setOnMenuItemClickListener(new OnToolBarListener());
         initData();
+        initDrawerLayout();
+        initTabLayout();
+        initFragmentAdapter();
+    }
 
+    public void initDrawerLayout() {
         //initDrawerLayout
-        mDrawerToggle = new ActionBarDrawerToggle(this,mainDrawerLayout,mainToolBar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, mainToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerToggle.syncState();  //init
         mainDrawerLayout.setDrawerListener(mDrawerToggle);
         mainNavigationView.setNavigationItemSelectedListener(new MyNavigationItemListener());
 
+    }
+
+    public void initTabLayout() {
         //initTabLayout
         mainTabLayout.setTabMode(TabLayout.MODE_FIXED);
-        for(int i = 0 ; i < mTitleList.size(); i ++){
+        for (int i = 0; i < mTitleList.size(); i++) {
             mainTabLayout.addTab(mainTabLayout.newTab().setText(mTitleList.get(i)));
         }
+    }
 
+    public void initFragmentAdapter() {
         //initFragmentAdapter
-        mAdapter = new MainPageAdapter(getSupportFragmentManager(),mFragmentList,mTitleList);
+        mAdapter = new MainPageAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
         mainViewpager.setCurrentItem(0);    //设置默认加载为聊天窗口
         mainTabLayout.setupWithViewPager(mainViewpager);
         mainTabLayout.setTabsFromPagerAdapter(mAdapter);
@@ -95,24 +107,20 @@ public class MainActivity extends AppCompatActivity {
         mainTabLayout.setOnTabSelectedListener(tabSelectedListener);
 
     }
-
-    @OnClick(R.id.main_navigation_view)
-    public void onClick() {
-
-    }
-    class MyNavigationItemListener implements NavigationView.OnNavigationItemSelectedListener{
+    class MyNavigationItemListener implements NavigationView.OnNavigationItemSelectedListener {
 
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
 
             }
             item.setCheckable(true);    //设为选中
             mainDrawerLayout.closeDrawer(GravityCompat.START);  //关闭抽屉
-            return true ;
+            return true;
         }
     }
-    TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener(){
+
+    TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
             int position = tab.getPosition();
@@ -130,4 +138,27 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    class OnToolBarListener implements Toolbar.OnMenuItemClickListener {
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.main_menu_add:
+                    ToastUtils.showShort(MainActivity.this, "点击了更多功能按钮");
+                    break;
+                case R.id.main_menu_search:
+                    ToastUtils.showShort(MainActivity.this, "点击了搜索按钮");
+                    break;
+
+            }
+            return true;
+        }
+    }
 }

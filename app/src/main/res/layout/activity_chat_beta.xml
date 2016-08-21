@@ -25,28 +25,34 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/chat_edit_layout_shape"
             android:gravity="center_vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             >
             <ImageButton
                 android:id="@+id/chat_edit_voice_btn"
                 android:layout_width="15dp"
                 android:layout_height="25dp"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="12dp"
+                android:src="@mipmap/ic_chat_voice"
+                android:background="#0000"
                 />
             <ImageButton
                 android:id="@+id/chat_edit_function_btn"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="16dp"
                 android:layout_toRightOf="@id/chat_edit_voice_btn"
+                android:src="@mipmap/ic_chat_add_btn"
+                android:background="#0000"
                 />
-            <Button
+            <ImageButton
                 android:id="@+id/chat_edit_send_btn"
                 android:layout_width="46dp"
                 android:layout_height="30dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/chat_edit_btn_shape"
-                android:elevation="2dp"/>
+                android:src="@mipmap/ic_chat_send_btn"/>
             <EditText
                 android:id="@+id/chat_edit_editText"
                 android:layout_width="wrap_content"
@@ -56,6 +62,8 @@
                 android:background="@drawable/chat_edit_shape"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
+                android:padding="3dp"
+                android:textSize="15sp"
                 />
         </RelativeLayout>
         <android.support.v7.widget.RecyclerView

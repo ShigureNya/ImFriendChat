@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:id="@+id/item_contacts_new_friend_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <view.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            app:border_color="#0000"
+            android:src="@mipmap/ic_contacts_new_btn"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/main_text_size"
+            android:text="Recommended  Friends"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="70dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_contacts_group_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <view.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            app:border_color="#0000"
+            android:src="@mipmap/ic_contacts_group_btn"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/main_text_size"
+            android:text="Groups"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="70dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/item_contacts_fwh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+        <view.CircleImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            app:border_color="#0000"
+            android:src="@mipmap/ic_contacts_fwh_btn"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/main_text_size"
+            android:text="Service  Accounts"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="70dp"/>
+    </RelativeLayout>
+</LinearLayout>

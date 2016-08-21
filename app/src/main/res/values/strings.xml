@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ImFriendChat</string>
+    <string name="app_name">友信</string>
 
     <!--登陆页-->
     <string name="login_edit_account_hint">TelPhone</string>
@@ -25,10 +25,10 @@
     <string name="register_two_input_pwd_error_toast">Passwords are not consistent!</string>
     <string name="register_verificationCode_error_toast">VerificationCode is Error!</string>
     <!--Fragment主页切换窗口-->
-    <string name="main_chat_fragment_title">Chat</string>
-    <string name="main_contacts_fragment_title">Contacts</string>
-    <string name="main_function_fragment_title">Functions</string>
-    <string name="main_setting_fragment_title">Settings</string>
+    <string name="main_chat_fragment_title">聊天</string>
+    <string name="main_contacts_fragment_title">联系人</string>
+    <string name="main_function_fragment_title">功能</string>
+    <string name="main_setting_fragment_title">设置</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!--ChatActivity聊天页面-->

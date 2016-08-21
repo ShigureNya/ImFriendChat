@@ -1,7 +1,6 @@
 package adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,12 +16,6 @@ import com.hyphenate.chat.EMTextMessageBody;
 
 import cc.jimblog.imfriendchat.R;
 import image.MyBitmapCacheUtil;
-import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-import util.LogUtils;
 import view.CircleImageView;
 
 /**
@@ -106,7 +99,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mConversation.getAllMessages().size();
+        if(mConversation != null){
+            return mConversation.getAllMessages().size();
+        }
+        return 0 ;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{

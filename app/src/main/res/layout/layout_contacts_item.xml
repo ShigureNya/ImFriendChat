@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/item_contacts_layout"
     android:layout_width="match_parent"
     android:layout_height="55dp"
     tools:context=".MainActivity"
     android:fitsSystemWindows="true">
-
-</LinearLayout>
+    <view.CircleImageView
+        android:id="@+id/item_contacts_img"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        app:border_color="#0000"
+        android:src="@drawable/head_img"/>
+    <TextView
+        android:id="@+id/item_contacts_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/main_text_size"
+        android:text="TextName"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="70dp"/>
+</RelativeLayout>
