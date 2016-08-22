@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-hdpi-v4\\values-hdpi-v4.xml",
+        "outputFile": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-hdpi-v4\\values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 325
                 },
                 "from": {
-                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-hdpi\\values-hdpi.xml",
+                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-hdpi\\values-hdpi.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -26,7 +26,7 @@
         ]
     },
     {
-        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/swipeback/build/intermediates/res/merged/release/values-hdpi-v4/values-hdpi-v4.xml",
+        "outputFile": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-hdpi-v4\\values-hdpi-v4.xml",
         "map": [
             {
                 "to": {
@@ -38,7 +38,33 @@
                     "endOffset": 325
                 },
                 "from": {
-                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-hdpi/values-hdpi.xml",
+                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-hdpi\\values-hdpi.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 297,
+                        "endLine": 8,
+                        "endColumn": 13,
+                        "endOffset": 567
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\res\\merged\\release\\values-hdpi-v4\\values-hdpi-v4.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 6,
+                    "endColumn": 13,
+                    "endOffset": 325
+                },
+                "from": {
+                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-hdpi\\values-hdpi.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
