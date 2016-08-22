@@ -1,10 +1,18 @@
 [
     {
-        "merged": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
-        "source": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
+        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\color-v11\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\color-v11\\abc_background_cache_hint_selector_material_dark.xml"
     },
     {
-        "merged": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
-        "source": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/swipeback/build/intermediates/res/merged/release/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\color-v11\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\color-v11\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/swipeback/build/intermediates/res/merged/release/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChatPro/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     }
 ]
