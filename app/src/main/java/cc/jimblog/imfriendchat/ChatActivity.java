@@ -172,10 +172,7 @@ public class ChatActivity extends SwipeBackActivity {
                 //发送消息
                 EMClient.getInstance().chatManager().sendMessage(message);
 
-                if (conversation == null) {
-                    conversation = EMClient.getInstance().chatManager().getConversation(userName);
-                    adapter = new ChatAdapter(ChatActivity.this,conversation);
-                }
+                conversation = EMClient.getInstance().chatManager().getConversation(userName);
                 //将消息对象放入conversation中
                 conversation.appendMessage(message);
 
