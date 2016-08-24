@@ -10,7 +10,6 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://E:/AndroidSdk/extras/android/m2repository/com/android/support/appcompat-v7/22.2.0/appcompat-v7-22.2.0-sources.jar!/" />
-      <root url="jar://$USER_HOME$/Library/android-sdk-macosx/extras/android/m2repository/com/android/support/appcompat-v7/22.2.0/appcompat-v7-22.2.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

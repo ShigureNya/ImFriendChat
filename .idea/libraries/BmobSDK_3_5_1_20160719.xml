@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="BmobSDK_3.5.1_20160719">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/src/main/jniLibs/BmobSDK_3.5.1_20160719.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
