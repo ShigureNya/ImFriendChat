@@ -29,6 +29,7 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import adapter.ChatAdapter;
@@ -78,6 +79,7 @@ public class ChatActivity extends SwipeBackActivity {
 
     private ChatAdapter adapter;   //适配器
 
+    private List<EMMessage> mList ;     //数据集合
     private SwipeBackLayout mBackLayout;   //侧滑关闭Activity所用
 
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1 ;
@@ -171,15 +173,10 @@ public class ChatActivity extends SwipeBackActivity {
                 final EMMessage message = EMMessage.createTxtSendMessage(content, userName);
                 //发送消息
                 EMClient.getInstance().chatManager().sendMessage(message);
-
-                conversation = EMClient.getInstance().chatManager().getConversation(userName);
-                //将消息对象放入conversation中
-                conversation.appendMessage(message);
-
+                mList.add(message);
                 adapter.notifyDataSetChanged();
-                chatList.scrollToPosition(adapter.getItemCount() - 1);
-
                 chatEditEditText.setText("");
+                chatList.scrollToPosition(adapter.getItemCount() - 1);
                 break;
         }
     }
@@ -226,14 +223,16 @@ public class ChatActivity extends SwipeBackActivity {
      * 初始化adapter
      */
     private void initAdapter() {
-        //从chatManager中取出conversation对象，需要传递当前聊天用户的名字
+        //从chatManager中取出conversation对象，需要传递当前聊天用户的名字 获得聊天记录~
         conversation = EMClient.getInstance().chatManager().getConversation(userName);
-        //设置adapter
-        if (conversation != null) {
-            adapter = new ChatAdapter(this, conversation);
-        } else {
-            adapter = new ChatAdapter(this, null);
+        //重写消息读取策略
+        if(conversation == null){
+            mList = new ArrayList<EMMessage>();
+        }else{
+            mList = conversation.getAllMessages();
         }
+        //设置adapter
+        adapter = new ChatAdapter(this, mList);
         //通过New一个LinearLayoutManager的布局管理器对象来设置RecycleView的布局管理器
         chatList.setLayoutManager(new LinearLayoutManager(this));
         //设置Item的过渡动画，使用默认的即可
@@ -291,10 +290,7 @@ public class ChatActivity extends SwipeBackActivity {
                 if (!userFrom.equals(userName)) {
                     return;
                 }
-                if (conversation == null) {
-                    conversation = EMClient.getInstance().chatManager().getConversation(userName);
-                }
-                conversation.appendMessage(emsg);
+                mList.add(emsg);
             }
             adapter.notifyDataSetChanged();
             chatList.scrollToPosition(adapter.getItemCount() - 1);

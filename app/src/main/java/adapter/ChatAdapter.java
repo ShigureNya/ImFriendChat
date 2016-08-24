@@ -11,12 +11,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
 
 import java.io.File;
+import java.util.List;
 
 import cc.jimblog.imfriendchat.R;
 import cc.jimblog.imfriendchat.TouchImageActivity;
@@ -30,13 +30,13 @@ import view.CircleImageView;
  */
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public Context mContext ;
-    public EMConversation mConversation ;
+    public List<EMMessage> mList ;
     public LayoutInflater mInflater ;
     public MyBitmapCacheUtil bitmapCacheUtil ;
 
-    public ChatAdapter(Context context , EMConversation mConversation){
+    public ChatAdapter(Context context , List<EMMessage> list){
         mContext = context ;
-        this.mConversation = mConversation ;
+        this.mList  = list ;
 
         if(mContext != null){
             mInflater = LayoutInflater.from(mContext);
@@ -52,7 +52,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        EMMessage message = mConversation.getAllMessages().get(position);
+        EMMessage message = mList.get(position);
         //如果是接收到的消息
         if(message.direct() == EMMessage.Direct.RECEIVE){
             holder.tokenRightLayout.setVisibility(View.GONE);   //首先关闭右侧的视图
@@ -105,8 +105,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        if(mConversation != null){
-            return mConversation.getAllMessages().size();
+        if(mList != null){
+            return mList.size();
         }
         return 0 ;
     }
@@ -151,7 +151,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         }
     }
     private void goToImageClick(int position){
-        EMMessage message = mConversation.getAllMessages().get(position);
+        EMMessage message = mList.get(position);
         if(message.getType() == EMMessage.Type.IMAGE){
             EMImageMessageBody imageBody = (EMImageMessageBody) message.getBody();
             String url = imageBody.getThumbnailUrl() ;

@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="G:\jimblogProject\ImFriendChat\app\src\main\jniLibs\rxjava-1.1.6.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="2586312cd2b8a511e4c6236736f5a039fc0f2273">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\2\rxjava-1.1.6_df98abf7fdbe3a5f57f6290143c37d9df540ee1d\classes.dex" />
+    </item>
+    <item
         jar="C:\Users\Ran\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\24.1.1\3af19f153122737b372622fa6c81dd11a1c6b999\support-annotations-24.1.1.jar"
         jumboMode="true"
         revision="24.0.1"
@@ -16,11 +23,25 @@
         <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.1.1_e06404fcd13fb9f8f0a8e3b0e6ada7108d21b7cb\classes.dex" />
     </item>
     <item
+        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="787871951412550519b0222aba3c9df4cea49875">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.1.1_5827ed52fd53e5b8b8cfe7fabc57d0273febe36c\classes.dex" />
+    </item>
+    <item
         jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.1.1\jars\classes.jar"
         jumboMode="true"
         revision="24.0.1"
         sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
         <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.1.1_ca4b38532f6f23c746a5b907a01534c41c75e830\classes.dex" />
+    </item>
+    <item
+        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="ca5e58104f56f918f0fb3a5b1b371ab599ae56b2">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.jakewharton-butterknife-8.2.1_7a046dff2652f49706edcec59f17628790ecfc4f\classes.dex" />
     </item>
     <item
         jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.1.1\jars\classes.jar"
@@ -30,6 +51,13 @@
         <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.1.1_1e7ff3b30a1883053bccb094745c7f0fb0e02b55\classes.dex" />
     </item>
     <item
+        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="674c479c8a19d56353c74108d51a44cdc2dc1824">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_976f440064b0f12ffc68b4c946922de3a17258be\classes.dex" />
+    </item>
+    <item
         jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.1.1\jars\classes.jar"
         jumboMode="true"
         revision="24.0.1"
@@ -37,11 +65,39 @@
         <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.1.1_6bd0cc09b92f661f49d1cc32a53900c9b5cb71f5\classes.dex" />
     </item>
     <item
+        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\design\24.1.1\jars\classes.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="e195bd694d5389acfba27ff4fdfa64c4c65b2c05">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.1.1_8de79250a9796906bad9077344a73c790d5afa34\classes.dex" />
+    </item>
+    <item
+        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="15933bd50635cbf3e85803c66a98128f21b48de1">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_70a87240131d7a79819d70c6caf82ffb04febee3\classes.dex" />
+    </item>
+    <item
+        jar="G:\jimblogProject\ImFriendChat\app\src\main\jniLibs\hyphenatechat_3.1.4.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="0f22ba6fd450d473e8b0c1654d05624b67e19451">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\2\hyphenatechat_3.1.4_086a6b1edd0ce6844cab7c81b8323f0a9ab216f5\classes.dex" />
+    </item>
+    <item
         jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.1.1\jars\classes.jar"
         jumboMode="true"
         revision="24.0.1"
         sha1="1256c10604bb098490eab070d76754ac5ceab35c">
         <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.1.1_aa8a904d4c6d42d8ad95d3249f373913c33e5cef\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\Ran\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.2.1\d6f54d76edfbe779a50a8636b10fd3f555d8f780\butterknife-annotations-8.2.1.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="d6f54d76edfbe779a50a8636b10fd3f555d8f780">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-annotations-8.2.1_1655e5b5374bdab07d40db6d92244ed1ef10f480\classes.dex" />
     </item>
     <item
         jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.1.1\jars\classes.jar"
@@ -58,6 +114,13 @@
         <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\8\rsa_d40cebf86e6b66bec306a6abf5d86b6f257c900e\classes.dex" />
     </item>
     <item
+        jar="G:\jimblogProject\ImFriendChat\app\src\main\jniLibs\rxandroid-1.2.0.jar"
+        jumboMode="true"
+        revision="24.0.1"
+        sha1="927e8ef5711b115b65b2f35495d77352be2b3c09">
+        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\2\rxandroid-1.2.0_d15f297103117ed71b07d68607be179c04ad8b9e\classes.dex" />
+    </item>
+    <item
         jar="C:\Users\Ran\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
         jumboMode="true"
         revision="24.0.1"
@@ -70,69 +133,6 @@
         revision="24.0.1"
         sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
         <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-multidex-1.0.1_bdc039ce5e86e025dee855dc6aa2ee1dfd6d3b37\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\src\main\jniLibs\rxjava-1.1.6.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="2586312cd2b8a511e4c6236736f5a039fc0f2273">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\2\rxjava-1.1.6_df98abf7fdbe3a5f57f6290143c37d9df540ee1d\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="787871951412550519b0222aba3c9df4cea49875">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.1.1_5827ed52fd53e5b8b8cfe7fabc57d0273febe36c\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.jakewharton\butterknife\8.2.1\jars\classes.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="ca5e58104f56f918f0fb3a5b1b371ab599ae56b2">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.jakewharton-butterknife-8.2.1_7a046dff2652f49706edcec59f17628790ecfc4f\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="dd04c9fe2bcecd8adeceb38f632ef0fd9c4f418a">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_976f440064b0f12ffc68b4c946922de3a17258be\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\exploded-aar\com.android.support\design\24.1.1\jars\classes.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="e195bd694d5389acfba27ff4fdfa64c4c65b2c05">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.1.1_8de79250a9796906bad9077344a73c790d5afa34\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="c5a2c968930fc0bfa0f7f267effea70dfb3ceb43">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_70a87240131d7a79819d70c6caf82ffb04febee3\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\src\main\jniLibs\hyphenatechat_3.1.4.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="0f22ba6fd450d473e8b0c1654d05624b67e19451">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\2\hyphenatechat_3.1.4_086a6b1edd0ce6844cab7c81b8323f0a9ab216f5\classes.dex" />
-    </item>
-    <item
-        jar="C:\Users\Ran\.gradle\caches\modules-2\files-2.1\com.jakewharton\butterknife-annotations\8.2.1\d6f54d76edfbe779a50a8636b10fd3f555d8f780\butterknife-annotations-8.2.1.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="d6f54d76edfbe779a50a8636b10fd3f555d8f780">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\10\butterknife-annotations-8.2.1_1655e5b5374bdab07d40db6d92244ed1ef10f480\classes.dex" />
-    </item>
-    <item
-        jar="G:\jimblogProject\ImFriendChat\app\src\main\jniLibs\rxandroid-1.2.0.jar"
-        jumboMode="true"
-        revision="24.0.1"
-        sha1="927e8ef5711b115b65b2f35495d77352be2b3c09">
-        <dex dex="G:\jimblogProject\ImFriendChat\app\build\intermediates\transforms\dex\debug\folders\1000\2\rxandroid-1.2.0_d15f297103117ed71b07d68607be179c04ad8b9e\classes.dex" />
     </item>
 
 </items>
