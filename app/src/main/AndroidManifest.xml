@@ -90,6 +90,11 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
+        <!--添加新好友-->
+        <activity android:name=".NewFriendActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

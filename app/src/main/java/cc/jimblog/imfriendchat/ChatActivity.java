@@ -187,7 +187,7 @@ public class ChatActivity extends SwipeBackActivity {
     private void initToolBar() {
         userName = getIntent().getStringExtra("Username");
         toolBar.setTitle(userName);
-        toolBar.setNavigationIcon(R.mipmap.ic_keyboard_arrow_left_white_36dp);
+        toolBar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         setSupportActionBar(toolBar);
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

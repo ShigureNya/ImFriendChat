@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
@@ -24,13 +25,14 @@ import adapter.ContactsRecyclerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cc.jimblog.imfriendchat.ChatActivity;
+import cc.jimblog.imfriendchat.NewFriendActivity;
 import cc.jimblog.imfriendchat.R;
 import view.DividerItemDecoration;
 
 /**
  * Created by Ran on 2016/8/10.
  */
-public class ContactsFragment extends Fragment {
+public class ContactsFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.contacts_list)
     RecyclerView contactList;
     @BindView(R.id.contacts_refresh)
@@ -92,6 +94,7 @@ public class ContactsFragment extends Fragment {
         InitContactsThread thread = new InitContactsThread();
         thread.start();
     }
+
     class InitContactsThread extends Thread{
         @Override
         public void run() {
@@ -137,8 +140,32 @@ public class ContactsFragment extends Fragment {
         super.onResume();
     }
 
+    private RelativeLayout addNewFriendlayout ;
+    private RelativeLayout myGroupLayout ;
+    private RelativeLayout myFwhLayout ;
     private void setHeaderView(RecyclerView view) {
         View header = LayoutInflater.from(getContext()).inflate(R.layout.layout_contacts_add, view, false);
         adapter.setHeaderView(header);
+        addNewFriendlayout = (RelativeLayout) header.findViewById(R.id.item_contacts_new_friend_layout);
+        myGroupLayout = (RelativeLayout) header.findViewById(R.id.item_contacts_group_layout);
+        myFwhLayout = (RelativeLayout) header.findViewById(R.id.item_contacts_fwh_layout);
+        addNewFriendlayout.setOnClickListener(this);
+        myGroupLayout.setOnClickListener(this);
+        myFwhLayout.setOnClickListener(this);
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.item_contacts_new_friend_layout:
+                startActivity(new Intent(getActivity(), NewFriendActivity.class));
+                break;
+            case R.id.item_contacts_group_layout:
+
+                break;
+            case R.id.item_contacts_fwh_layout:
+
+                break;
+        }
+
     }
 }

@@ -4,12 +4,13 @@
       <root url="jar://$PROJECT_DIR$/swipeback/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/swipeback/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/swipeback/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/swipeback/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/res" />
+      <root url="jar://$PROJECT_DIR$/swipeback/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
+      <root url="jar://$USER_HOME$/Library/android-sdk-macosx/extras/android/m2repository/com/android/support/support-v4/22.2.0/support-v4-22.2.0-sources.jar!/" />
       <root url="jar://E:/AndroidSdk/extras/android/m2repository/com/android/support/support-v4/22.2.0/support-v4-22.2.0-sources.jar!/" />
     </SOURCES>
   </library>

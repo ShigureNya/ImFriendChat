@@ -41,6 +41,12 @@
     <string name="contact_add_friend_text">添加新的朋友</string>
     <string name="contact_ground_text">我的群组</string>
     <string name="contact_fwh_text">公众号</string>
+    <!--搜索好友-->
+    <string name="newfriend_edit_hint">搜索</string>
+    <string name="newfriend_qr_btn_text">扫一扫二维码</string>
+    <string name="newfriend_contacts_btn_text">添加手机联系人</string>
+    <string name="newfriend_not_edit_hint">请输入手机号码再查找</string>
+    <string name="newfriend_not_found_info_hint">没有找到相关用户</string>
     <string-array name="country_name_list">
         <item>+86</item>
 

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\res\\merged\\release\\values-v17\\values-v17.xml",
+        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/release/values-v17/values-v17.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 223
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -33,7 +33,7 @@
                     "endOffset": 451
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -54,7 +54,7 @@
                     "endOffset": 788
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -75,7 +75,7 @@
                     "endOffset": 946
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -96,7 +96,7 @@
                     "endOffset": 1096
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -117,7 +117,7 @@
                     "endOffset": 1268
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -138,7 +138,7 @@
                     "endOffset": 1496
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -159,7 +159,7 @@
                     "endOffset": 1738
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -180,7 +180,7 @@
                     "endOffset": 1909
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
@@ -201,7 +201,7 @@
                     "endOffset": 2083
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 35,
                         "startColumn": 4,
@@ -222,7 +222,7 @@
                     "endOffset": 2252
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
@@ -243,7 +243,7 @@
                     "endOffset": 2525
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 41,
                         "startColumn": 4,
@@ -264,7 +264,7 @@
                     "endOffset": 2725
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 45,
                         "startColumn": 4,
@@ -285,7 +285,7 @@
                     "endOffset": 2973
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-v17/values-v17.xml",
                     "position": {
                         "startLine": 48,
                         "startColumn": 4,
@@ -299,7 +299,7 @@
         ]
     },
     {
-        "outputFile": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-v17\\values-v17.xml",
+        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\res\\merged\\release\\values-v17\\values-v17.xml",
         "map": [
             {
                 "to": {
@@ -311,7 +311,7 @@
                     "endOffset": 223
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -332,7 +332,7 @@
                     "endOffset": 451
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -353,7 +353,7 @@
                     "endOffset": 788
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -374,7 +374,7 @@
                     "endOffset": 946
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -395,7 +395,7 @@
                     "endOffset": 1096
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -416,7 +416,7 @@
                     "endOffset": 1268
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -437,7 +437,7 @@
                     "endOffset": 1496
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -458,7 +458,7 @@
                     "endOffset": 1738
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -479,7 +479,7 @@
                     "endOffset": 1909
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
@@ -500,7 +500,7 @@
                     "endOffset": 2083
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 35,
                         "startColumn": 4,
@@ -521,7 +521,7 @@
                     "endOffset": 2252
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
@@ -542,7 +542,7 @@
                     "endOffset": 2525
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 41,
                         "startColumn": 4,
@@ -563,7 +563,7 @@
                     "endOffset": 2725
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 45,
                         "startColumn": 4,
@@ -584,7 +584,7 @@
                     "endOffset": 2973
                 },
                 "from": {
-                    "file": "G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 48,
                         "startColumn": 4,
@@ -598,7 +598,7 @@
         ]
     },
     {
-        "outputFile": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-v17\\values-v17.xml",
+        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-v17\\values-v17.xml",
         "map": [
             {
                 "to": {
@@ -610,7 +610,7 @@
                     "endOffset": 223
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -631,7 +631,7 @@
                     "endOffset": 451
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -652,7 +652,7 @@
                     "endOffset": 788
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -673,7 +673,7 @@
                     "endOffset": 946
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
@@ -694,7 +694,7 @@
                     "endOffset": 1096
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 4,
@@ -715,7 +715,7 @@
                     "endOffset": 1268
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
@@ -736,7 +736,7 @@
                     "endOffset": 1496
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 24,
                         "startColumn": 4,
@@ -757,7 +757,7 @@
                     "endOffset": 1738
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 28,
                         "startColumn": 4,
@@ -778,7 +778,7 @@
                     "endOffset": 1909
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 32,
                         "startColumn": 4,
@@ -799,7 +799,7 @@
                     "endOffset": 2083
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 35,
                         "startColumn": 4,
@@ -820,7 +820,7 @@
                     "endOffset": 2252
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 38,
                         "startColumn": 4,
@@ -841,7 +841,7 @@
                     "endOffset": 2525
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 41,
                         "startColumn": 4,
@@ -862,7 +862,7 @@
                     "endOffset": 2725
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 45,
                         "startColumn": 4,
@@ -883,7 +883,306 @@
                     "endOffset": 2973
                 },
                 "from": {
-                    "file": "G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChatPro\\G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 2970,
+                        "endLine": 50,
+                        "endColumn": 12,
+                        "endOffset": 3213
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-v17\\values-v17.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 4,
+                    "endColumn": 12,
+                    "endOffset": 223
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 295,
+                        "endLine": 6,
+                        "endColumn": 12,
+                        "endOffset": 463
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 228,
+                    "endLine": 8,
+                    "endColumn": 12,
+                    "endOffset": 451
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 468,
+                        "endLine": 10,
+                        "endColumn": 12,
+                        "endOffset": 691
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 456,
+                    "endLine": 12,
+                    "endColumn": 12,
+                    "endOffset": 788
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 696,
+                        "endLine": 14,
+                        "endColumn": 12,
+                        "endOffset": 1028
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 793,
+                    "endLine": 15,
+                    "endColumn": 12,
+                    "endOffset": 946
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1033,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 1186
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 951,
+                    "endLine": 18,
+                    "endColumn": 12,
+                    "endOffset": 1096
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 1191,
+                        "endLine": 20,
+                        "endColumn": 12,
+                        "endOffset": 1336
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 1101,
+                    "endLine": 21,
+                    "endColumn": 12,
+                    "endOffset": 1268
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1341,
+                        "endLine": 23,
+                        "endColumn": 12,
+                        "endOffset": 1508
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1273,
+                    "endLine": 25,
+                    "endColumn": 12,
+                    "endOffset": 1496
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1513,
+                        "endLine": 27,
+                        "endColumn": 12,
+                        "endOffset": 1736
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1501,
+                    "endLine": 29,
+                    "endColumn": 12,
+                    "endOffset": 1738
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1741,
+                        "endLine": 31,
+                        "endColumn": 12,
+                        "endOffset": 1978
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 30,
+                    "startColumn": 4,
+                    "startOffset": 1743,
+                    "endLine": 32,
+                    "endColumn": 12,
+                    "endOffset": 1909
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 1983,
+                        "endLine": 34,
+                        "endColumn": 12,
+                        "endOffset": 2149
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 1914,
+                    "endLine": 35,
+                    "endColumn": 12,
+                    "endOffset": 2083
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 2154,
+                        "endLine": 37,
+                        "endColumn": 12,
+                        "endOffset": 2323
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 2088,
+                    "endLine": 38,
+                    "endColumn": 12,
+                    "endOffset": 2252
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2328,
+                        "endLine": 40,
+                        "endColumn": 12,
+                        "endOffset": 2492
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 2257,
+                    "endLine": 42,
+                    "endColumn": 12,
+                    "endOffset": 2525
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 2497,
+                        "endLine": 44,
+                        "endColumn": 12,
+                        "endOffset": 2765
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 43,
+                    "startColumn": 4,
+                    "startOffset": 2530,
+                    "endLine": 45,
+                    "endColumn": 12,
+                    "endOffset": 2725
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 2770,
+                        "endLine": 47,
+                        "endColumn": 12,
+                        "endOffset": 2965
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 2730,
+                    "endLine": 48,
+                    "endColumn": 12,
+                    "endOffset": 2973
+                },
+                "from": {
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/G:\\jimblogProject\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-v17\\values-v17.xml",
                     "position": {
                         "startLine": 48,
                         "startColumn": 4,

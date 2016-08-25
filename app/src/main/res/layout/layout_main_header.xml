@@ -12,7 +12,7 @@
         app:border_width="0dp"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="18dp"
-        android:src="@drawable/head_img"
+
         />
     <TextView
         android:id="@+id/main_header_username"

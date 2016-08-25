@@ -17,7 +17,6 @@ import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -32,6 +31,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cc.jimblog.imfriendchat.R;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
+import entity.UserInfoEntity;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -168,6 +170,19 @@ public class InputPasswordFragment extends Fragment {
             @Override
             public void onCompleted() {
                 ToastUtils.showShort(mView.getContext(), "Sign Ok");
+                //插入数据的方法
+                UserInfoEntity entity = new UserInfoEntity();
+                entity.setUserId(account);
+                entity.setUserName(account);
+                entity.save(new SaveListener<String>() {
+                    @Override
+                    public void done(String s, BmobException e) {
+                        AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
+                        alphaAnimationFrom.setDuration(700);
+                        signProgressLayout.setAnimation(alphaAnimationFrom);
+                        signProgressLayout.setVisibility(View.GONE);
+                    }
+                });
                 Timer timer = new Timer();
                 timer.schedule(new TimerTask() {
                     @Override
@@ -175,10 +190,6 @@ public class InputPasswordFragment extends Fragment {
                         mListener.closeMessage(2);
                     }
                 },500,500);
-                AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
-                alphaAnimationFrom.setDuration(700);
-                signProgressLayout.setAnimation(alphaAnimationFrom);
-                signProgressLayout.setVisibility(View.GONE);
             }
 
             @Override

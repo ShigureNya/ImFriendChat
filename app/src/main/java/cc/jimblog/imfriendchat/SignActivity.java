@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -43,7 +42,7 @@ public class SignActivity extends AppCompatActivity implements InputPhoneFragmen
         ButterKnife.bind(this);
         toolBar.setTitle(getString(R.string.register_button_text));
         toolBar.setTitleTextColor(Color.WHITE);
-        toolBar.setNavigationIcon(R.mipmap.ic_keyboard_arrow_left_white_36dp);
+        toolBar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         setSupportActionBar(toolBar);
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
