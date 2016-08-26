@@ -2,6 +2,7 @@ package cc.jimblog.imfriendchat;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,13 +24,14 @@ import java.util.List;
 import adapter.MainPageAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import entity.ContextSave;
 import fragment.ChatFragment;
 import fragment.ContactsFragment;
 import fragment.FuncationFragment;
 import fragment.SettingFragment;
 import util.ToastUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SettingFragment.OnLogOutClickListener{
 
     @BindView(R.id.main_tool_bar)
     Toolbar mainToolBar;
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
      * 初始化数据的方法
      */
     private void initData() {
+        ContextSave.MainActivity = MainActivity.this ;
+
         chatFragment = new ChatFragment();
         contactsFragment = new ContactsFragment();
         funcationFragment = new FuncationFragment();
@@ -117,6 +121,14 @@ public class MainActivity extends AppCompatActivity {
         mainTabLayout.setOnTabSelectedListener(tabSelectedListener);
 
     }
+
+    @Override
+    public void onClick() {
+        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     class MyNavigationItemListener implements NavigationView.OnNavigationItemSelectedListener {
 
         @Override

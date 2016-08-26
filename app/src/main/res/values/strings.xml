@@ -47,6 +47,11 @@
     <string name="newfriend_contacts_btn_text">添加手机联系人</string>
     <string name="newfriend_not_edit_hint">请输入手机号码再查找</string>
     <string name="newfriend_not_found_info_hint">没有找到相关用户</string>
+    <string name="newfriend_add_friend_text">添 加</string>
+    <!--设置Fragment-->
+    <string name="setting_loginout_text">退出登录</string>
+    <string name="setting_loginouting_hint">帐号正在退出中...</string>
+    <string name="setting_loginout_error_hint">帐号退出失败</string>
     <string-array name="country_name_list">
         <item>+86</item>
 

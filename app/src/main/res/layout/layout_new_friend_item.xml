@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#fff">
+    <view.CircleImageView
+        android:id="@+id/newfriend_item_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="16dp"
+        android:src="@mipmap/ic_launcher"
+        app:border_color="#0000"
+        android:layout_centerVertical="true"/>
+    <TextView
+        android:id="@+id/newfriend_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/newfriend_contacts_btn_text"
+        android:textSize="@dimen/main_text_size"
+        android:textColor="#000"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/newfriend_item_img"
+        android:layout_centerVertical="true"/>
+    <Button
+        android:id="@+id/newfriend_add_btn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="@string/newfriend_add_friend_text"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="5dp"/>
+</RelativeLayout>

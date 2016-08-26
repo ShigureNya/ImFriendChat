@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,11 +18,14 @@ import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 
 import org.json.JSONArray;
 
 import java.util.List;
 
+import adapter.NewFriendAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,11 +52,10 @@ public class NewFriendActivity extends AppCompatActivity {
     CoordinatorLayout searchSnackbarLayout;
     @BindView(R.id.newfriend_list)
     RecyclerView newfriendList;
-    @BindView(R.id.newfriend_refresh)
-    SwipeRefreshLayout newfriendRefresh;
-
     private Gson gson;
+    private NewFriendAdapter adapter ;
 
+    private List<UserInfoEntity> mList  ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +81,6 @@ public class NewFriendActivity extends AppCompatActivity {
         });
 
         JianPanUtils.openKeybord(newfriendEdit, this);
-
     }
 
     @OnClick({R.id.newfriend_qr_layout, R.id.newfriend_add_contacts_layout})
@@ -114,17 +116,47 @@ public class NewFriendActivity extends AppCompatActivity {
     }
 
     private void displayUserInfoList(String json) {
-        List<UserInfoEntity> mList = jsonToList(json);
-
+        if(!json.contains("createdAt")){
+           showSnackBar(getString(R.string.newfriend_not_found_info_hint));
+            return ;
+        }
+        mList = jsonToList(json);
+        //设置adapter
+        adapter = new NewFriendAdapter(NewFriendActivity.this, mList);
+        //通过New一个LinearLayoutManager的布局管理器对象来设置RecycleView的布局管理器
+        newfriendList.setLayoutManager(new LinearLayoutManager(NewFriendActivity.this));
+        //设置Item的过渡动画，使用默认的即可
+        newfriendList.setItemAnimator(new DefaultItemAnimator());
+        //设置item为固定大小
+        newfriendList.setHasFixedSize(true);
+        //设置分割线
+        //newfriendList.addItemDecoration(new DividerItemDecoration(NewFriendActivity.this, DividerItemDecoration.VERTICAL_LIST));
+        //加载数据
+        newfriendList.setAdapter(adapter);
+        //设置数据监听
+        adapter.setOnBtnClickListener(new OnItemClickListener());
     }
+    private class OnItemClickListener implements NewFriendAdapter.BtnOnClickListener{
 
+        @Override
+        public void onClick(View view, int position) {
+            //参数为要添加的好友的username和添加理由
+            String userName = mList.get(position).getUserId();
+            String reason = "Hello , World";
+            try {
+                EMClient.getInstance().contactManager().addContact(userName, reason);
+            } catch (HyphenateException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     /**
      * 展示SnackBar
      *
      * @param message 消息对象
      */
     public void showSnackBar(String message) {
-        Snackbar.make(searchSnackbarLayout, message, 1300).show();
+        Snackbar.make(searchSnackbarLayout, message, 1500).show();
     }
 
     private Toolbar.OnMenuItemClickListener onMenuItemClick = new Toolbar.OnMenuItemClickListener() {
@@ -132,6 +164,10 @@ public class NewFriendActivity extends AppCompatActivity {
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.friend_menu_search:
+                    if(adapter!=null){
+                        mList.clear();
+                        adapter.notifyDataSetChanged();
+                    }
                     JianPanUtils.closeKeybord(newfriendEdit, NewFriendActivity.this);
                     LogUtils.i("点击了");
                     String userId = newfriendEdit.getText().toString();
@@ -151,6 +187,7 @@ public class NewFriendActivity extends AppCompatActivity {
      * @return 实体集合
      */
     public List<UserInfoEntity> jsonToList(String json) {
+        LogUtils.i("Json数据:"+json);
         List<UserInfoEntity> entityList = gson.fromJson(json, new TypeToken<List<UserInfoEntity>>() {
 
         }.getType());
