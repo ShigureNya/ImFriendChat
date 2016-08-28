@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,10 @@ import java.util.List;
 
 import cc.jimblog.imfriendchat.R;
 import cn.bmob.v3.datatype.BmobFile;
+import entity.ContextSave;
 import entity.UserInfoEntity;
 import image.MyBitmapCacheUtil;
+import util.BitmapUtils;
 import view.CircleImageView;
 
 /**
@@ -43,13 +46,19 @@ public class NewFriendAdapter extends RecyclerView.Adapter<NewFriendAdapter.MyVi
     public void onBindViewHolder(MyViewHolder holder, int position) {
         UserInfoEntity entity = mList.get(position);
         String userName = entity.getUserName();
-        BmobFile userImg = entity.getUserImg();
         holder.userImage.setImageResource(R.mipmap.ic_launcher);
-        if(userImg != null){
-            String imageUrl = userImg.getUrl();
-            holder.userImage.setTag(imageUrl);
-            if(holder.userImage.getTag()!=null && holder.userImage.getTag().equals(imageUrl)){
-                myBitmapUtil.disPlay(holder.userImage,imageUrl);
+        if(entity.isDefImg()){
+            int defImgPosition =  Integer.parseInt(entity.getDefImgPosition());
+            Bitmap bitmap = BitmapUtils.getBitmapById(context, ContextSave.defPicArray[defImgPosition]);
+            holder.userImage.setImageBitmap(bitmap);
+        }else{
+            BmobFile userImg = entity.getUserImg();
+            if(userImg != null){
+                String imageUrl = userImg.getUrl();
+                holder.userImage.setTag(imageUrl);
+                if(holder.userImage.getTag()!=null && holder.userImage.getTag().equals(imageUrl)){
+                    myBitmapUtil.disPlay(holder.userImage,imageUrl);
+                }
             }
         }
         holder.userName.setText(userName);

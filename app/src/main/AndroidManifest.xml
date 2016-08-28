@@ -29,7 +29,7 @@
         android:theme="@style/NoTitleActionStyle"
         android:name="application.HuanXinApplication">
         <!-- 设置环信应用的AppKey -->
-        <meta-data android:name="EASEMOB_APPKEY"  android:value="806869597#testdemo" />
+        <meta-data android:name="EASEMOB_APPKEY"  android:value="806869597#friendchat" />
         <!-- 声明SDK所需的service SDK核心功能-->
         <service android:name="com.hyphenate.chat.EMChatService" android:exported="true"/>
         <!-- 声明SDK所需的receiver -->

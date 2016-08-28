@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     private MainPageAdapter mAdapter;  //主页适配器
 
     public static final int NET_STATE_PERMISSION = 1;  //权限管理
+
     /**
      * 初始化数据的方法
      */

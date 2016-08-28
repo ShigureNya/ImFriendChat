@@ -24,10 +24,11 @@
         android:layout_centerVertical="true"/>
     <Button
         android:id="@+id/newfriend_add_btn"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="37dp"
         android:text="@string/newfriend_add_friend_text"
+        android:background="@drawable/newfriend_add_btn_shape"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"/>
+        android:layout_marginRight="15dp"/>
 </RelativeLayout>

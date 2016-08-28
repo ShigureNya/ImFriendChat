@@ -10,11 +10,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -70,6 +73,8 @@ public class NewFriendActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        JianPanUtils.openKeybord(newfriendEdit, this);
+
         newfriendToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +85,16 @@ public class NewFriendActivity extends AppCompatActivity {
             }
         });
 
-        JianPanUtils.openKeybord(newfriendEdit, this);
+        newfriendEdit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    searchContent();
+                }
+                return false;
+            }
+        });
     }
 
     @OnClick({R.id.newfriend_qr_layout, R.id.newfriend_add_contacts_layout})
@@ -164,24 +178,12 @@ public class NewFriendActivity extends AppCompatActivity {
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.friend_menu_search:
-                    if(adapter!=null){
-                        mList.clear();
-                        adapter.notifyDataSetChanged();
-                    }
-                    JianPanUtils.closeKeybord(newfriendEdit, NewFriendActivity.this);
-                    LogUtils.i("点击了");
-                    String userId = newfriendEdit.getText().toString();
-                    if (userId == null || userId.equals("")) {
-                        showSnackBar(getString(R.string.newfriend_not_edit_hint));
-                        return false;
-                    }
-                    queryUserInfo(userId);
+                    searchContent();
                     break;
             }
             return true;
         }
     };
-
     /**
      * @param json 将JSON转换为List集合
      * @return 实体集合
@@ -192,5 +194,25 @@ public class NewFriendActivity extends AppCompatActivity {
 
         }.getType());
         return entityList;
+    }
+
+    @Override
+    protected void onDestroy() {
+        JianPanUtils.closeKeybord(newfriendEdit,this);
+        super.onDestroy();
+    }
+    private void searchContent(){
+        if(adapter!=null){
+            mList.clear();
+            adapter.notifyDataSetChanged();
+        }
+        JianPanUtils.closeKeybord(newfriendEdit, NewFriendActivity.this);
+        LogUtils.i("点击了");
+        String userId = newfriendEdit.getText().toString();
+        if (userId == null || userId.equals("")) {
+            showSnackBar(getString(R.string.newfriend_not_edit_hint));
+            return ;
+        }
+        queryUserInfo(userId);
     }
 }

@@ -24,6 +24,7 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
 import java.util.HashMap;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -69,7 +70,6 @@ public class InputPasswordFragment extends Fragment {
     private View mView = null;
     private Bitmap codeMap = null; //验证码图片
     private String code = null; //验证码值
-
     public interface MyInputPwdListener {
         void closeMessage(int index);
     }
@@ -169,11 +169,13 @@ public class InputPasswordFragment extends Fragment {
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<Integer>() {
             @Override
             public void onCompleted() {
-                ToastUtils.showShort(mView.getContext(), "Sign Ok");
+                int defaultNum = buildRandomNum();
                 //插入数据的方法
                 UserInfoEntity entity = new UserInfoEntity();
                 entity.setUserId(account);
                 entity.setUserName(account);
+                entity.setDefImg(true); //默认使用系统提供的头像
+                entity.setDefImgPosition(String.valueOf(defaultNum));
                 entity.save(new SaveListener<String>() {
                     @Override
                     public void done(String s, BmobException e) {
@@ -286,5 +288,10 @@ public class InputPasswordFragment extends Fragment {
     private void setAnimation(View v) {
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.view_shake);
         v.startAnimation(animation);
+    }
+    private int buildRandomNum(){
+        Random random = new Random();
+        int num = random.nextInt(12);
+        return num ;
     }
 }

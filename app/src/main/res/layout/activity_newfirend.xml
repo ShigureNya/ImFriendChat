@@ -38,7 +38,9 @@
                         android:textColorHint="#B2ffffff"
                         android:gravity="center_vertical"
                         android:maxLength="12"
-                        android:imeOptions="actionDone"
+                        android:imeOptions="actionSearch"
+                        android:singleLine="true"
+                        android:inputType="text"
                         />
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>

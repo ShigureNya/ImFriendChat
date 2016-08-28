@@ -304,6 +304,4 @@ public class ChatActivity extends SwipeBackActivity {
         super.onDestroy();
         EMClient.getInstance().chatManager().removeMessageListener(msgListener);
     }
-
-
 }

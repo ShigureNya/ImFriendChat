@@ -68,6 +68,7 @@
                     android:layout_marginRight="10dp"
                     android:padding="3dp"
                     android:textSize="15sp"
+                    android:inputType="text"
                     />
             </RelativeLayout>
             <LinearLayout

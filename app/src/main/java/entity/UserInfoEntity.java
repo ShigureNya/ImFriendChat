@@ -13,6 +13,8 @@ public class UserInfoEntity extends BmobObject{
     private String userName ;
     private String userId ; //mainkey
     private BmobFile userImg ;
+    private boolean isDefImg ;  //是否为默认头像
+    private String defImgPosition ;     //默认头像的编号
 
     public String getUserName() {
         return userName;
@@ -37,4 +39,22 @@ public class UserInfoEntity extends BmobObject{
     public void setUserImg(BmobFile userImg) {
         this.userImg = userImg;
     }
+
+    public boolean isDefImg() {
+        return isDefImg;
+    }
+
+    public void setDefImg(boolean defImg) {
+        isDefImg = defImg;
+    }
+
+    public String getDefImgPosition() {
+        return defImgPosition;
+    }
+
+    public void setDefImgPosition(String defImgPosition) {
+        this.defImgPosition = defImgPosition;
+    }
+
+
 }
