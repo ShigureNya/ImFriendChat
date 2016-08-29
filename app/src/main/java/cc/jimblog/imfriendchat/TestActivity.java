@@ -1,49 +1,80 @@
 package cc.jimblog.imfriendchat;
 
+import android.annotation.TargetApi;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
-import android.widget.RadioGroup;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import service.MessageService;
 
 /**
  * Created by Ran on 2016/8/21.
  */
-public class TestActivity extends SwipeBackActivity {
+public class TestActivity extends AppCompatActivity {
 
-    private SwipeBackLayout layout ;
+    @BindView(R.id.test_send)
+    Button testSend;
+    @BindView(R.id.test_notifi)
+    Button testNotifi;
+    @BindView(R.id.test_cancelNotifi)
+    Button testCancelNotifi;
 
-    private static int mBgIndex = 0;
+    private NotificationManager notificationManager;
 
-    private String mKeyTrackingMode;
-
-    private RadioGroup mTrackingModeGroup;
+    private static final int NOTIFICATION_ID = 120;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
-        layout = getSwipeBackLayout();
-        mTrackingModeGroup = (RadioGroup) findViewById(R.id.tracking_mode);
-        mTrackingModeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                int edgeFlag;
-                switch (checkedId) {
-                    case R.id.mode_left:
-                        edgeFlag = SwipeBackLayout.EDGE_LEFT;
-                        break;
-                    case R.id.mode_right:
-                        edgeFlag = SwipeBackLayout.EDGE_RIGHT;
-                        break;
-                    case R.id.mode_bottom:
-                        edgeFlag = SwipeBackLayout.EDGE_BOTTOM;
-                        break;
-                    default:
-                        edgeFlag = SwipeBackLayout.EDGE_ALL;
-                }
-                layout.setEdgeTrackingEnabled(edgeFlag);
-            }
-        });
+        ButterKnife.bind(this);
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+    }
+
+    @OnClick({R.id.test_send, R.id.test_notifi,R.id.test_cancelNotifi})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.test_send:
+                Intent serviceIntent = new Intent(TestActivity.this, MessageService.class);
+                serviceIntent.putExtra("Name", "测试用户");
+                startService(serviceIntent);
+                break;
+            case R.id.test_notifi:
+                sendNotification();
+                break;
+            case R.id.test_cancelNotifi:
+                notificationManager.cancel(NOTIFICATION_ID);
+                break;
+        }
+    }
+
+    /**
+     * 实现悬挂式Notification
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void sendNotification() {
+        Notification.Builder builder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.user_image)
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                .setCategory(Notification.CATEGORY_MESSAGE)
+                .setContentTitle("Headsup Notification")
+                .setContentText("I am a Headsup notification.");
+        Intent push = new Intent();
+        push.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        push.setClass(this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                this, 0, push, PendingIntent.FLAG_CANCEL_CURRENT);
+        builder.setContentText("Heads-Up Notification on Android 5.0")
+                .setFullScreenIntent(pendingIntent, true);
+        notificationManager.notify(NOTIFICATION_ID, builder.build());
     }
 }

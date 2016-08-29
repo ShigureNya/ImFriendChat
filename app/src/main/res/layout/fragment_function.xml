@@ -28,4 +28,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="开发者博客"/>
+    <Button
+        android:id="@+id/function_item_test"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="测试页面"/>
 </LinearLayout>

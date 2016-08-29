@@ -1,9 +1,12 @@
 package util;
 
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Rect;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
@@ -109,5 +112,18 @@ public class ScreenUtils {
                 - statusBarHeight);
         view.destroyDrawingCache();
         return bp;
+    }
+    //当前应用是否处于前台
+    public static boolean isForeground(Context context) {
+        if (context != null) {
+            ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+            ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
+            String currentPackageName = cn.getPackageName();
+            if (!TextUtils.isEmpty(currentPackageName) && currentPackageName.equals(context.getPackageName())) {
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }

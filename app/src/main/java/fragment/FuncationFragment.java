@@ -1,5 +1,6 @@
 package fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cc.jimblog.imfriendchat.R;
+import cc.jimblog.imfriendchat.TestActivity;
+import cc.jimblog.imfriendchat.WebActivity;
 
 /**
  * Created by Ran on 2016/8/10.
@@ -27,6 +30,8 @@ public class FuncationFragment extends Fragment {
     Button functionItemBrows;
     @BindView(R.id.function_item_player)
     Button functionItemPlayer;
+    @BindView(R.id.function_item_test)
+    Button functionItemTest;
     private View mView;
 
     @Nullable
@@ -37,7 +42,7 @@ public class FuncationFragment extends Fragment {
         return mView;
     }
 
-    @OnClick({R.id.function_item_pyq, R.id.function_item_hy, R.id.function_item_blog, R.id.function_item_brows, R.id.function_item_player})
+    @OnClick({R.id.function_item_pyq, R.id.function_item_hy, R.id.function_item_blog, R.id.function_item_brows, R.id.function_item_player,R.id.function_item_test})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.function_item_pyq:
@@ -45,10 +50,19 @@ public class FuncationFragment extends Fragment {
             case R.id.function_item_hy:
                 break;
             case R.id.function_item_blog:
+                startActivity(new Intent(view.getContext(), WebActivity.class));
                 break;
             case R.id.function_item_brows:
+                Intent intent = new Intent();
+                intent.putExtra("URL", "http://www.baidu.com");
+                intent.setClass(view.getContext(), WebActivity.class);
+                startActivity(intent);
                 break;
             case R.id.function_item_player:
+
+                break;
+            case R.id.function_item_test:
+                startActivity(new Intent(view.getContext(), TestActivity.class));
                 break;
         }
     }

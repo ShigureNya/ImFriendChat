@@ -197,10 +197,11 @@ public class NewFriendActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onPause() {
+        super.onPause();
         JianPanUtils.closeKeybord(newfriendEdit,this);
-        super.onDestroy();
     }
+
     private void searchContent(){
         if(adapter!=null){
             mList.clear();

@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-port\\values-port.xml",
+        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-port\\values-port.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 106
                 },
                 "from": {
-                    "file": "D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-port\\values-port.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-port\\values-port.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "outputFile": "D:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\release\\values-port\\values-port.xml",
+        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/release/values-port/values-port.xml",
         "map": [
             {
                 "to": {
@@ -35,7 +35,7 @@
                     "endOffset": 106
                 },
                 "from": {
-                    "file": "D:\\Users\\jimhao\\AndroidStudioProjects\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-port\\values-port.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-port/values-port.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

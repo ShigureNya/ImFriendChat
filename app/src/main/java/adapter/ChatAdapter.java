@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMImageMessageBody;
 import com.hyphenate.chat.EMMessage;
 import com.hyphenate.chat.EMTextMessageBody;
@@ -127,7 +128,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                     bitmapCacheUtil.disPlay(holder.messageRightImage,url);
                 }
             }
-            String userId = message.getUserName();
+            String userId = EMClient.getInstance().getCurrentUser();
             holder.userRightImg.setTag(userId);
             holder.userRightImg.setImageResource(R.mipmap.user_image);
             if(holder.userRightImg.getTag()!=null && holder.userRightImg.getTag().equals(userId)){
@@ -213,19 +214,25 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         query.findObjectsByTable(new QueryListener<JSONArray>() {
             @Override
             public void done(JSONArray jsonArray, BmobException e) {
-                List<UserInfoEntity> userInfo = jsonToList(jsonArray.toString());
-                for(UserInfoEntity entity : userInfo){
-                    boolean flag = entity.isDefImg();
-                    if(flag){   //是否使用默认的用户头像
-                        int position = Integer.parseInt(entity.getDefImgPosition());
-                        LogUtils.d("Position"+position);
-                        leftBitmap = BitmapUtils.getBitmapById(mContext, ContextSave.defPicArray[position]);
-                        imageView.setImageBitmap(leftBitmap);
-                    }else{
-                        String url = entity.getUserImg().getUrl();
-                        bitmapCacheUtil.disPlay(imageView,url);
-                        leftBitmap = localUtil.getBitmapFromLocal(url);
+                if(e == null){
+                    if(jsonArray != null){
+                        List<UserInfoEntity> userInfo = jsonToList(jsonArray.toString());
+                        for(UserInfoEntity entity : userInfo){
+                            boolean flag = entity.isDefImg();
+                            if(flag){   //是否使用默认的用户头像
+                                int position = Integer.parseInt(entity.getDefImgPosition());
+                                LogUtils.d("Position"+position);
+                                leftBitmap = BitmapUtils.getBitmapById(mContext, ContextSave.defPicArray[position]);
+                                imageView.setImageBitmap(leftBitmap);
+                            }else{
+                                String url = entity.getUserImg().getUrl();
+                                bitmapCacheUtil.disPlay(imageView,url);
+                                leftBitmap = localUtil.getBitmapFromLocal(url);
+                            }
+                        }
                     }
+                }else{
+                    LogUtils.e("错误Chat:"+e.toString());
                 }
             }
         });
@@ -246,7 +253,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                         int position = Integer.parseInt(entity.getDefImgPosition());
                         LogUtils.d("Position"+position);
                         rightBitmap = BitmapUtils.getBitmapById(mContext, ContextSave.defPicArray[position]);
-                        imageView.setImageBitmap(leftBitmap);
+                        imageView.setImageBitmap(rightBitmap);
                     }else{
                         String url = entity.getUserImg().getUrl();
                         bitmapCacheUtil.disPlay(imageView,url);

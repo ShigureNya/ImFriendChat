@@ -84,6 +84,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             holder.mMessageTime.setText(sdf.format(date));
         }
         holder.mUserImg.setTag(nickname);
+        holder.mUserImg.setImageResource(R.mipmap.user_image);
         if(holder.mUserImg.getTag()!=null && holder.mUserImg.getTag().equals(nickname)){
             queryUserImg(nickname,holder.mUserImg);
         }

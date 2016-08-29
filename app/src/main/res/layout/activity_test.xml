@@ -1,37 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:fitsSystemWindows="true"
     android:gravity="center">
-    <RadioGroup
-        android:id="@+id/tracking_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <RadioButton
-            android:id="@+id/mode_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Left"/>
-
-        <RadioButton
-            android:id="@+id/mode_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Right"/>
-
-        <RadioButton
-            android:id="@+id/mode_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Buttom"/>
-
-        <RadioButton
-            android:id="@+id/mode_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="all"/>
-    </RadioGroup>
-</RelativeLayout>
+    <Button
+        android:id="@+id/test_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="发送广播"/>
+    <Button
+        android:id="@+id/test_notifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="生成通知" />
+    <Button
+        android:id="@+id/test_cancelNotifi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭通知"/>
+</LinearLayout>

@@ -16,7 +16,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         app:border_color="#0000"
-        android:src="@drawable/head_img"/>
+        android:src="@mipmap/user_image"/>
     <TextView
         android:id="@+id/item_contacts_name"
         android:layout_width="wrap_content"

@@ -27,7 +27,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/NoTitleActionStyle"
-        android:name="application.HuanXinApplication">
+        android:name="application.HuanXinApplication"
+        android:hardwareAccelerated="true">
         <!-- 设置环信应用的AppKey -->
         <meta-data android:name="EASEMOB_APPKEY"  android:value="806869597#friendchat" />
         <!-- 声明SDK所需的service SDK核心功能-->
@@ -92,6 +93,19 @@
         </activity>
         <!--添加新好友-->
         <activity android:name=".NewFriendActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <!--个人博客-->
+        <activity android:name=".WebActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensor">
+        </activity>
+        <!--消息服务-->
+        <service android:name="service.MessageService">
+        </service>
+        <!--我的群组-->
+        <activity android:name=".GroupActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>

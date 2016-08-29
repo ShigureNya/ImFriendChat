@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/blog_frame_layout">
+    <!--优化一下界面,做的和浏览器一样-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/blog_snackbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+        </android.support.design.widget.CoordinatorLayout>
+        <WebView
+            android:id="@+id/blog_webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layerType="software"
+            android:hardwareAccelerated="true"
+            android:layout_above="@id/blog_snackbar_layout">
+        </WebView>
+    </RelativeLayout>
+</FrameLayout>

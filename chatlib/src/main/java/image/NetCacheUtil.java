@@ -1,6 +1,5 @@
 package image;
 
-import android.database.Observable;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.widget.ImageView;

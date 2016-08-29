@@ -25,6 +25,7 @@ import adapter.ContactsRecyclerAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cc.jimblog.imfriendchat.ChatActivity;
+import cc.jimblog.imfriendchat.GroupActivity;
 import cc.jimblog.imfriendchat.NewFriendActivity;
 import cc.jimblog.imfriendchat.R;
 import view.DividerItemDecoration;
@@ -135,11 +136,6 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         initData();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     private RelativeLayout addNewFriendlayout ;
     private RelativeLayout myGroupLayout ;
     private RelativeLayout myFwhLayout ;
@@ -160,7 +156,7 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
                 startActivity(new Intent(getActivity(), NewFriendActivity.class));
                 break;
             case R.id.item_contacts_group_layout:
-
+                startActivity(new Intent(getActivity(), GroupActivity.class));
                 break;
             case R.id.item_contacts_fwh_layout:
 

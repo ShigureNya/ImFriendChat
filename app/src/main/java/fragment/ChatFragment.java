@@ -11,7 +11,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -191,12 +190,12 @@ public class ChatFragment extends Fragment {
         chatRefreshLayout.setRefreshing(false);
     }
 
-    @Override
-    public void onResume() {
-        //Fragment每次加载Resume方法时调用refrush方法
-        refresh();
-        super.onResume();
-    }
+//    @Override
+//    public void onResume() {
+//        //Fragment每次加载Resume方法时调用refrush方法
+//        refresh();
+//        super.onResume();
+//    }
     private void chatUpdate(){
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
     }
@@ -238,9 +237,10 @@ public class ChatFragment extends Fragment {
             //试试放在Handler里
         }
     };
+
     @Override
-    public void onDestroyView() {
+    public void onDestroy() {
+        super.onDestroy();
         EMClient.getInstance().chatManager().removeMessageListener(msgListener);
-        super.onDestroyView();
     }
 }

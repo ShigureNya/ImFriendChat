@@ -29,6 +29,7 @@ import fragment.ChatFragment;
 import fragment.ContactsFragment;
 import fragment.FuncationFragment;
 import fragment.SettingFragment;
+import service.MessageService;
 import util.ToastUtils;
 
 public class MainActivity extends AppCompatActivity implements SettingFragment.OnLogOutClickListener{
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     private ActionBarDrawerToggle mDrawerToggle;   //监听DrawerLayout滑动和弹出事件
     private MainPageAdapter mAdapter;  //主页适配器
 
-    public static final int NET_STATE_PERMISSION = 1;  //权限管理
+    public static final int IS_BACKGROUND_PERMISSON = 1;  //权限管理
 
     /**
      * 初始化数据的方法
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         initDrawerLayout();
         initTabLayout();
         initFragmentAdapter();
+        registerService();  //注册消息广播监听
     }
 
     public void initDrawerLayout() {
@@ -186,10 +188,24 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     }
     @TargetApi(Build.VERSION_CODES.M)
     private void checkedPermission() {
-        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.INTERNET);
+        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.GET_TASKS);
         if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[] {Manifest.permission.INTERNET}, NET_STATE_PERMISSION);
+            requestPermissions(new String[] {Manifest.permission.GET_TASKS}, IS_BACKGROUND_PERMISSON);
             return;
         }
+    }
+    private void registerService(){
+        Intent serviceIntent = new Intent(MainActivity.this, MessageService.class);
+        startService(serviceIntent);
+    }
+    private void unregisterService(){
+        Intent serviceIntent = new Intent(MainActivity.this, MessageService.class);
+        stopService(serviceIntent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterService();
     }
 }

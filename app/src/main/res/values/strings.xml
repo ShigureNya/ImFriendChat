@@ -52,6 +52,8 @@
     <string name="setting_loginout_text">退出登录</string>
     <string name="setting_loginouting_hint">帐号正在退出中...</string>
     <string name="setting_loginout_error_hint">帐号退出失败</string>
+    <!--我的群组-->
+    <string name="group_title_text">群组</string>
     <string-array name="country_name_list">
         <item>+86</item>
 
