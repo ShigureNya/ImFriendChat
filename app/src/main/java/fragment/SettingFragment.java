@@ -20,6 +20,7 @@ import butterknife.OnClick;
 import cc.jimblog.imfriendchat.R;
 
 /**
+ * 系统设置页面
  * Created by Ran on 2016/8/19.
  */
 public class SettingFragment extends Fragment {
@@ -38,7 +39,6 @@ public class SettingFragment extends Fragment {
 
     @OnClick(R.id.setting_layout_logout)
     public void onClick() {
-        showSnackBar(getString(R.string.setting_loginouting_hint));
         //此方法为异步方法
         EMClient.getInstance().logout(true, new EMCallBack() {
 
@@ -71,6 +71,7 @@ public class SettingFragment extends Fragment {
     public interface OnLogOutClickListener {
         void onClick();
     }
+    //传递给MainActivity 使其调用退出登录方法
     public OnLogOutClickListener clickListener;
 
     @Override

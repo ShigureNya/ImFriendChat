@@ -1,9 +1,7 @@
 package fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,8 +11,6 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
-import android.widget.Toast;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +22,7 @@ import util.ToastUtils;
 import view.RippleView;
 
 /**
+ * 输入帐号的Fragment页面
  * Created by Ran on 2016/8/8.
  */
 public class InputPhoneFragment extends Fragment {

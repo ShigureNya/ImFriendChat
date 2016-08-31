@@ -28,6 +28,7 @@ import cc.jimblog.imfriendchat.ChatActivity;
 import cc.jimblog.imfriendchat.GroupActivity;
 import cc.jimblog.imfriendchat.NewFriendActivity;
 import cc.jimblog.imfriendchat.R;
+import util.NetWorkUtils;
 import view.DividerItemDecoration;
 
 /**
@@ -52,6 +53,9 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         return mView;
     }
 
+    /**
+     * 初始化Adapter对象
+     */
     private void initAdapter() {
         //设置adapter
         adapter = new ContactsRecyclerAdapter(getContext(), mList);
@@ -71,7 +75,10 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        refreshData();
+        //如网络正常连接则加载数据
+        if(NetWorkUtils.isConnected(mView.getContext())){
+            refreshData();
+        }
         adapter.setItemClickListener(new ContactsRecyclerAdapter.OnContactsItemCLickListener() {
             @Override
             public void onClick(View view, int position) {
@@ -91,16 +98,23 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         super.onViewCreated(view, savedInstanceState);
     }
 
+    /**
+     * 初始化数据
+     */
     private void initData() {
         InitContactsThread thread = new InitContactsThread();
         thread.start();
     }
 
+    /**
+     * 初始化联系人数据线程
+     */
     class InitContactsThread extends Thread{
         @Override
         public void run() {
             Message msg = initContactsHandler.obtainMessage() ;
             try {
+                //从环信SDK中得到对应联系人数据
                 List<String> list = EMClient.getInstance().contactManager().getAllContactsFromServer();
                 msg.obj = list;
                 msg.arg1 = 1;
@@ -112,6 +126,10 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
             msg.sendToTarget();
         }
     }
+
+    /**
+     * 处理由Thread传递过来的联系人消息
+     */
     Handler initContactsHandler  = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -129,6 +147,10 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
             }
         }
     };
+
+    /**
+     * 刷新数据
+     */
     private void refreshData() {
         if (mList != null) {
             mList.clear();
@@ -139,6 +161,10 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
     private RelativeLayout addNewFriendlayout ;
     private RelativeLayout myGroupLayout ;
     private RelativeLayout myFwhLayout ;
+
+    /**
+     * @param view RelativeLayout的头部Layout
+     */
     private void setHeaderView(RecyclerView view) {
         View header = LayoutInflater.from(getContext()).inflate(R.layout.layout_contacts_add, view, false);
         adapter.setHeaderView(header);

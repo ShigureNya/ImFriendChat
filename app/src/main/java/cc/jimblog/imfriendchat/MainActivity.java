@@ -1,10 +1,6 @@
 package cc.jimblog.imfriendchat;
 
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -82,11 +78,6 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        //Android 6.0权限适配
-        if(Build.VERSION.SDK_INT >= 23){
-            checkedPermission();
-        }
-
         mainToolBar.setTitle(R.string.main_chat_fragment_title);
         setSupportActionBar(mainToolBar);
         mainToolBar.setOnMenuItemClickListener(new OnToolBarListener());
@@ -97,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         registerService();  //注册消息广播监听
     }
 
+    /**
+     * 初始化DrawerLayout
+     */
     public void initDrawerLayout() {
         //initDrawerLayout
         mDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, mainToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -106,6 +100,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
 
     }
 
+    /**
+     * 为TabLayout填充数据
+     */
     public void initTabLayout() {
         //initTabLayout
         mainTabLayout.setTabMode(TabLayout.MODE_FIXED);
@@ -114,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         }
     }
 
+    /**
+     * 为ViewPager填充Adapter数据
+     */
     public void initFragmentAdapter() {
         //initFragmentAdapter
         mAdapter = new MainPageAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
@@ -125,6 +125,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
 
     }
 
+    /**
+     * 此处为LoginOut的退出回掉事件 并非Activity的点击事件
+     */
     @Override
     public void onClick() {
         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
@@ -132,6 +135,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         finish();
     }
 
+    /**
+     * 抽屉中Menu的点击事件
+     */
     class MyNavigationItemListener implements NavigationView.OnNavigationItemSelectedListener {
 
         @Override
@@ -145,6 +151,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         }
     }
 
+    /**
+     * Tab的切换事件
+     */
     TabLayout.OnTabSelectedListener tabSelectedListener = new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
@@ -186,14 +195,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
             return true;
         }
     }
-    @TargetApi(Build.VERSION_CODES.M)
-    private void checkedPermission() {
-        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.GET_TASKS);
-        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[] {Manifest.permission.GET_TASKS}, IS_BACKGROUND_PERMISSON);
-            return;
-        }
-    }
+
     private void registerService(){
         Intent serviceIntent = new Intent(MainActivity.this, MessageService.class);
         startService(serviceIntent);

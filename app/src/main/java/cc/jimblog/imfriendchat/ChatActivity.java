@@ -1,11 +1,7 @@
 package cc.jimblog.imfriendchat;
 
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -82,15 +78,11 @@ public class ChatActivity extends SwipeBackActivity {
     private List<EMMessage> mList ;     //数据集合
     private SwipeBackLayout mBackLayout;   //侧滑关闭Activity所用
 
-    private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 1 ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_beta);
         ButterKnife.bind(this);
-        if(Build.VERSION.SDK_INT >= 23){
-            checkedPermission();
-        }
         initToolBar();
         initAdapter();
         //侧滑关闭Activity的重要方法
@@ -98,14 +90,6 @@ public class ChatActivity extends SwipeBackActivity {
         mBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
-    private void checkedPermission() {
-        int hasWriteContactsPermission = checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-            return;
-        }
-    }
 
     @Override
     protected void onResume() {

@@ -33,6 +33,7 @@ import butterknife.ButterKnife;
 import cc.jimblog.imfriendchat.ChatActivity;
 import cc.jimblog.imfriendchat.R;
 import util.LogUtils;
+import util.NetWorkUtils;
 import view.DividerItemDecoration;
 
 /**
@@ -61,9 +62,18 @@ public class ChatFragment extends Fragment {
         chatUpdate();
         return mView;
     }
-
+    //再Fragment加载完成后加载会话,判断可能由于此方法的原因导致Fragment被创建后就会重载List数据
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        if(NetWorkUtils.isConnected(mView.getContext())){
+            initData();
+        }
+        //设置下拉刷新
+        chatRefreshLayout.setOnRefreshListener(new OnRefreshListener());
+
+        super.onActivityCreated(savedInstanceState);
+    }
+    private void initData(){
         //直接加在会话列表
         conversationList.addAll(loadConversationWithRecentChat());
         //设置adapter
@@ -85,13 +95,7 @@ public class ChatFragment extends Fragment {
         for (int i = 0; i < conversationList.size(); i++) {
             count += conversationList.get(i).getUnreadMsgCount();
         }
-        LogUtils.v("Count Total", count + "");
-        //设置下拉刷新
-        chatRefreshLayout.setOnRefreshListener(new OnRefreshListener());
-
-        super.onActivityCreated(savedInstanceState);
     }
-
     /**
      * RecycleView点击事件回调
      */
@@ -190,14 +194,20 @@ public class ChatFragment extends Fragment {
         chatRefreshLayout.setRefreshing(false);
     }
 
-//    @Override
-//    public void onResume() {
-//        //Fragment每次加载Resume方法时调用refrush方法
-//        refresh();
-//        super.onResume();
-//    }
+    @Override
+    public void onResume() {
+        //Fragment每次加载Resume方法时调用refrush方法
+        refresh();
+        super.onResume();
+    }
+
+    /**
+     * 注册聊天数据更新接口
+     * */
     private void chatUpdate(){
-        EMClient.getInstance().chatManager().addMessageListener(msgListener);
+        if(NetWorkUtils.isConnected(mView.getContext())){
+            EMClient.getInstance().chatManager().addMessageListener(msgListener);
+        }
     }
     EMMessageListener msgListener = new EMMessageListener() {
 

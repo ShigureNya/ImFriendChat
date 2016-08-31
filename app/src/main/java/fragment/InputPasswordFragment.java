@@ -48,6 +48,7 @@ import view.GetVerificationCode;
 import view.RippleView;
 
 /**
+ * 输入密码的Fragment页面
  * Created by Ran on 2016/8/8.
  */
 public class InputPasswordFragment extends Fragment {
