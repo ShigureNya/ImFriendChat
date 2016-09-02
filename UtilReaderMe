@@ -1,99 +1,99 @@
 工具类文档
 BitmapUtils - 图像处理类
-getBitmapToDrawable - 将Bitmap转换为Drawable
-getDrawableById - 从资源文件ID得到Drawable
-getBitmapById - 从资源文件得到Bitmap
-getBitmapByFile - 从文件地址中得到Bitmap
-getBitmapByFile - 从文件中得到Bitmap
-getBitmapByFile - 从文件地址中得到Bitmap,可配置设置
-getBitmapByDrawable - 从Drawable中得到Bitmap
-bitmapToByteArray - 将Bitmap转换成字节数组
-byteArrayToBitmap - 将字节数组转换成Bitmap
-zoomBitmap - 按指定宽高来缩放图片，不保证宽高比例
-djustImageSize - 处理图像大小
+  getBitmapToDrawable - 将Bitmap转换为Drawable
+  getDrawableById - 从资源文件ID得到Drawable
+  getBitmapById - 从资源文件得到Bitmap
+  getBitmapByFile - 从文件地址中得到Bitmap
+  getBitmapByFile - 从文件中得到Bitmap
+  getBitmapByFile - 从文件地址中得到Bitmap,可配置设置
+  getBitmapByDrawable - 从Drawable中得到Bitmap
+  bitmapToByteArray - 将Bitmap转换成字节数组
+  byteArrayToBitmap - 将字节数组转换成Bitmap
+  zoomBitmap - 按指定宽高来缩放图片，不保证宽高比例
+  djustImageSize - 处理图像大小
 
 
 BlurUtils - 高斯模糊工具类
-BoxBlurFilter - 图片模糊方法
+  BoxBlurFilter - 图片模糊方法
 
 
 DensityUtils - 常用单位转换的辅助类
-dp2px - DP转PX
-sp2px - SP转PX
-px2dp - PX转DP
-px2sp - PX转SP
+  dp2px - DP转PX
+  sp2px - SP转PX
+  px2dp - PX转DP
+  px2sp - PX转SP
 
 
 FileTools - 文件工具类
-isFoundFilePath - 查看文件地址是否存在
-isFoundFile - 查看指定file是否存在
-getFileSize - 获取文件的大小
+  isFoundFilePath - 查看文件地址是否存在
+  isFoundFile - 查看指定file是否存在
+  getFileSize - 获取文件的大小
 
 
 HttpClientUtils - Http请求工具
-doGetAsyn - 异步的Get请求
-doPostAsyn - 异步的Post请求
-doGet - get请求获得返回数据
-doPost - 向指定URL发送POST的方法
+  doGetAsyn - 异步的Get请求
+  doPostAsyn - 异步的Post请求
+  doGet - get请求获得返回数据
+  doPost - 向指定URL发送POST的方法
 
 
 JianPanUtils - 管理键盘弹出的工具类
-openKeybord - 打開軟鍵盤
-closeKeybord - 關閉軟鍵盤
+  openKeybord - 打開軟鍵盤
+  closeKeybord - 關閉軟鍵盤
 
 
 LogUtils - 日志工具类
-常用日志方法不需要过多描述
+  常用日志方法不需要过多描述
 
 
 MD5Utils - MD5加密工具类
-md5 - 普通文本加密为MD5
+  md5 - 普通文本加密为MD5
 
 
 NetWorkUtils - 网络工具类
-isConnected - 判断网络是否连接
-isWifi - 判断是否为wifi连接
-openSettingActivity - 打开设置页面
+  isConnected - 判断网络是否连接
+  isWifi - 判断是否为wifi连接
+  openSettingActivity - 打开设置页面
 
 
 PermissionCheckerUtil - 权限管理
-lacksPermissions - 判断权限集合
-lacksPermission - 判断是否缺少权限
+  lacksPermissions - 判断权限集合
+  lacksPermission - 判断是否缺少权限
 
 
 RSAUtils - RSA加密类
-getKeyPair - 生成密匙对
-generateRSAPublicKey - 生成公钥
-generateRSAPrivateKey - 生成私钥
-encrypt - 加密
-decrypt - 解密
-getRSAPublicKey - 返回公钥
-getRSAPrivateKey - 获取私钥
+  getKeyPair - 生成密匙对
+  generateRSAPublicKey - 生成公钥
+  generateRSAPrivateKey - 生成私钥
+  encrypt - 加密
+  decrypt - 解密
+  getRSAPublicKey - 返回公钥
+  getRSAPrivateKey - 获取私钥
 
 
 ScreenUtils - 屏幕操作工具
-getScreenWidth - 获得屏幕高度
-getScreenHeight - 获得屏幕宽度
-getStatusHeight - 获得状态栏的高度
-snapShotWithStatusBar - 获取当前屏幕截图，包含状态栏
-snapShotWithoutStatusBar - 获取当前屏幕截图，不包含状态栏
-isForeground - 当前应用是否处于前台
+  getScreenWidth - 获得屏幕高度
+  getScreenHeight - 获得屏幕宽度
+  getStatusHeight - 获得状态栏的高度
+  snapShotWithStatusBar - 获取当前屏幕截图，包含状态栏
+  snapShotWithoutStatusBar - 获取当前屏幕截图，不包含状态栏
+  isForeground - 当前应用是否处于前台
 
 
 SnackBarUtil - SnackBar操作类
-shortSnackbar - 短显示Snackbar，自定义颜色
-longSnackbar - 长显示Snackbar，自定义颜色
-indefiniteSnackbar - 自定义时常显示Snackbar，自定义颜色
-shortSnackbar - 短显示Snackbar，可选预设类型
-longSnackbar - 长显示Snackbar，可选预设类型
-indefiniteSnackbar - 自定义时常显示Snackbar，可选预设类型
-setSnackbarColor - 设置Snackbar背景颜色
-setSnackbarColor - 设置Snackbar文字和背景颜色
-snackbarAddView - 向Snackbar中添加view
+  shortSnackbar - 短显示Snackbar，自定义颜色
+  longSnackbar - 长显示Snackbar，自定义颜色
+  indefiniteSnackbar - 自定义时常显示Snackbar，自定义颜色
+  shortSnackbar - 短显示Snackbar，可选预设类型
+  longSnackbar - 长显示Snackbar，可选预设类型
+  indefiniteSnackbar - 自定义时常显示Snackbar，可选预设类型
+  setSnackbarColor - 设置Snackbar背景颜色
+  setSnackbarColor - 设置Snackbar文字和背景颜色
+  snackbarAddView - 向Snackbar中添加view
 
 
 StorageUtils - SharedPreferences工具类
-put - 保存数据
-get - 得到保存数据的方法
+  put - 保存数据
+  get - 得到保存数据的方法
 
 ToastUtils - Toast工具类
