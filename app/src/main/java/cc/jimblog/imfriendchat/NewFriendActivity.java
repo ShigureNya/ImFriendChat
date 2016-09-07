@@ -1,11 +1,12 @@
 package cc.jimblog.imfriendchat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,6 +28,7 @@ import com.hyphenate.exceptions.HyphenateException;
 import org.json.JSONArray;
 
 import java.util.List;
+import java.util.Map;
 
 import adapter.NewFriendAdapter;
 import butterknife.BindView;
@@ -34,15 +36,18 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.helper.GsonUtil;
 import cn.bmob.v3.listener.QueryListener;
 import entity.UserInfoEntity;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import util.JianPanUtils;
 import util.LogUtils;
 
 /**
  * Created by jimhao on 16/8/25.
  */
-public class NewFriendActivity extends AppCompatActivity {
+public class NewFriendActivity extends SwipeBackActivity {
     @BindView(R.id.newfriend_edit)
     EditText newfriendEdit;
     @BindView(R.id.newfriend_toolbar)
@@ -57,17 +62,51 @@ public class NewFriendActivity extends AppCompatActivity {
     RecyclerView newfriendList;
     private Gson gson;
     private NewFriendAdapter adapter ;
-
+    private SwipeBackLayout mBackLayout;   //侧滑关闭Activity所用
     private List<UserInfoEntity> mList  ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newfirend);
         ButterKnife.bind(this);
+        //侧滑关闭Activity的重要方法
+        mBackLayout = getSwipeBackLayout();
+        mBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+
         gson = new Gson();
         newfriendToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         setSupportActionBar(newfriendToolbar);
         newfriendToolbar.setOnMenuItemClickListener(onMenuItemClick);
+        //从Notification中拿到数据
+        String json = getIntent().getStringExtra("UserInfo");
+        Map<String, Object> hashMap = GsonUtil.toMap(json);
+
+    }
+    /**
+     * 显示添加好友的Dialog
+     */
+    public void showAddFriendDialog(final String name , String reason){
+        AlertDialog.Builder builder = new AlertDialog.Builder(NewFriendActivity.this);
+        builder.setTitle("来自"+name+"的好友申请");
+        builder.setMessage(reason);
+        builder.setNegativeButton(getString(R.string.newfriend_yes_add_friend_text), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //同意添加好友
+                try {
+                    EMClient.getInstance().contactManager().acceptInvitation(name);
+                } catch (HyphenateException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        builder.setPositiveButton(getString(R.string.newfriend_no_add_friend_text), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //拒绝
+            }
+        });
+        builder.create().show();
     }
 
     @Override
@@ -159,8 +198,10 @@ public class NewFriendActivity extends AppCompatActivity {
             String reason = "Hello , World";
             try {
                 EMClient.getInstance().contactManager().addContact(userName, reason);
+                showSnackBar("已向"+userName+"发送了好友申请");
             } catch (HyphenateException e) {
                 e.printStackTrace();
+                LogUtils.i("好友申请失败");
             }
         }
     }

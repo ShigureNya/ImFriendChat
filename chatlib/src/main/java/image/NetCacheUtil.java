@@ -2,6 +2,7 @@ package image;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.widget.ImageView;
 
 import java.util.HashMap;
@@ -19,17 +20,25 @@ public class NetCacheUtil {
         this.memoryCacheUtil = memoryCacheUtil;
         this.localCacheUtil = localCacheUtil;
     }
-    public void downloadBitmapFromNet(String url , ImageView imageView){
+    public void downloadBitmapFromNet(String url , ImageView imageView , final ContentLoadingProgressBar progress){
         BitmapTask task = new BitmapTask();
-        task.execute(url,imageView);    //启动AsyncTask
+        if(progress != null){
+            task.execute(url,imageView,progress);    //启动AsyncTask
+        }else{
+            task.execute(url,imageView);
+        }
     }
     class BitmapTask extends AsyncTask<Object,Void,Bitmap>{
         public ImageView imageView ;
         public String url ;
+        public ContentLoadingProgressBar progressBar ;
         @Override
         protected Bitmap doInBackground(Object... params) {
             url = (String) params[0];
             imageView = (ImageView) params[1];
+            if(params.length > 2){
+                progressBar = (ContentLoadingProgressBar) params[2];
+            }
             Bitmap bitmap = ImageDownload.getInstance().downLoadBitmap(url);
             if(bitmap != null){
                 return bitmap ;
@@ -45,19 +54,24 @@ public class NetCacheUtil {
         @Override
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
-            HashMap<String,Integer> hashMap = BitmapUtils.djustImageSize(bitmap);
-            if(hashMap != null){
-                //从HashMap获取长度宽度
-                Integer width = hashMap.get("Width");
-                Integer height = hashMap.get("Height");
-                //使用新的长宽定义Bitmap
-                Bitmap newBitmap = BitmapUtils.zoomBitmap(bitmap,width,height);
-                imageView.setImageBitmap(newBitmap);
-                LogUtils.i("从网络获取啦..");
-                //保存到本地
-                localCacheUtil.saveBitmapToLocal(url,newBitmap);
-                //保存到内存
-                memoryCacheUtil.saveBitmapToMemory(url,newBitmap);
+            if(bitmap != null){
+                HashMap<String,Integer> hashMap = BitmapUtils.djustImageSize(bitmap);
+                if(hashMap != null){
+                    //从HashMap获取长度宽度
+                    Integer width = hashMap.get("Width");
+                    Integer height = hashMap.get("Height");
+                    //使用新的长宽定义Bitmap
+                    Bitmap newBitmap = BitmapUtils.zoomBitmap(bitmap,width,height);
+                    if(progressBar != null){
+                        progressBar.hide();
+                    }
+                    imageView.setImageBitmap(newBitmap);
+                    LogUtils.i("从网络获取啦..");
+                    //保存到本地
+                    localCacheUtil.saveBitmapToLocal(url,newBitmap);
+                    //保存到内存
+                    memoryCacheUtil.saveBitmapToMemory(url,newBitmap);
+                }
             }
         }
     }

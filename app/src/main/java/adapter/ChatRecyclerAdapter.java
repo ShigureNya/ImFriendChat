@@ -94,7 +94,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
     public int getItemCount() {
         return mConversationList.size();
     }
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener , View.OnLongClickListener{
         public TextView mUserName ;
         public TextView mUserMsg ;
         public TextView mMessageTime ;
@@ -108,6 +108,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             mUserImg = (CircleImageView) itemView.findViewById(R.id.item_chat_userimg);
             mLayout = (RelativeLayout) itemView.findViewById(R.id.item_chat_layout);
             mLayout.setOnClickListener(this);
+            mLayout.setOnLongClickListener(this);
         }
 
         @Override
@@ -116,6 +117,12 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             if(onItemClickListener != null){
                 onItemClickListener.onItemClick(view,getPosition());
             }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            onItemLongClickListener.onLongItemClick(view,getPosition());
+            return true;
         }
     }
     //Item点击事件定义接口回调
@@ -131,6 +138,15 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
         return mConversationList.get(position);
     }
 
+    //Item长点击事件定义接口回调
+    public interface OnItemLongClickListeners{
+        void onLongItemClick(View view , int position);
+    }
+    public OnItemLongClickListeners onItemLongClickListener;
+
+    public void setOnItemLongClickListeners(OnItemLongClickListeners longClickListener){
+        this.onItemLongClickListener = longClickListener;
+    }
     /**
      * 得到消息
      * @param message 消息体对象
@@ -142,7 +158,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             //图片消息
             case IMAGE:{
                 EMImageMessageBody imageBody = (EMImageMessageBody) message.getBody();
-                str = "[picture]" + imageBody.getFileName();
+                str = "[图片]";
                 break;
             }
             case TXT:{
@@ -153,7 +169,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             }
             case FILE:
                 EMFileMessageBody fileBody = (EMFileMessageBody) message.getBody();
-                str = "[File]" + fileBody.getFileName();
+                str = "[文件]";
                 break;
         }
         return str;
@@ -177,7 +193,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
                         imageView.setImageBitmap(bitmap);
                     }else{
                         String url = entity.getUserImg().getUrl();
-                        cacheUtil.disPlay(imageView,url);
+                        cacheUtil.disPlayImage(imageView,url);
                     }
                 }
             }

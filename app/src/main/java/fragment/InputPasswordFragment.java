@@ -22,12 +22,14 @@ import android.widget.TextView;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import application.HuanXinApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -294,5 +296,11 @@ public class InputPasswordFragment extends Fragment {
         Random random = new Random();
         int num = random.nextInt(12);
         return num ;
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = HuanXinApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

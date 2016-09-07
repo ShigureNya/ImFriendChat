@@ -1,14 +1,12 @@
 package image;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Environment;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
+import util.BitmapUtils;
 import util.MD5Utils;
 
 /**
@@ -38,14 +36,18 @@ public class LocalCacheUtil {
      */
     public Bitmap getBitmapFromLocal(String url){
         String filename = null ;    //把图片的url作为文件名并用MD5加密
-        try {
+        File file = null ;
+        //如果URL中包含了文件的头文件
+        if(url.contains("/storage/emulated")){
+            file = new File(url);
+        }else{
+            //如果是从网络下载的 直接转换成MD5
             filename = MD5Utils.md5(url);
-            File file = new File(CACHE_PATH,filename);
-            Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
-
+            file = new File(CACHE_PATH,filename);
+        }
+        Bitmap bitmap = BitmapUtils.getBitmapByFile(file);
+        if(bitmap!=null){
             return bitmap ;
-        }catch (IOException e){
-            e.printStackTrace();
         }
         return null ;
     }

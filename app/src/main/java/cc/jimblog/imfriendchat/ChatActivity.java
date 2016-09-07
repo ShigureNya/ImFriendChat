@@ -1,10 +1,14 @@
 package cc.jimblog.imfriendchat;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,6 +82,8 @@ public class ChatActivity extends SwipeBackActivity {
     private List<EMMessage> mList ;     //数据集合
     private SwipeBackLayout mBackLayout;   //侧滑关闭Activity所用
 
+    private int PIC_RESULT_CODE = 200 ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,6 +138,10 @@ public class ChatActivity extends SwipeBackActivity {
                 }
             }
         });
+        chatFunctionPhoto.setOnClickListener(new OnChatFunctionClickListener());
+        chatFunctionFile.setOnClickListener(new OnChatFunctionClickListener());
+        chatFunctionLocation.setOnClickListener(new OnChatFunctionClickListener());
+        chatFunctionVideo.setOnClickListener(new OnChatFunctionClickListener());
     }
 
     @OnClick({R.id.chat_edit_voice_btn, R.id.chat_edit_function_btn, R.id.chat_edit_send_btn})
@@ -153,14 +163,7 @@ public class ChatActivity extends SwipeBackActivity {
                 if (content == null || content.equals("")) {
                     return;
                 }
-                //创建一条文本消息，content为消息文字内容，toChatUsername为对方用户或者群聊的id，后文皆是如此
-                final EMMessage message = EMMessage.createTxtSendMessage(content, userName);
-                //发送消息
-                EMClient.getInstance().chatManager().sendMessage(message);
-                mList.add(message);
-                adapter.notifyDataSetChanged();
-                chatEditEditText.setText("");
-                chatList.scrollToPosition(adapter.getItemCount() - 1);
+                sendTextMessage(content);
                 break;
         }
     }
@@ -170,6 +173,7 @@ public class ChatActivity extends SwipeBackActivity {
      */
     private void initToolBar() {
         userName = getIntent().getStringExtra("Username");
+        LogUtils.i("ChatUserName",userName);
         toolBar.setTitle(userName);
         toolBar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         setSupportActionBar(toolBar);
@@ -275,6 +279,9 @@ public class ChatActivity extends SwipeBackActivity {
                     return;
                 }
                 mList.add(emsg);
+                if(conversation != null){
+                    conversation.appendMessage(emsg);
+                }
             }
             adapter.notifyDataSetChanged();
             chatList.scrollToPosition(adapter.getItemCount() - 1);
@@ -287,5 +294,70 @@ public class ChatActivity extends SwipeBackActivity {
     protected void onDestroy() {
         super.onDestroy();
         EMClient.getInstance().chatManager().removeMessageListener(msgListener);
+    }
+
+    class OnChatFunctionClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.chat_function_photo:
+                    Intent picture = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(picture,PIC_RESULT_CODE);
+                    break;
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //通过RequestCode判断
+        if(requestCode == PIC_RESULT_CODE && resultCode == Activity.RESULT_OK && null != data) {
+            //发送图片的方法
+            Uri selectedImage = data.getData();
+            String[] filePathColumns = {MediaStore.Images.Media.DATA};
+            Cursor c = this.getContentResolver().query(selectedImage, filePathColumns, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePathColumns[0]);
+            String picturePath = c.getString(columnIndex);
+            c.close();
+            LogUtils.i("PicPath:"+picturePath);
+            sendPicMessage(picturePath);
+        }
+    }
+
+    /**
+     * 发送文本消息
+     * @param content 文本
+     */
+    private void sendTextMessage(String content){
+        //创建一条文本消息，content为消息文字内容，toChatUsername为对方用户或者群聊的id，后文皆是如此
+        final EMMessage message = EMMessage.createTxtSendMessage(content, userName);
+        //发送消息
+        EMClient.getInstance().chatManager().sendMessage(message);
+        mList.add(message);
+        if(conversation != null){
+            conversation.appendMessage(message);
+        }
+        adapter.notifyDataSetChanged();
+        chatEditEditText.setText("");
+        chatList.scrollToPosition(adapter.getItemCount() - 1);
+    }
+
+    /**
+     * 发送图片消息
+     * @param picPath 图片地址
+     */
+    private void sendPicMessage(String picPath){
+        //imagePath为图片本地路径，false为不发送原图（默认超过100k的图片会压缩后发给对方），需要发送原图传true
+        final EMMessage message = EMMessage.createImageSendMessage(picPath, true, userName);
+        EMClient.getInstance().chatManager().sendMessage(message);
+        mList.add(message);
+        if(conversation != null){
+            conversation.appendMessage(message);
+        }
+        adapter.notifyDataSetChanged();
+        chatList.scrollToPosition(adapter.getItemCount()-1);
     }
 }

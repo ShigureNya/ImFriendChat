@@ -12,6 +12,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 
+import com.squareup.leakcanary.RefWatcher;
+
+import application.HuanXinApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -98,5 +101,11 @@ public class InputPhoneFragment extends Fragment {
     private void setAnimation(View v) {
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.view_shake);
         v.startAnimation(animation);
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = HuanXinApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

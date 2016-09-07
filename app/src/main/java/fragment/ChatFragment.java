@@ -1,5 +1,6 @@
 package fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -8,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.util.Pair;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +21,7 @@ import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,6 +31,7 @@ import java.util.Hashtable;
 import java.util.List;
 
 import adapter.ChatRecyclerAdapter;
+import application.HuanXinApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cc.jimblog.imfriendchat.ChatActivity;
@@ -52,12 +56,13 @@ public class ChatFragment extends Fragment {
     //数据适配器
     private ChatRecyclerAdapter adapter;
 
-
+    private int [] refreshColors = new int[]{android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light};
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_chat, container, false);
         ButterKnife.bind(this, mView);
+        LogUtils.i("触发了:onCreateView");
         //刷新数据
         chatUpdate();
         return mView;
@@ -65,15 +70,21 @@ public class ChatFragment extends Fragment {
     //再Fragment加载完成后加载会话,判断可能由于此方法的原因导致Fragment被创建后就会重载List数据
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        LogUtils.i("触发了:onActivityCreate");
         if(NetWorkUtils.isConnected(mView.getContext())){
             initData();
         }
         //设置下拉刷新
         chatRefreshLayout.setOnRefreshListener(new OnRefreshListener());
-
-        super.onActivityCreated(savedInstanceState);
+        chatRefreshLayout.setColorScheme(refreshColors);
+        //设置列表点击事件
+        adapter.setOnItemClickListener(new OnItemClickListener());
+        adapter.setOnItemLongClickListeners(new OnItemLongClickListeners());
     }
     private void initData(){
+        //先将会话列表清空
+        conversationList.clear();
         //直接加在会话列表
         conversationList.addAll(loadConversationWithRecentChat());
         //设置adapter
@@ -88,9 +99,6 @@ public class ChatFragment extends Fragment {
         chatListView.addItemDecoration(new DividerItemDecoration(mView.getContext(), DividerItemDecoration.VERTICAL_LIST));
         //加载数据
         chatListView.setAdapter(adapter);
-        //设置列表点击事件
-        adapter.setOnItemClickListener(new OnItemClickListener());
-
         int count = 0;
         for (int i = 0; i < conversationList.size(); i++) {
             count += conversationList.get(i).getUnreadMsgCount();
@@ -112,6 +120,45 @@ public class ChatFragment extends Fragment {
         }
     }
 
+    /**
+     * 长点击事件
+     */
+    public class OnItemLongClickListeners implements ChatRecyclerAdapter.OnItemLongClickListeners{
+
+        @Override
+        public void onLongItemClick(final View view, final int position) {
+            LogUtils.i("触发了长点击事件");
+            final AlertDialog.Builder builder = new AlertDialog.Builder(mView.getContext());
+            builder.setItems(getResources().getStringArray(R.array.chat_list_text), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    switch (i){
+                        case 0 :
+
+                            break;
+                        case 1 :
+                            String username = conversationList.get(position).getUserName();
+                            delectConversation(username);
+                            break;
+                    }
+                }
+            });
+            builder.create().show();
+        }
+    }
+
+    /**
+     * 删除指定的用户会话 不删除消息 删除完成后刷新消息
+     * @param username 删除的用户ID
+     */
+    private void delectConversation(String username){
+        boolean isDelete = EMClient.getInstance().chatManager().deleteConversation(username,false);
+        if(isDelete){
+            refresh();
+        }else{
+            LogUtils.e("删除失败");
+        }
+    }
     /**
      * Refresh刷新事件回调
      */
@@ -196,9 +243,9 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onResume() {
-        //Fragment每次加载Resume方法时调用refrush方法
-        refresh();
         super.onResume();
+        LogUtils.i("触发了:onResume");
+//        refresh();
     }
 
     /**
@@ -252,5 +299,7 @@ public class ChatFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         EMClient.getInstance().chatManager().removeMessageListener(msgListener);
+        RefWatcher refWatcher = HuanXinApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

@@ -19,6 +19,7 @@ import java.text.DecimalFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import util.LogUtils;
 import view.TouchImageView;
 
 /**
@@ -57,6 +58,7 @@ public class TouchImageActivity extends AppCompatActivity {
         df = new DecimalFormat("#.##");
         Intent intent = getIntent();
         Uri uri = intent.getData();
+        LogUtils.d("URI"+uri.toString());
         try {
             bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
         } catch (FileNotFoundException e) {

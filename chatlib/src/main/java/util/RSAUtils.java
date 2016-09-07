@@ -16,6 +16,9 @@ import java.security.spec.RSAPublicKeySpec;
 
 import javax.crypto.Cipher;
 
+/**
+ * RSA加密类
+ */
 public class RSAUtils {
     private KeyPair keyPair ;   //密匙对
     public RSAUtils(){

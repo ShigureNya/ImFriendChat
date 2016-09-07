@@ -14,6 +14,16 @@ public class UserInfoEntity extends BmobObject{
     private String userId ; //mainkey
     private BmobFile userImg ;
     private boolean isDefImg ;  //是否为默认头像
+    private BmobFile bg ;   //用户主页背景图
+
+    public BmobFile getBg() {
+        return bg;
+    }
+
+    public void setBg(BmobFile bg) {
+        this.bg = bg;
+    }
+
     private String defImgPosition ;     //默认头像的编号
 
     public String getUserName() {

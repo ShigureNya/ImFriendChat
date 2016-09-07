@@ -21,4 +21,16 @@
         <!--Tab字体是否为大写-->
         <item name="textAllCaps">false</item>
     </style>
+    <!--全局Activity切换动画-->
+    <style name="activityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+    <!--机器人-->
+    <style name="RebotActivityStyle" parent="NoTitleActionStyle">
+        <item name="colorPrimaryDark">@color/rebot_main_style_dark</item>
+        <item name="colorAccent">@color/rebot_main_style</item>
+    </style>
 </resources>

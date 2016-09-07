@@ -10,6 +10,9 @@
     <string name="login_not_account_toast">请输入账号</string>
     <string name="login_not_password_toast">请输入密码</string>
     <string name="login_connect_error_toast">无网络连接！</string>
+    <string name="login_qq_login_text">QQ登录</string>
+    <string name="login_wechat_login_text">微信登录</string>
+    <string name="login_weibo_login_text">微博登录</string>
     <!--注册页-->
     <string name="register_account_hint">请输入账号</string>
     <string name="register_password_hint">请输入密码</string>
@@ -40,7 +43,7 @@
     <!--ContactFragment联系人窗口-->
     <string name="contact_add_friend_text">添加新的朋友</string>
     <string name="contact_ground_text">我的群组</string>
-    <string name="contact_fwh_text">公众号</string>
+    <string name="contact_fwh_text">服务号</string>
     <!--搜索好友-->
     <string name="newfriend_edit_hint">搜索</string>
     <string name="newfriend_qr_btn_text">扫一扫二维码</string>
@@ -48,14 +51,31 @@
     <string name="newfriend_not_edit_hint">请输入手机号码再查找</string>
     <string name="newfriend_not_found_info_hint">没有找到相关用户</string>
     <string name="newfriend_add_friend_text">添 加</string>
+    <string name="newfriend_yes_add_friend_text">同意</string>
+    <string name="newfriend_no_add_friend_text">拒绝</string>
     <!--设置Fragment-->
     <string name="setting_loginout_text">退出登录</string>
     <string name="setting_loginouting_hint">帐号正在退出中...</string>
     <string name="setting_loginout_error_hint">帐号退出失败</string>
     <!--我的群组-->
     <string name="group_title_text">群组</string>
+    <!--侧滑按钮-->
+    <string name="drawer_function_chat_text">会话</string>
+    <string name="drawer_function_contacts_text">联系人</string>
+    <string name="drawer_function_qrcode_text">我的QR码</string>
+    <string name="drawer_function_cloud_text">I Cloud</string>
+    <string name="drawer_function_share_text">分享</string>
+    <string name="drawer_function_setting_text">设置</string>
+    <!--服务号-->
+    <string name="fwh_title_text">服务号</string>
+    <string name="fwh_rebot_chat_text">娜柯酱的红茶小屋</string>
+    <string name="fwh_rebot_chat_title">贴心管家娜柯酱</string>
     <string-array name="country_name_list">
         <item>+86</item>
 
+    </string-array>
+    <string-array name="chat_list_text">
+        <item>置顶聊天</item>
+        <item>删除会话</item>
     </string-array>
 </resources>

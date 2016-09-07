@@ -32,14 +32,28 @@ dependencies {
     compile 'com.android.support:design:24.1.1'
     compile 'com.android.support:cardview-v7:24.1.1'
     compile 'com.android.support:recyclerview-v7:24.1.1'
+//    环信SDK
     compile files('src/main/jniLibs/hyphenatechat_3.1.4.jar')
     compile files('src/main/jniLibs/rxandroid-1.2.0.jar')
     compile files('src/main/jniLibs/rxjava-1.1.6.jar')
     compile project(':chatlib')
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile project(':swipeback')
+//    Bmob后端云SDK
     compile files('src/main/jniLibs/BmobSDK_3.5.1_20160719.jar')
     compile files('src/main/jniLibs/gson-2.6.2.jar')
     compile files('src/main/jniLibs/okhttp-3.3.1.jar')
     compile files('src/main/jniLibs/okio-1.7.0.jar')
+//    图灵机器人SDK
+    compile files('src/main/jniLibs/Baidu-SpeechRecognitionUI-SDK-Android-1.6.2.jar')
+    compile files('src/main/jniLibs/com.baidu.speechsynthesizer_1.1.2.jar')
+    compile files('src/main/jniLibs/com.baidu.android.localasr_1.1.22.jar')
+    compile files('src/main/jniLibs/galaxy.jar')
+    compile files('src/main/jniLibs/tulingSDK1.4.jar')
+    compile files('src/main/jniLibs/turinghttp_1.0.jar')
+    compile files('src/main/jniLibs/VoiceRecognition-1.6.2.jar')
+    compile files('src/main/jniLibs/volley.jar')
+    //测试
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.3'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.3'
 }

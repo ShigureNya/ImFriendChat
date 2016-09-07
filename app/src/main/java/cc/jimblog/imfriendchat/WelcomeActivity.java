@@ -29,7 +29,9 @@ public class WelcomeActivity extends AppCompatActivity {
     // 所需的全部权限
     static final String[] PERMISSIONS = new String[]{
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.GET_TASKS
+            Manifest.permission.GET_TASKS,
+            Manifest.permission.READ_CONTACTS,
+            Manifest.permission.READ_PHONE_STATE
     };
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

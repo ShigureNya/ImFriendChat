@@ -5,6 +5,7 @@ import android.content.Context;
 import java.io.File;
 
 /**
+ * 文件工具类
  * Created by Kotori on 2016/5/23.
  */
 public class FileTools {
@@ -23,7 +24,7 @@ public class FileTools {
         }
         return false ;
     }
-    /*
+    /**
     * 查看指定File文件是否存在
     * */
     public static boolean isFoundFile(File file){

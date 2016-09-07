@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.IBinder;
 
 import com.google.gson.Gson;
+import com.hyphenate.EMContactListener;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMMessage;
@@ -18,9 +19,12 @@ import com.hyphenate.chat.EMTextMessageBody;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cc.jimblog.imfriendchat.ChatActivity;
+import cc.jimblog.imfriendchat.NewFriendActivity;
 import cc.jimblog.imfriendchat.R;
+import cn.bmob.v3.helper.GsonUtil;
 import entity.ContextSave;
 import util.LogUtils;
 import util.ScreenUtils;
@@ -33,6 +37,7 @@ public class MessageService extends Service {
     private Gson gson ;
 
     private static final int NOTIFICATION_ID = 12;
+    private static final int NOTIFICATION_ADD_FRIEND_ID = 145 ;
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -56,7 +61,42 @@ public class MessageService extends Service {
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         EMClient.getInstance().chatManager().addMessageListener(msgListener);
         gson = new Gson();
+        registerAddFriendCallBack();
         return START_STICKY ;
+    }
+    private void registerAddFriendCallBack(){
+        EMClient.getInstance().contactManager().setContactListener(new EMContactListener() {
+
+            @Override
+            public void onContactAgreed(String username) {
+                //好友请求被同意
+            }
+
+            @Override
+            public void onContactRefused(String username) {
+                //好友请求被拒绝
+            }
+
+            @Override
+            public void onContactInvited(String username, String reason) {
+                //收到好友邀请
+                HashMap<String,String> hashMap = new HashMap<String, String>();
+                hashMap.put("Name",username);
+                hashMap.put("Reason",reason);
+                receiveNotification(hashMap);
+            }
+
+            @Override
+            public void onContactDeleted(String username) {
+                //被删除时回调此方法
+            }
+
+
+            @Override
+            public void onContactAdded(String username) {
+                //增加了联系人时回调此方法
+            }
+        });
     }
     /**
      * 初始化广播接收器对象
@@ -118,6 +158,61 @@ public class MessageService extends Service {
             showDefaultNotification(hashMap);
         }
     }
+
+    /**
+     * 收到好友消息
+     */
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void receiveNotification(HashMap<String,String> hashMap){
+        String name = hashMap.get("Name");
+        String content = hashMap.get("Reason");
+        Notification.Builder receiveBuilder = new Notification.Builder(this)
+                .setSmallIcon(R.mipmap.ic_lanuch)
+                .setPriority(Notification.PRIORITY_DEFAULT)
+                .setCategory(Notification.CATEGORY_MESSAGE)
+                .setContentTitle("收到了来自"+name+"的好友请求")
+                .setContentText(content)
+                .setDefaults(Notification.DEFAULT_SOUND);   //设置默认声音
+        Intent push = new Intent();
+        push.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);// 关键的一步，设置启动模式
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, push, PendingIntent.FLAG_CANCEL_CURRENT);
+        receiveBuilder.setFullScreenIntent(pendingIntent, true);
+        notificationManager.notify(NOTIFICATION_ID, receiveBuilder.build());
+        try {
+            Thread.sleep(1200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        notificationManager.cancel(NOTIFICATION_ID);
+        showFriendNotification(hashMap);
+    }
+    /**
+     * 接收好友请求时监听 - 普通Notification
+     * @param map
+     */
+    private void showFriendNotification(HashMap<String,String> map){
+        String name = map.get("Name");
+        String content = map.get("Reason");
+        Map<String,Object> maps = new HashMap<String,Object>();
+        maps.put("Name",name);
+        maps.put("Reason",content);
+        String json = GsonUtil.mapToJson(maps);
+        LogUtils.d("Json:"+json);
+        Notification.Builder builder = new Notification.Builder(this);
+        Intent mIntent = new Intent(MessageService.this,NewFriendActivity.class);
+        mIntent.putExtra("UserInfo",json);
+        mIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, mIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        builder.setContentIntent(pendingIntent);
+        builder.setSmallIcon(R.mipmap.ic_lanuch);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_lanuch));
+        builder.setAutoCancel(true);
+        builder.setContentTitle("来自"+name+"的新消息");
+        builder.setContentText(content);
+        notificationManager.notify(21,builder.build());
+    }
+
     /**
      * 实现悬挂式Notification
      * @param hashMap 消息体HashMap
@@ -148,6 +243,11 @@ public class MessageService extends Service {
         notificationManager.cancel(NOTIFICATION_ID);
         showDefaultNotification(hashMap);
     }
+
+    /**
+     * 接收到消息时监听
+     * @param map
+     */
     private void showDefaultNotification(HashMap<String,String> map){
         String name = map.get("Name");
         String content = map.get("Content");
@@ -165,4 +265,5 @@ public class MessageService extends Service {
         builder.setContentText(content);
         notificationManager.notify(15,builder.build());
     }
+
 }

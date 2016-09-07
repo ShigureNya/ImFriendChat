@@ -3,16 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@color/second_text_color">
+    android:background="@drawable/default_user_bg"
+    android:id="@+id/main_header_background">
     <view.CircleImageView
         android:id="@+id/main_header_userimg"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         app:border_color="#0000"
         app:border_width="0dp"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="18dp"
-
+        android:src="@mipmap/user_image"
+        android:elevation="3dp"
         />
     <TextView
         android:id="@+id/main_header_username"
@@ -24,4 +26,15 @@
         android:text="My User Name"
         android:textColor="@color/main_bg"
         android:layout_alignLeft="@id/main_header_userimg"/>
+    <ImageButton
+        android:id="@+id/main_header_edit"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/main_header_userimg"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="3dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_border_color_white_24dp"
+        android:background="#0000"/>
 </RelativeLayout>

@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.squareup.leakcanary.RefWatcher;
+
+import application.HuanXinApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -65,5 +68,11 @@ public class FuncationFragment extends Fragment {
                 startActivity(new Intent(view.getContext(), TestActivity.class));
                 break;
         }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = HuanXinApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

@@ -10,6 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
+ * Http请求工具类
  * Created by Administrator on 2016/5/9.
  */
 public class HttpClientUtils {

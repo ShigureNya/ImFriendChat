@@ -17,14 +17,17 @@ import android.widget.RelativeLayout;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import adapter.ContactsRecyclerAdapter;
+import application.HuanXinApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cc.jimblog.imfriendchat.ChatActivity;
+import cc.jimblog.imfriendchat.FwhActivity;
 import cc.jimblog.imfriendchat.GroupActivity;
 import cc.jimblog.imfriendchat.NewFriendActivity;
 import cc.jimblog.imfriendchat.R;
@@ -44,6 +47,8 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
     private List<String> mList = new ArrayList<String>();
 
     private ContactsRecyclerAdapter adapter;
+
+    private int [] refreshColors = new int[]{android.R.color.holo_blue_light, android.R.color.holo_red_light, android.R.color.holo_orange_light, android.R.color.holo_green_light};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -71,6 +76,7 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         contactList.setAdapter(adapter);
         //设置头部Adapter
         setHeaderView(contactList);
+
     }
 
     @Override
@@ -95,6 +101,7 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
                 refreshData();
             }
         });
+        contactsRefresh.setColorScheme(refreshColors);
         super.onViewCreated(view, savedInstanceState);
     }
 
@@ -185,9 +192,16 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
                 startActivity(new Intent(getActivity(), GroupActivity.class));
                 break;
             case R.id.item_contacts_fwh_layout:
-
+                startActivity(new Intent(getActivity(), FwhActivity.class));
                 break;
         }
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        RefWatcher refWatcher = HuanXinApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

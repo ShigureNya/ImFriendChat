@@ -155,7 +155,9 @@ public class ImageDownload {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            conn.disconnect();
+            if (conn != null) {
+                conn.disconnect();
+            }
         }
 
         return null;

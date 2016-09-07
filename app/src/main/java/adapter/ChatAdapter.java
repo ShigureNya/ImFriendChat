@@ -87,12 +87,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                 holder.messageLeftText.setVisibility(View.GONE);
                 EMImageMessageBody imageBody = (EMImageMessageBody) message.getBody();
                 String url = imageBody.getThumbnailUrl() ;
-                //设置默认替换的图片
-                holder.messageLeftImage.setImageResource(R.mipmap.ic_launcher);
                 //为图片设置Tag防止错误加载
                 holder.messageLeftImage.setTag(url);
                 if(holder.messageLeftImage.getTag()!=null && holder.messageLeftImage.getTag().equals(url)){
-                    bitmapCacheUtil.disPlay(holder.messageLeftImage,url);
+                    bitmapCacheUtil.disPlayImage(holder.messageLeftImage , url );
                 }
             }
             String userId = message.getUserName();
@@ -119,13 +117,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                 holder.messageRightImage.setVisibility(View.VISIBLE);
                 holder.messageRightText.setVisibility(View.GONE);
                 EMImageMessageBody imageBody = (EMImageMessageBody) message.getBody();
-                String url = imageBody.getThumbnailUrl() ;
-                //设置默认替换的图片
-                holder.messageRightImage.setImageResource(R.mipmap.ic_launcher);
+                String url = imageBody.getLocalUrl() ;
                 //为图片设置Tag防止错误加载
                 holder.messageRightImage.setTag(url);
                 if(holder.messageRightImage.getTag()!=null && holder.messageRightImage.getTag().equals(url)){
-                    bitmapCacheUtil.disPlay(holder.messageRightImage,url);
+                    bitmapCacheUtil.disPlayImage(holder.messageRightImage , url);
                 }
             }
             String userId = EMClient.getInstance().getCurrentUser();
@@ -171,7 +167,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             userRightImg = (CircleImageView) itemView.findViewById(R.id.chat_right_img);
             tokenRightLayout = (RelativeLayout) itemView.findViewById(R.id.chat_right_msg_layout);
             messageRightImage = (ImageView) itemView.findViewById(R.id.chat_right_text_img);
-
             messageLeftImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -188,7 +183,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             });
         }
     }
-
     /**
      * 打开图像查看器
      * @param position
@@ -197,12 +191,20 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         EMMessage message = mList.get(position);
         if(message.getType() == EMMessage.Type.IMAGE){
             EMImageMessageBody imageBody = (EMImageMessageBody) message.getBody();
-            String url = imageBody.getThumbnailUrl() ;
-
-            Intent intent = new Intent();
-            intent.setClass(mContext, TouchImageActivity.class);
-            intent.setData(Uri.fromFile(new File(LocalCacheUtil.getBitmapNameURL(url))));
-            mContext.startActivity(intent);
+            String url = imageBody.getThumbnailUrl().trim() ;
+            if(url != null && !url.equals("") && message.direct() == EMMessage.Direct.RECEIVE){
+                Intent intent = new Intent();
+                intent.setClass(mContext, TouchImageActivity.class);
+                intent.setData(Uri.fromFile(new File(LocalCacheUtil.getBitmapNameURL(url))));
+                mContext.startActivity(intent);
+            }else{
+                String localUrl = imageBody.getLocalUrl();
+                LogUtils.i("LocalURL:"+localUrl);
+                Intent intent = new Intent();
+                intent.setClass(mContext, TouchImageActivity.class);
+                intent.setData(Uri.fromFile(new File(localUrl)));
+                mContext.startActivity(intent);
+            }
         }
     }
     /**
@@ -226,7 +228,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                                 imageView.setImageBitmap(leftBitmap);
                             }else{
                                 String url = entity.getUserImg().getUrl();
-                                bitmapCacheUtil.disPlay(imageView,url);
+                                bitmapCacheUtil.disPlayImage(imageView,url);
                                 leftBitmap = localUtil.getBitmapFromLocal(url);
                             }
                         }
@@ -256,7 +258,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                         imageView.setImageBitmap(rightBitmap);
                     }else{
                         String url = entity.getUserImg().getUrl();
-                        bitmapCacheUtil.disPlay(imageView,url);
+                        bitmapCacheUtil.disPlayImage(imageView,url);
                         rightBitmap = localUtil.getBitmapFromLocal(url);
                     }
                 }

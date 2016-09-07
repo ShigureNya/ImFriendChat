@@ -41,12 +41,22 @@
             android:layout_marginLeft="25dp"
             android:textSize="@dimen/main_text_size"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/login_function_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用第三方帐号登录"
+        android:textColor="@color/second_text_color"
+        android:layout_below="@id/login_sign_layout"
+        android:textSize="@dimen/second_text_size"
+        android:gravity="center"
+        android:layout_marginTop="5dp"/>
     <RelativeLayout
         android:id="@+id/login_progress_layout"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:background="@drawable/progress_hub_shape"
-        android:layout_below="@id/login_sign_layout"
+        android:layout_below="@id/login_function_text"
         android:layout_marginTop="5dp"
         android:layout_centerHorizontal="true"
         android:visibility="gone"
@@ -75,4 +85,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
     </android.support.design.widget.CoordinatorLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/login_qq_login_text"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/login_wechat_login_text"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/login_weibo_login_text"/>
+
+    </LinearLayout>
 </RelativeLayout>

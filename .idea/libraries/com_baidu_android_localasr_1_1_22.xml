@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="com.baidu.android.localasr_1.1.22">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/src/main/jniLibs/com.baidu.android.localasr_1.1.22.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

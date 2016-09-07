@@ -8,6 +8,8 @@ import android.util.Log;
 
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMOptions;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 import java.util.Iterator;
 import java.util.List;
@@ -17,14 +19,18 @@ import java.util.List;
  */
 public class HuanXinApplication extends Application{
     private Context applicationContext ;
+    private RefWatcher refWatcher;
     @Override
     public void onCreate(){
         super.onCreate();
         if(applicationContext == null){
             applicationContext = getApplicationContext();
         }
+        //初始化LeakCanary管理内存泄露
+        refWatcher =  LeakCanary.install(this);
+
         EMOptions options = new EMOptions();
-        // 默认添加好友时，是不需要验证的，改成需要验证
+        // 默认添加好友时，是不需要验证的，改成需要验证 妈的智障
         options.setAcceptInvitationAlways(false);
         int pid = android.os.Process.myPid();
         String processAppName = getAppName(pid);
@@ -40,6 +46,7 @@ public class HuanXinApplication extends Application{
         EMClient.getInstance().init(applicationContext, options);
         //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
         EMClient.getInstance().setDebugMode(true);
+
     }
     private String getAppName(int pID) {
         String processName = null;
@@ -59,5 +66,10 @@ public class HuanXinApplication extends Application{
             }
         }
         return processName;
+    }
+
+    public static RefWatcher getRefWatcher(Context context) {
+        HuanXinApplication application = (HuanXinApplication) context.getApplicationContext();
+        return application.refWatcher;
     }
 }

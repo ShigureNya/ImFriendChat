@@ -10,9 +10,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 
 import java.util.List;
@@ -25,6 +22,7 @@ import entity.ContextSave;
 import entity.UserInfoEntity;
 import image.MyBitmapCacheUtil;
 import util.BitmapUtils;
+import util.JsonUtil;
 import util.LogUtils;
 import view.CircleImageView;
 
@@ -41,8 +39,6 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
     public static final int TYPE_NORMAL = 1;
 
     private View mHeaderView ;  //头部View
-
-    private Gson gson ;
 
     private MyBitmapCacheUtil cacheUtil ;
     public void setHeaderView(View headerView) {
@@ -71,8 +67,6 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
             mInflater = LayoutInflater.from(mContext);
         }
         this.mList = list ;
-
-        gson = new Gson();
         cacheUtil = new MyBitmapCacheUtil();
     }
 
@@ -93,7 +87,7 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
         if(!mList.isEmpty()){
             String name = mList.get(position-1);
             holder.userName.setText(name);
-            holder.userImage.setImageResource(R.mipmap.default_1);
+            holder.userImage.setImageResource(R.mipmap.user_image);
             holder.userImage.setTag(name);
             if(holder.userImage.getTag()!=null && holder.userImage.getTag().equals(name)){
                 queryUserImg(name,holder.userImage);
@@ -150,7 +144,7 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
         query.findObjectsByTable(new QueryListener<JSONArray>() {
             @Override
             public void done(JSONArray jsonArray, BmobException e) {
-                List<UserInfoEntity> userInfo = jsonToList(jsonArray.toString());
+                List<UserInfoEntity> userInfo = new JsonUtil().jsonToList(jsonArray.toString());
                 for(UserInfoEntity entity : userInfo){
                     boolean flag = entity.isDefImg();
                     if(flag){   //是否使用默认的用户头像
@@ -160,21 +154,10 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
                         imageView.setImageBitmap(bitmap);
                     }else{
                         String url = entity.getUserImg().getUrl();
-                        cacheUtil.disPlay(imageView,url);
+                        cacheUtil.disPlayImage(imageView,url);
                     }
                 }
             }
         });
-    }
-    /**
-     * @param json 将JSON转换为List集合
-     * @return 实体集合
-     */
-    public List<UserInfoEntity> jsonToList(String json) {
-        LogUtils.i("Json数据:"+json);
-        List<UserInfoEntity> entityList = gson.fromJson(json, new TypeToken<List<UserInfoEntity>>() {
-
-        }.getType());
-        return entityList;
     }
 }

@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.content.ContextCompat;
 
 /**
+ * 权限管理  静态内部单例
  * Created by jimhao on 16/8/31.
  */
 public class PermissionCheckerUtil {

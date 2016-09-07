@@ -1,6 +1,7 @@
 package cc.jimblog.imfriendchat;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -13,6 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.hyphenate.chat.EMClient;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,15 +30,24 @@ import java.util.List;
 import adapter.MainPageAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.QueryListener;
 import entity.ContextSave;
+import entity.UserInfoEntity;
 import fragment.ChatFragment;
 import fragment.ContactsFragment;
 import fragment.FuncationFragment;
 import fragment.SettingFragment;
+import image.MyBitmapCacheUtil;
 import service.MessageService;
+import util.BitmapUtils;
+import util.JsonUtil;
+import util.LogUtils;
 import util.ToastUtils;
+import view.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements SettingFragment.OnLogOutClickListener{
+public class MainActivity extends AppCompatActivity implements SettingFragment.OnLogOutClickListener {
 
     @BindView(R.id.main_tool_bar)
     Toolbar mainToolBar;
@@ -56,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
      * 初始化数据的方法
      */
     private void initData() {
-        ContextSave.MainActivity = MainActivity.this ;
+        ContextSave.MainActivity = MainActivity.this;
 
         chatFragment = new ChatFragment();
         contactsFragment = new ContactsFragment();
@@ -86,6 +105,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         initTabLayout();
         initFragmentAdapter();
         registerService();  //注册消息广播监听
+        initHeaderUserInfo();   //初始化侧滑数据
     }
 
     /**
@@ -97,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         mDrawerToggle.syncState();  //init
         mainDrawerLayout.setDrawerListener(mDrawerToggle);
         mainNavigationView.setNavigationItemSelectedListener(new MyNavigationItemListener());
-
     }
 
     /**
@@ -118,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         //initFragmentAdapter
         mAdapter = new MainPageAdapter(getSupportFragmentManager(), mFragmentList, mTitleList);
         mainViewpager.setCurrentItem(0);    //设置默认加载为聊天窗口
+        mainViewpager.setOffscreenPageLimit(4); //ViewPager缓存
         mainTabLayout.setupWithViewPager(mainViewpager);
         mainTabLayout.setTabsFromPagerAdapter(mAdapter);
         mainViewpager.setAdapter(mAdapter);
@@ -130,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
      */
     @Override
     public void onClick() {
-        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
@@ -143,7 +163,24 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         @Override
         public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
+                case R.id.drawer_function_chat:
+                    mainViewpager.setCurrentItem(0);
+                    break;
+                case R.id.drawer_function_contacts:
+                    mainViewpager.setCurrentItem(1);
+                    break;
+                case R.id.drawer_online_cloud:
 
+                    break;
+                case R.id.drawer_online_qrcode:
+
+                    break;
+                case R.id.drawer_setting_set:
+
+                    break;
+                case R.id.drawer_setting_share:
+
+                    break;
             }
             item.setCheckable(true);    //设为选中
             mainDrawerLayout.closeDrawer(GravityCompat.START);  //关闭抽屉
@@ -196,11 +233,12 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         }
     }
 
-    private void registerService(){
+    private void registerService() {
         Intent serviceIntent = new Intent(MainActivity.this, MessageService.class);
         startService(serviceIntent);
     }
-    private void unregisterService(){
+
+    private void unregisterService() {
         Intent serviceIntent = new Intent(MainActivity.this, MessageService.class);
         stopService(serviceIntent);
     }
@@ -210,4 +248,89 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         super.onDestroy();
         unregisterService();
     }
+
+    //回退按钮使DrawerLayout关闭
+    @Override
+    public void onBackPressed() {
+        if(mainDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            mainDrawerLayout.closeDrawer(GravityCompat.START);
+        }else{
+            super.onBackPressed();
+        }
+    }
+    private CircleImageView userImageView ;
+    private TextView userName ;
+    private ImageButton userInfoEdit;
+    private RelativeLayout userLayout ;
+    private MyBitmapCacheUtil cacheUtil ;
+
+    /**
+     * 初始化NavigationView数据的方法
+     */
+    public void initHeaderUserInfo(){
+        View mView= mainNavigationView.getHeaderView(0);
+        userImageView = (CircleImageView) mView.findViewById(R.id.main_header_userimg);
+        userName = (TextView) mView.findViewById(R.id.main_header_username);
+        userInfoEdit = (ImageButton) mView.findViewById(R.id.main_header_edit);
+        userLayout = (RelativeLayout)mView.findViewById(R.id.main_header_background);
+        cacheUtil = new MyBitmapCacheUtil();
+
+        String name = EMClient.getInstance().getCurrentUser();
+        userName.setText(name);
+        queryUserInfoImage(name,userImageView);
+        userImageView.setImageResource(R.mipmap.user_image);
+        userImageView.setOnClickListener(new UserImageClickListener());
+        userInfoEdit.setOnClickListener(new EditUserInfoClickListener());
+    }
+
+    /**
+     * 查询并设置用户头像
+     * @param userId
+     * @param imageView
+     */
+    private void queryUserInfoImage(String userId , final ImageView imageView){
+        BmobQuery<UserInfoEntity> query = new BmobQuery<UserInfoEntity>("userinfo");
+        query.addWhereEqualTo("userId",userId);
+        query.findObjectsByTable(new QueryListener<JSONArray>() {
+            @Override
+            public void done(JSONArray jsonArray, BmobException e) {
+                List<UserInfoEntity> userInfo = new JsonUtil().jsonToList(jsonArray.toString());
+                for(UserInfoEntity entity : userInfo){
+                    boolean flag = entity.isDefImg();
+                    if(flag){   //是否使用默认的用户头像
+                        int position = Integer.parseInt(entity.getDefImgPosition());
+                        LogUtils.d("Position"+position);
+                        Bitmap bitmap = BitmapUtils.getBitmapById(MainActivity.this,ContextSave.defPicArray[position]);
+                        if(ContextSave.userBitmap == null){
+                            ContextSave.userBitmap = bitmap ;
+                        }
+                        imageView.setImageBitmap(bitmap);
+                    }else{
+                        String url = entity.getUserImg().getUrl();
+                        Bitmap bitmap = BitmapUtils.returnBitMap(url);
+                        cacheUtil.disPlayImage(imageView,url);
+
+                        if(ContextSave.userBitmap == null){
+                            ContextSave.userBitmap = bitmap ;
+                        }
+                    }
+                }
+            }
+        });
+    }
+    class UserImageClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+
+        }
+    }
+    class EditUserInfoClickListener implements View.OnClickListener{
+
+        @Override
+        public void onClick(View view) {
+
+        }
+    }
 }
+

@@ -22,4 +22,7 @@
     <color name="second_button_frame">#DADADA</color>
     <!--朋友圈发送动态按钮颜色-->
     <color name="pyq_button_color">#ff5454</color>
+    <!--聊天机器人主题色-->
+    <color name="rebot_main_style">#ff5177</color>
+    <color name="rebot_main_style_dark">#ba3c59</color>
 </resources>

@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/drawer_function_group"
+        android:checkableBehavior="single">
+        <item android:id="@+id/drawer_function_chat"
+            android:icon="@drawable/ic_forum_black_18dp"
+            android:title="@string/drawer_function_chat_text">
+        </item>
+        <item android:id="@+id/drawer_function_contacts"
+            android:icon="@drawable/ic_person_black_18dp"
+            android:title="@string/drawer_function_contacts_text">
+        </item>
+    </group>
 
+    <group android:id="@+id/drawer_online_group"
+        android:checkableBehavior="single">
+        <item android:id="@+id/drawer_online_cloud"
+            android:icon="@drawable/ic_cloud_black_18dp"
+            android:title="@string/drawer_function_cloud_text">
+        </item>
+        <item android:id="@+id/drawer_online_qrcode"
+            android:icon="@drawable/ic_center_focus_weak_black_18dp"
+            android:title="@string/drawer_function_qrcode_text">
+        </item>
+    </group>
+
+    <group android:id="@+id/drawer_setting_group"
+        android:checkableBehavior="single">
+        <item android:id="@+id/drawer_setting_share"
+            android:icon="@drawable/ic_share_black_18dp"
+            android:title="@string/drawer_function_share_text">
+        </item>
+        <item android:id="@+id/drawer_setting_set"
+            android:icon="@drawable/ic_settings_black_18dp"
+            android:title="@string/drawer_function_setting_text">
+        </item>
+    </group>
 </menu>
