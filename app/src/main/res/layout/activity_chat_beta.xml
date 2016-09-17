@@ -55,7 +55,7 @@
                     android:layout_height="30dp"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:background="@drawable/chat_edit_btn_shape"
+                    android:background="@drawable/chat_edit_btn_not_shape"
                     android:src="@mipmap/ic_chat_send_btn"/>
                 <EditText
                     android:id="@+id/chat_edit_editText"

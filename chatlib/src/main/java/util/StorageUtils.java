@@ -7,6 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
+ * SharedPreferences工具类
  * Created by Kotori on 2016/5/21.
  */
 public class StorageUtils {

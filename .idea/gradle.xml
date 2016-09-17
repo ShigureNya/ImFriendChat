@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/chatlib" />
+            <option value="$PROJECT_DIR$/sliding_lib" />
             <option value="$PROJECT_DIR$/swipeback" />
           </set>
         </option>
@@ -18,6 +19,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/chatlib" />
+            <option value="$PROJECT_DIR$/sliding_lib" />
             <option value="$PROJECT_DIR$/swipeback" />
           </set>
         </option>

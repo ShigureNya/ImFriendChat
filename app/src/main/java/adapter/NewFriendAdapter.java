@@ -57,7 +57,7 @@ public class NewFriendAdapter extends RecyclerView.Adapter<NewFriendAdapter.MyVi
                 String imageUrl = userImg.getUrl();
                 holder.userImage.setTag(imageUrl);
                 if(holder.userImage.getTag()!=null && holder.userImage.getTag().equals(imageUrl)){
-                    myBitmapUtil.disPlay(holder.userImage,imageUrl);
+                    myBitmapUtil.disPlayImage(holder.userImage,imageUrl);
                 }
             }
         }

@@ -41,34 +41,16 @@
             android:layout_marginLeft="25dp"
             android:textSize="@dimen/main_text_size"/>
     </LinearLayout>
-    <RelativeLayout
-        android:id="@+id/login_progress_layout"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:background="@drawable/progress_hub_shape"
+    <TextView
+        android:id="@+id/login_function_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="使用第三方帐号登录"
+        android:textColor="@color/second_text_color"
         android:layout_below="@id/login_sign_layout"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"
-        >
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="25dp"
-            android:layout_centerHorizontal="true"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Please wait"
-            android:layout_below="@id/progress_bar"
-            android:layout_marginTop="13dp"
-            android:textColor="@color/main_bg"
-            android:layout_centerHorizontal="true"
-            />
-    </RelativeLayout>
+        android:textSize="@dimen/second_text_size"
+        android:gravity="center"
+        android:layout_marginTop="5dp"/>
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/login_snackbar_layout"
         android:layout_width="match_parent"

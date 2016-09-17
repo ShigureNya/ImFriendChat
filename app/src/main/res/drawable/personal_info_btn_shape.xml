@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    // 获取焦点时候按钮的背景状态
+    <item android:drawable="@drawable/person_info_btn_click_shape" android:state_enabled="true" android:state_focused="true"/>
+    // 被按下时候按钮的背景状态
+    <item android:drawable="@drawable/person_info_btn_click_shape" android:state_enabled="true" android:state_pressed="true"/>
+    //正常状态下按钮的状态
+    <item android:drawable="@drawable/person_info_btn_defualt_shape"/>
+
+</selector>

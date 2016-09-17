@@ -1,1 +1,1 @@
-include ':app', ':chatlib', ':swipeback'
+include ':app', ':chatlib', ':swipeback' ,':sliding_lib'

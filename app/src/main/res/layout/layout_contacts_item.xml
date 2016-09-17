@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,23 +7,33 @@
     android:layout_width="match_parent"
     android:layout_height="55dp"
     tools:context=".MainActivity"
-    android:fitsSystemWindows="true">
-    <view.CircleImageView
-        android:id="@+id/item_contacts_img"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        app:border_color="#0000"
-        android:src="@mipmap/user_image"/>
-    <TextView
-        android:id="@+id/item_contacts_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/main_text_color"
-        android:textSize="@dimen/main_text_size"
-        android:text="TextName"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="70dp"/>
-</RelativeLayout>
+    android:fitsSystemWindows="true"
+    android:layout_marginLeft="@dimen/cardview_width_size"
+    android:layout_marginRight="@dimen/cardview_width_size"
+    android:layout_marginTop="@dimen/cardview_height_size"
+    android:layout_marginBottom="@dimen/cardview_height_size"
+    app:cardCornerRadius="5dp"
+    android:background="@drawable/recycler_bg">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <view.CircleImageView
+            android:id="@+id/item_contacts_img"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="16dp"
+            app:border_color="#0000"
+            android:src="@mipmap/user_image"/>
+        <TextView
+            android:id="@+id/item_contacts_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/main_text_size"
+            android:text="TextName"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="70dp"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

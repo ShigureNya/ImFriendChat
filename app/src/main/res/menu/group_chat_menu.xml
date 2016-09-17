@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/group_chat_menu_members"
+        android:title="Add"
+        android:icon="@drawable/ic_group_white_24dp"
+        app:showAsAction="ifRoom"
+        android:orderInCategory="70"/>
+</menu>

@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         >
         <view.CircleImageView
             android:id="@+id/chat_left_img"
@@ -20,33 +21,75 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginRight="6dp"
             android:src="@drawable/head_img"
             app:border_color="#0000"/>
         <RelativeLayout
             android:id="@+id/chat_left_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:gravity="center"
             android:layout_toRightOf="@id/chat_left_img"
-            android:background="@drawable/chat_from_bg_normal"
-            >
+            android:background="@mipmap/ease_chatfrom_bg_normal">
             <TextView
                 android:id="@+id/chat_left_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:text="HelloWorld"
+                android:gravity="left|top"
                 android:autoLink="email|phone"
-                android:textColor="#fff"
-                android:textSize="16sp"/>
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_margin="7dp"
+                android:maxWidth="220dp"
+                android:text="HelloWorld"
+                />
             <ImageView
                 android:id="@+id/chat_left_text_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:layout_margin="3dp"
+                />
+            <RelativeLayout
+                android:id="@+id/chat_left_file_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                >
+                <ImageView
+                    android:id="@+id/chat_left_file_icon"
+                    android:layout_width="55dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_file_default"
+                    android:scaleType="centerCrop"
+                    android:padding="5dp"/>
+                <TextView
+                    android:id="@+id/chat_left_file_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="种子文件大小.txt"
+                    android:textSize="@dimen/second_text_size"
+                    android:maxLength="18"
+                    android:textColor="#000000"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_alignTop="@id/chat_left_file_icon"
+                    android:layout_toRightOf="@id/chat_left_file_icon"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="2dp"/>
+                <TextView
+                    android:id="@+id/chat_left_file_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="未下载"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/third_text_size"
+                    android:layout_alignRight="@id/chat_left_file_name"
+                    android:layout_alignBottom="@id/chat_left_file_icon"/>
+            </RelativeLayout>
         </RelativeLayout>
         <TextView
             android:id="@+id/chat_left_time"
@@ -64,15 +107,17 @@
         android:id="@+id/chat_right_msg_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
         >
         <view.CircleImageView
             android:id="@+id/chat_right_img"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="6dp"
             android:layout_marginRight="14dp"
             android:src="@drawable/head_img"
             app:border_color="#0000"/>
@@ -80,24 +125,63 @@
             android:id="@+id/chat_right_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/chat_to_bg_normal"
+            android:background="@mipmap/ease_chatto_bg_normal"
             android:gravity="center"
-            android:layout_toLeftOf="@id/chat_right_img">
+            android:layout_toLeftOf="@id/chat_right_img"
+            android:layout_centerVertical="true">
             <TextView
                 android:id="@+id/chat_right_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
+                android:gravity="left|top"
                 android:text="hey!"
                 android:textSize="16sp"
-                android:textColor="@color/main_text_color"
-                android:autoLink="email|phone"/>
+                android:autoLink="email"
+                android:layout_margin="7dp"
+                android:maxWidth="220dp"
+                />
             <ImageView
                 android:id="@+id/chat_right_text_img"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:layout_margin="3dp"/>
+            <RelativeLayout
+                android:id="@+id/chat_right_file_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                >
+                <ImageView
+                    android:id="@+id/chat_right_file_icon"
+                    android:layout_width="55dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/ic_file_default"
+                    android:scaleType="centerCrop"
+                    android:padding="5dp"
+                    />
+                <TextView
+                    android:id="@+id/chat_right_file_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="种子文件大小.txt"
+                    android:textSize="@dimen/second_text_size"
+                    android:maxLength="18"
+                    android:ellipsize="end"
+                    android:layout_alignTop="@id/chat_right_file_icon"
+                    android:layout_toRightOf="@id/chat_right_file_icon"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="2dp" />
+                <TextView
+                    android:id="@+id/chat_right_file_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/third_text_size"
+                    android:layout_alignRight="@id/chat_right_file_name"
+                    android:layout_alignBottom="@id/chat_right_file_icon"/>
+            </RelativeLayout>
         </RelativeLayout>
         <TextView
             android:id="@+id/chat_right_time"

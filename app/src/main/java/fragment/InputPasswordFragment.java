@@ -177,6 +177,8 @@ public class InputPasswordFragment extends Fragment {
                 entity.setUserName(account);
                 entity.setDefImg(true); //默认使用系统提供的头像
                 entity.setDefImgPosition(String.valueOf(defaultNum));
+                entity.setUserSign(getString(R.string.default_sign));
+                entity.setSex(true);
                 entity.save(new SaveListener<String>() {
                     @Override
                     public void done(String s, BmobException e) {
@@ -294,5 +296,9 @@ public class InputPasswordFragment extends Fragment {
         Random random = new Random();
         int num = random.nextInt(12);
         return num ;
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

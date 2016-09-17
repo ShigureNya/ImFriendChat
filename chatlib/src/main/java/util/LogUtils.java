@@ -3,6 +3,7 @@ package util;
 import android.util.Log;
 
 /**
+ * 日志工具类
  * Created by Administrator on 2016/5/9.
  */
 public class LogUtils {

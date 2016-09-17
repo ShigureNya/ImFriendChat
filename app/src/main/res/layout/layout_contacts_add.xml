@@ -15,9 +15,9 @@
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="23dp"
             app:border_color="#0000"
-            android:src="@mipmap/ic_contacts_new_btn"/>
+            android:src="@mipmap/ic_contacts_new_btn" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:textSize="@dimen/main_text_size"
             android:text="@string/contact_add_friend_text"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="70dp"/>
+            android:layout_marginLeft="77dp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -38,7 +38,7 @@
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="23dp"
             app:border_color="#0000"
             android:src="@mipmap/ic_contacts_group_btn"/>
         <TextView
@@ -48,7 +48,7 @@
             android:textSize="@dimen/main_text_size"
             android:text="@string/contact_ground_text"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="70dp"/>
+            android:layout_marginLeft="77dp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -61,7 +61,7 @@
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="16dp"
+            android:layout_marginRight="23dp"
             app:border_color="#0000"
             android:src="@mipmap/ic_contacts_fwh_btn"/>
         <TextView
@@ -71,6 +71,11 @@
             android:textSize="@dimen/main_text_size"
             android:text="@string/contact_fwh_text"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="70dp"/>
+            android:layout_marginLeft="77dp"/>
     </RelativeLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dbdbdb"
+        android:layout_marginBottom="5dp"/>
 </LinearLayout>

@@ -99,4 +99,8 @@ public class InputPhoneFragment extends Fragment {
         Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.view_shake);
         v.startAnimation(animation);
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }

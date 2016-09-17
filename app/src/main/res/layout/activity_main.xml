@@ -7,27 +7,21 @@
     android:layout_height="match_parent"
     tools:context="cc.jimblog.imfriendchat.MainActivity"
     android:fitsSystemWindows="true">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
         <LinearLayout
+            android:id="@+id/main_header_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:elevation="3dp">
-
-            <android.support.design.widget.AppBarLayout
+            android:orientation="vertical">
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/main_tool_bar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                >
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/main_tool_bar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:theme="@style/AppTheme.PopupOverlay">
-                </android.support.v7.widget.Toolbar>
-            </android.support.design.widget.AppBarLayout>
+                app:theme="@style/AppTheme.PopupOverlay"
+                android:background="@color/main_style_color">
+            </android.support.v7.widget.Toolbar>
             <!--内容区？-->
             <android.support.design.widget.TabLayout
                 android:id="@+id/main_tab_layout"
@@ -44,16 +38,24 @@
             android:id="@+id/main_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@id/main_header_layout"
             />
-    </LinearLayout>
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/main_snackbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+        </android.support.design.widget.CoordinatorLayout>
+    </RelativeLayout>
     <!--  headerLayout：加载一个头部的Layout文件-->
     <!-- menu：加载一个菜单文件-->
     <android.support.design.widget.NavigationView
         android:id="@+id/main_navigation_view"
-        android:layout_width="270dp"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
         app:headerLayout="@layout/layout_main_header"
+        app:menu="@menu/drawer"
         />
     <!--
     app:headerLayout=""  设置侧滑菜单的头部layout

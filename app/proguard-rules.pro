@@ -17,3 +17,6 @@
 #}
 -keep class com.hyphenate.** {*;}
 -dontwarn  com.hyphenate.**
+-keep class com.baidu.android.**{*;}
+-keep class com.baidu.voicerecognition.android.**{*;}
+-keep class com.turing.androidsdk.**{*;}

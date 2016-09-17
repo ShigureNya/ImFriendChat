@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_fragment_background">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:text="@string/group_member_text"
+        android:textSize="19sp"
+        android:gravity="center"
+        android:background="@color/main_style_color"
+        android:textColor="#fff"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/sliding_menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+</LinearLayout>

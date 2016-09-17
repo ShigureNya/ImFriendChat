@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".GroupActivity">
+    <item android:id="@+id/group_menu_add"
+        android:title="添加群组"
+        android:orderInCategory="80"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_contacts_add_friend_btn"/>
+    <item android:id="@+id/group_menu_search"
+        android:title="查询群组"
+        android:orderInCategory="90"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_search_btn"/>
+</menu>

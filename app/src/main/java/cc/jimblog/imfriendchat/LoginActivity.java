@@ -1,6 +1,7 @@
 package cc.jimblog.imfriendchat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -10,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
@@ -33,6 +33,7 @@ import rx.schedulers.Schedulers;
 import util.JianPanUtils;
 import util.LogUtils;
 import util.NetWorkUtils;
+import util.SnackBarUtil;
 import util.StorageUtils;
 
 /**
@@ -54,9 +55,8 @@ public class LoginActivity extends AppCompatActivity {
     TextView loginSignupBtn;
     @BindView(R.id.login_snackbar_layout)
     CoordinatorLayout loginSnackbarLayout;
-    @BindView(R.id.login_progress_layout)
-    RelativeLayout loginProgressLayout;
 
+    private Snackbar snackbar ;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,7 +126,9 @@ public class LoginActivity extends AppCompatActivity {
 
     //登录接口采用RxJava异步的方式构成 EMClient实现消息后台分发 Rxjava负责后台消息处理和前台接收
     public void login(HashMap<String, String> map) {
-        showProgrssLayout(true);    //显示progressLayout
+        snackbar = SnackBarUtil.longSnackbar(loginSnackbarLayout,"登录中...", Color.WHITE);
+        snackbar.setDuration(10000);
+        snackbar.show();
         final String account = map.get("Account");
         final String password = map.get("Password");
         //创建被监听者对象
@@ -158,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                 .subscribe(new Observer<Integer>() {
                     @Override
                     public void onCompleted() {
-                        showProgrssLayout(false);
+                        snackbar.dismiss();
                         EMClient.getInstance().groupManager().loadAllGroups();
                         EMClient.getInstance().chatManager().loadAllConversations();
                         LogUtils.d("main", "登录聊天服务器成功！");
@@ -172,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable throwable) {
-                        showProgrssLayout(false);
+                        snackbar.dismiss();
                         LogUtils.e("main", "登录聊天服务器失败！" + throwable.toString());
                         showSnackBar("您可能是密码错误的受害者！Σ(っ°Д°;)っ");
                     }
@@ -228,20 +230,4 @@ public class LoginActivity extends AppCompatActivity {
         Snackbar.make(loginSnackbarLayout, message, 1300).show();
     }
 
-    /**
-     * @param flag 控制ProgressLayout的显示动画
-     */
-    public void showProgrssLayout(boolean flag){
-        if(flag){
-            loginProgressLayout.setVisibility(View.VISIBLE);
-            AlphaAnimation alphaAnimationFrom = new AlphaAnimation(0f,1.0f);
-            alphaAnimationFrom.setDuration(700);
-            loginProgressLayout.setAnimation(alphaAnimationFrom);
-        }else{
-            AlphaAnimation alphaAnimationFrom = new AlphaAnimation(1.0f,0f);
-            alphaAnimationFrom.setDuration(700);
-            loginProgressLayout.setAnimation(alphaAnimationFrom);
-            loginProgressLayout.setVisibility(View.GONE);
-        }
-    }
 }

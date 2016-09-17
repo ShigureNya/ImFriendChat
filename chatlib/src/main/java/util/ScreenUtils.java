@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 /**
+ * 屏幕操作工具
  * Created by Kotori on 2016/7/9.
  */
 public class ScreenUtils {
@@ -113,7 +114,12 @@ public class ScreenUtils {
         view.destroyDrawingCache();
         return bp;
     }
-    //当前应用是否处于前台
+
+    /**
+     * 当前应用是否处于前台
+     * @param context
+     * @return
+     */
     public static boolean isForeground(Context context) {
         if (context != null) {
             ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);

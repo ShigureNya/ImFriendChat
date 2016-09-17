@@ -15,16 +15,24 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 
+/**
+ * 图像处理类
+ */
 public class BitmapUtils {
 	private static final int DEFAULT_WIDTH = 350 ;
 	private static final int DEFAULT_HEIGHT = 350 ;
 
-	/*
+	/**
 	* 将Bitmap转换为Drawable
-	*
+	* @param bitmap
 	* */
 	public static Drawable getBitmapToDrawable(Bitmap bitmap){
 		BitmapDrawable bitmapDrawable = new BitmapDrawable(bitmap);
@@ -79,9 +87,10 @@ public class BitmapUtils {
 		return getBitmapByFile(path,null);
 	}
 	/**
-	 * 从文件中得到Bitmap
+	 * 从文件地址中得到Bitmap,可配置设置
 	 *
 	 * @param filePath
+	 * @param opts
 	 * @return
 	 */
 	public static Bitmap getBitmapByFile(String filePath,Options opts) {
@@ -266,5 +275,35 @@ public class BitmapUtils {
 			}
 		}
 		return inSampleSize ;
+	}
+
+	/**
+	 * 下载Bitmap
+	 * @param url
+	 * @return
+	 */
+	public static Bitmap returnBitMap(String url) {
+		URL myFileUrl = null;
+		Bitmap bitmap = null;
+
+		try {
+			myFileUrl = new URL(url);
+			HttpURLConnection conn;
+
+			conn = (HttpURLConnection) myFileUrl.openConnection();
+
+			conn.setDoInput(true);
+			conn.connect();
+			InputStream is = conn.getInputStream();
+			bitmap = BitmapFactory.decodeStream(is);
+
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return bitmap;
 	}
 }

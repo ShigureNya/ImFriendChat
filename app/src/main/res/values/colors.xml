@@ -12,6 +12,7 @@
     <color name="main_background">#f5f5f5</color>
     <color name="main_text_hint_color">#8c1bdb7b</color>
     <color name="main_fragment_background">#eaeaea</color>
+    <color name="main_chat_not_btn_color">#cccccc</color>
     <!--文字分三层颜色 大标题为main，次级标题为second，次要标题为third-->
     <color name="main_text_color">#444444</color>
     <color name="second_text_color">#848484</color>
@@ -22,4 +23,11 @@
     <color name="second_button_frame">#DADADA</color>
     <!--朋友圈发送动态按钮颜色-->
     <color name="pyq_button_color">#ff5454</color>
+    <!--聊天机器人主题色-->
+    <color name="rebot_main_style">#ff5177</color>
+    <color name="rebot_main_style_dark">#ba3c59</color>
+    <!--RecyclerView点击效果-->
+    <color name="super_light_grey">#dedede</color>
+    <color name="WHITE">#fff</color>
+    <color name="layout_click">#e8e8e8</color>
 </resources>
