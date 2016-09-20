@@ -34,6 +34,8 @@
     <string name="main_setting_fragment_title">设置</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="main_send_me_title">开发者留言</string>
+    <string name="main_send_me_content">如果您在使用本App时出现任何问题或者想提出您宝贵的意见,请联系我\nQQ号是806869597</string>
     <!--ChatActivity聊天页面-->
     <string name="chat_send_btn_text">发送</string>
     <string name="chat_function_img_btn_text">图册</string>
@@ -57,7 +59,7 @@
     <!--搜索好友-->
     <string name="newfriend_edit_hint">搜索</string>
     <string name="newfriend_qr_btn_text">扫一扫二维码</string>
-    <string name="newfriend_contacts_btn_text">添加手机联系人</string>
+    <string name="newfriend_contacts_btn_text">添加群组</string>
     <string name="newfriend_not_edit_hint">请输入手机号码再查找</string>
     <string name="newfriend_not_found_info_hint">没有找到相关用户</string>
     <string name="newfriend_add_friend_text">添 加</string>
@@ -73,7 +75,7 @@
     <!--侧滑按钮-->
     <string name="drawer_function_chat_text">会话</string>
     <string name="drawer_function_contacts_text">联系人</string>
-    <string name="drawer_function_qrcode_text">我的QR码</string>
+    <string name="drawer_function_qrcode_text">我的二维码</string>
     <string name="drawer_function_cloud_text">I Cloud</string>
     <string name="drawer_function_share_text">分享</string>
     <string name="drawer_function_setting_text">设置</string>
@@ -88,6 +90,9 @@
     <string name="personal_info_sign_text">签名</string>
     <string name="personal_info_submit_text">提交</string>
     <string name="personal_info_title_text">资料设置</string>
+    <!--我的二维码-->
+    <string name="qrcode_title">我的二维码</string>
+    <string name="qrcode_hint">扫一扫上面的二维码图案添加我为好友哦</string>
     <string-array name="country_name_list">
         <item>+86</item>
 
@@ -105,5 +110,6 @@
         <item>取消置顶</item>
         <item>查看资料</item>
     </string-array>
-
+    <!-- QR -->
+    <string name="scan_text">将二维码置于框内即可自动扫描</string>
 </resources>

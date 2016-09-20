@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\ImFriendChat\\sliding_lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/res/merged/androidTest/debug/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 999
                 },
                 "from": {
-                    "file": "D:\\ImFriendChat\\sliding_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

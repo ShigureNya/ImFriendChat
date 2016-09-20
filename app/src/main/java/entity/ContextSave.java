@@ -3,6 +3,8 @@ package entity;
 import android.app.Activity;
 import android.graphics.Bitmap;
 
+import java.util.List;
+
 import cc.jimblog.imfriendchat.R;
 
 /**
@@ -14,4 +16,7 @@ public class ContextSave {
             R.mipmap.default_3,R.mipmap.default_4,R.mipmap.default_5,R.mipmap.default_6,R.mipmap.default_7,
             R.mipmap.default_8,R.mipmap.default_9,R.mipmap.default_10,R.mipmap.default_11};
     public static Bitmap userBitmap = null ;
+    public static String userId = null;
+
+    public static List<String> friendList = null;
 }

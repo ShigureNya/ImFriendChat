@@ -52,7 +52,7 @@ public class GroupMembersAdapter extends RecyclerView.Adapter<GroupMembersAdapte
     public void onBindViewHolder(MyViewHolder holder, int position) {
         String name = mList.get(position);
         holder.userName.setText(name);
-        queryUserImg(name,holder.userImage);
+        queryUserImg(name,holder.userImage,holder.userName);
     }
 
     @Override
@@ -75,7 +75,7 @@ public class GroupMembersAdapter extends RecyclerView.Adapter<GroupMembersAdapte
     /**
      * 查询Bmob服务器中的数据得到用户头像
      * */
-    private void queryUserImg(String userId,final ImageView imageView){
+    private void queryUserImg(String userId,final ImageView imageView,final TextView textView ){
         BmobQuery<UserInfoEntity> query = new BmobQuery<UserInfoEntity>("userinfo");
         query.addWhereEqualTo("userId",userId);
         query.findObjectsByTable(new QueryListener<JSONArray>() {
@@ -94,6 +94,8 @@ public class GroupMembersAdapter extends RecyclerView.Adapter<GroupMembersAdapte
                             String url = entity.getUserImg().getUrl();
                             cacheUtil.disPlayImage(imageView,url);
                         }
+                        String name = entity.getUserName();
+                        textView.setText(name);
                     }
                 }else{
                     imageView.setImageResource(R.mipmap.user_image);

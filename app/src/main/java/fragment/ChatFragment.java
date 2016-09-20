@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.hyphenate.EMContactListener;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
@@ -119,6 +120,7 @@ public class ChatFragment extends Fragment {
             //设置列表点击事件
             adapter.setOnItemClickListener(new OnItemClickListener());
             adapter.setOnItemLongClickListeners(new OnItemLongClickListeners());
+            EMClient.getInstance().contactManager().setContactListener(friendListener);
         }
     }
     private void initData(){
@@ -374,7 +376,7 @@ public class ChatFragment extends Fragment {
             //当HeaderName和当前的Name相等时为HeaderView填充数据 并清除当前数据
             if(mHeaderName!=null && name.equals(mHeaderName)){
                 mHeaderUsername.setText(name);
-                queryUserImg(name,mHeaderImage);
+                queryUserImg(name,mHeaderImage,mHeaderUsername);
                 //设置消息
                 mHeaderContent.setText(getMessage(conversation.getLastMessage()));
                 //设置时间
@@ -490,7 +492,7 @@ public class ChatFragment extends Fragment {
     /**
      * 查询Bmob服务器中的数据得到用户头像
      * */
-    private void queryUserImg(String userId,final ImageView imageView){
+    private void queryUserImg(String userId,final ImageView imageView , final TextView textView){
         BmobQuery<UserInfoEntity> query = new BmobQuery<UserInfoEntity>("userinfo");
         query.addWhereEqualTo("userId",userId);
         query.findObjectsByTable(new QueryListener<JSONArray>() {
@@ -509,6 +511,8 @@ public class ChatFragment extends Fragment {
                             String url = entity.getUserImg().getUrl();
                             cacheUtil.disPlayImage(imageView,url);
                         }
+                        String name = entity.getUserName();
+                        textView.setText(name);
                     }
                 }else{
                     imageView.setImageResource(R.mipmap.user_image);
@@ -580,4 +584,34 @@ public class ChatFragment extends Fragment {
         }
         return str;
     }
+
+    EMContactListener friendListener = new EMContactListener(){
+
+        @Override
+        public void onContactAgreed(String username) {
+            //好友请求被同意
+            refresh();
+        }
+
+        @Override
+        public void onContactRefused(String username) {
+            //好友请求被拒绝
+        }
+
+        @Override
+        public void onContactInvited(String username, String reason) {
+            //收到好友邀请
+        }
+
+        @Override
+        public void onContactDeleted(String username) {
+            //被删除时回调此方法
+        }
+
+
+        @Override
+        public void onContactAdded(String username) {
+            //增加了联系人时回调此方法
+        }
+    };
 }

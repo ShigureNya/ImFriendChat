@@ -13,9 +13,7 @@ import android.widget.TextView;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.chat.EMClient;
-import com.squareup.leakcanary.RefWatcher;
 
-import application.HuanXinApplication;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -89,7 +87,6 @@ public class SettingFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        RefWatcher refWatcher = HuanXinApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+
     }
 }

@@ -51,4 +51,10 @@
          <!-- Customize your theme here. -->
          <item name="colorAccent">@color/main_style_color</item>
      </style>
+
+     <!-- toolbar弹出菜单样式 -->
+     <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat">
+         <item name="android:colorBackground">@color/rippelColor</item>
+         <item name="android:textColor">@color/main_text_color</item>
+     </style>
 </resources>

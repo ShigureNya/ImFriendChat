@@ -155,7 +155,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
         holder.mUserImg.setTag(nickname);
         holder.mUserImg.setImageResource(R.mipmap.user_image);
         if(holder.mUserImg.getTag()!=null && holder.mUserImg.getTag().equals(nickname)){
-            queryUserImg(nickname,holder.mUserImg);
+            queryUserImg(nickname,holder.mUserImg,holder.mUserName);
         }
     }
 
@@ -265,7 +265,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
     /**
      * 查询Bmob服务器中的数据得到用户头像
      * */
-    private void queryUserImg(String userId,final ImageView imageView){
+    private synchronized void queryUserImg(String userId,final ImageView imageView , final TextView textView){
         BmobQuery<UserInfoEntity> query = new BmobQuery<UserInfoEntity>("userinfo");
         query.addWhereEqualTo("userId",userId);
         query.findObjectsByTable(new QueryListener<JSONArray>() {
@@ -284,6 +284,8 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
                             String url = entity.getUserImg().getUrl();
                             cacheUtil.disPlayImage(imageView,url);
                         }
+                        String name = entity.getUserName();
+                        textView.setText(name);
                     }
                 }else{
                     imageView.setImageResource(R.mipmap.user_image);
@@ -291,6 +293,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
             }
         });
     }
+
     /**
      * @param json 将JSON转换为List集合
      * @return 实体集合

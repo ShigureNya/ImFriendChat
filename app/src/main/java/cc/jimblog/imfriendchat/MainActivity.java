@@ -1,5 +1,6 @@
 package cc.jimblog.imfriendchat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -41,6 +43,7 @@ import fragment.ChatFragment;
 import fragment.ContactsFragment;
 import fragment.FuncationFragment;
 import fragment.SettingFragment;
+import image.LocalCacheUtil;
 import image.MyBitmapCacheUtil;
 import service.MessageService;
 import util.BitmapUtils;
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();   //存放Fragment对象
     private ActionBarDrawerToggle mDrawerToggle;   //监听DrawerLayout滑动和弹出事件
     private MainPageAdapter mAdapter;  //主页适配器
-
+    private LocalCacheUtil localCacheUtil ;
     public static final int IS_BACKGROUND_PERMISSON = 1;  //权限管理
 
     /**
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         ButterKnife.bind(this);
         mainToolBar.setTitle(R.string.main_chat_fragment_title);
         setSupportActionBar(mainToolBar);
+        localCacheUtil = new LocalCacheUtil();
         mainToolBar.setOnMenuItemClickListener(new OnToolBarListener());
         initData();
         initDrawerLayout();
@@ -130,7 +134,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         mDrawerToggle = new ActionBarDrawerToggle(this, mainDrawerLayout, mainToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerToggle.syncState();  //init
         mainDrawerLayout.setDrawerListener(mDrawerToggle);
+        //为NavigationView设置菜单选中监听
         mainNavigationView.setNavigationItemSelectedListener(new MyNavigationItemListener());
+        mainNavigationView.setCheckedItem(0);
     }
 
     /**
@@ -179,22 +185,25 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         public boolean onNavigationItemSelected(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.drawer_function_chat:
+                    //会话
                     mainViewpager.setCurrentItem(0);
                     break;
                 case R.id.drawer_function_contacts:
+                    //联系人
                     mainViewpager.setCurrentItem(1);
                     break;
                 case R.id.drawer_online_cloud:
-
+                    //云盘 自建云逻辑中 实质上就是自己上传到云上的文件集合
                     break;
                 case R.id.drawer_online_qrcode:
-
-                    break;
+                    //我的二维码
+                    startActivity(new Intent(MainActivity.this,MyQRCodeActivity.class));
+                    return false;
                 case R.id.drawer_setting_set:
-
+                    //设置
                     break;
                 case R.id.drawer_setting_share:
-
+                    //分享
                     break;
             }
             item.setCheckable(true);    //设为选中
@@ -236,13 +245,33 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         @Override
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.main_menu_add:
-                    ToastUtils.showShort(MainActivity.this, "点击了更多功能按钮");
-                    break;
                 case R.id.main_menu_search:
                     ToastUtils.showShort(MainActivity.this, "点击了搜索按钮");
                     break;
-
+                case R.id.main_menu_add_group_chat:
+                    //新建群组
+                    break;
+                case R.id.main_menu_add_new_friend:
+                    //添加好友
+                    startActivity(new Intent(MainActivity.this,NewFriendActivity.class));
+                    break;
+                case R.id.main_menu_add_qr_code:
+                    //扫一扫二维码
+                    startActivity(new Intent(MainActivity.this,QRCodeActivity.class));
+                    break;
+                case R.id.main_menu_add_send_me:
+                    //联系我
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle(R.string.main_send_me_title);
+                    builder.setMessage(R.string.main_send_me_content);
+                    builder.setNeutralButton("返回", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            builder.create().dismiss();
+                        }
+                    });
+                    builder.create().show();
+                    break;
             }
             return true;
         }
@@ -279,7 +308,6 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     private ImageButton userInfoEdit;
     private RelativeLayout userLayout;
     private MyBitmapCacheUtil cacheUtil;
-    private String currentUserName ;
     /**
      * 初始化NavigationView数据的方法
      */
@@ -290,10 +318,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         userInfoEdit = (ImageButton) mView.findViewById(R.id.main_header_edit);
         userLayout = (RelativeLayout) mView.findViewById(R.id.main_header_background);
         cacheUtil = new MyBitmapCacheUtil();
-
-        currentUserName = EMClient.getInstance().getCurrentUser();
-        userName.setText(currentUserName);
-        queryUserInfoImage(currentUserName, userImageView);
+        queryUserInfoImage(userImageView);
         userImageView.setImageResource(R.mipmap.user_image);
         userImageView.setOnClickListener(new UserImageClickListener());
         userInfoEdit.setOnClickListener(new EditUserInfoClickListener());
@@ -302,10 +327,11 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     /**
      * 查询并设置用户头像
      *
-     * @param userId
      * @param imageView
      */
-    private void queryUserInfoImage(String userId, final ImageView imageView) {
+    private void queryUserInfoImage(final ImageView imageView) {
+        String userId = EMClient.getInstance().getCurrentUser();
+        ContextSave.userId = userId;
         BmobQuery<UserInfoEntity> query = new BmobQuery<UserInfoEntity>("userinfo");
         query.addWhereEqualTo("userId", userId);
         query.findObjectsByTable(new QueryListener<JSONArray>() {
@@ -319,19 +345,17 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
                             int position = Integer.parseInt(entity.getDefImgPosition());
                             LogUtils.d("Position" + position);
                             Bitmap bitmap = BitmapUtils.getBitmapById(MainActivity.this, ContextSave.defPicArray[position]);
-                            if (ContextSave.userBitmap == null) {
-                                ContextSave.userBitmap = bitmap;
-                            }
                             imageView.setImageBitmap(bitmap);
+                            ContextSave.userBitmap = bitmap ;
                         } else {
                             String url = entity.getUserImg().getUrl();
-                            Bitmap bitmap = BitmapUtils.returnBitMap(url);
                             cacheUtil.disPlayImage(imageView, url);
-
-                            if (ContextSave.userBitmap == null) {
-                                ContextSave.userBitmap = bitmap;
+                            Bitmap bitmap = localCacheUtil.getBitmapFromLocal(url);
+                            if(bitmap!=null){
+                                ContextSave.userBitmap = bitmap ;
                             }
                         }
+                        userName.setText(entity.getUserName());
                     }
                 } else {
                     imageView.setImageResource(R.mipmap.user_image);
@@ -346,7 +370,8 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         public void onClick(View view) {
             Intent intent = new Intent();
             intent.setClass(MainActivity.this,PersonCenterActivity.class);
-            intent.putExtra("UserName",currentUserName);
+            String userId = EMClient.getInstance().getCurrentUser();
+            intent.putExtra("UserName",userId);
             startActivity(intent);
         }
     }
@@ -365,6 +390,12 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         if(mainDrawerLayout.isDrawerOpen(GravityCompat.START)){
             mainDrawerLayout.closeDrawer(GravityCompat.START);  //关闭抽屉
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        queryUserInfoImage(userImageView);
     }
 }
 

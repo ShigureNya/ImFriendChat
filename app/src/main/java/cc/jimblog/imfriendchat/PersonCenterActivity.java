@@ -1,5 +1,6 @@
 package cc.jimblog.imfriendchat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -7,16 +8,19 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 
 import org.json.JSONArray;
 
@@ -42,6 +46,7 @@ import rx.schedulers.Schedulers;
 import util.BitmapUtils;
 import util.JsonUtil;
 import util.LogUtils;
+import util.ToastUtils;
 import view.CircleImageView;
 import view.RippleView;
 
@@ -71,6 +76,8 @@ public class PersonCenterActivity extends SwipeBackActivity {
     ImageView personalContentSex;
     @BindView(R.id.personal_user_edit_info)
     FloatingActionButton personalUserEditInfo;
+    @BindView(R.id.personal_content_add_friend_btn)
+    RippleView personalContentAddFriendBtn;
 
     private SwipeBackLayout mBackLayout;   //侧滑关闭Activity所用
     private String username;
@@ -89,6 +96,33 @@ public class PersonCenterActivity extends SwipeBackActivity {
         mBackLayout = getSwipeBackLayout();
         mBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
         checkedUser();
+
+        //如果AddFriendState不为空 则说明是扫描二维码来加好友的
+        String state = intent.getStringExtra("AddFriendState");
+        if (state != null) {
+            checkedIsAddFriend();
+        }
+    }
+
+    private void checkedIsAddFriend() {
+        if(username.equals(ContextSave.userId)){
+            return;
+        }
+        if(!ContextSave.friendList.isEmpty() && ContextSave.friendList!=null){
+            if (ContextSave.friendList.contains(username)) {
+                //如果好友列表数据中包含了该用户 则显示聊天
+                personalContentMsgBtn.setVisibility(View.VISIBLE);
+                personalContentVideoBtn.setVisibility(View.VISIBLE);
+                personalContentAddFriendBtn.setVisibility(View.GONE);
+                personalUserEditInfo.setVisibility(View.GONE);
+            } else {
+                //如果不包含则显示添加好友按钮
+                personalContentMsgBtn.setVisibility(View.GONE);
+                personalContentVideoBtn.setVisibility(View.GONE);
+                personalContentAddFriendBtn.setVisibility(View.VISIBLE);
+                personalUserEditInfo.setVisibility(View.GONE);
+            }
+        }
     }
 
     /**
@@ -132,7 +166,7 @@ public class PersonCenterActivity extends SwipeBackActivity {
 
                     @Override
                     public void onError(Throwable throwable) {
-                        toolbarLayout.setBackgroundResource(R.drawable.default_user_bg);
+                        toolbarLayout.setBackgroundResource(R.mipmap.new_header_bg);
                     }
 
                     @Override
@@ -174,10 +208,10 @@ public class PersonCenterActivity extends SwipeBackActivity {
             }
         });
         cacheUtil = new MyBitmapCacheUtil();
-        queryUserInfoImage(username, personalUserImage);
+        queryUserInfoImage(personalUserImage);
     }
 
-    @OnClick({R.id.personal_content_msg_btn, R.id.personal_content_video_btn, R.id.personal_user_image,R.id.personal_user_edit_info})
+    @OnClick({R.id.personal_content_msg_btn, R.id.personal_content_video_btn, R.id.personal_user_image, R.id.personal_user_edit_info,R.id.personal_content_add_friend_btn})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.personal_content_msg_btn:
@@ -195,9 +229,39 @@ public class PersonCenterActivity extends SwipeBackActivity {
             case R.id.personal_user_edit_info:
                 startActivity(new Intent(PersonCenterActivity.this, PersonalEditInfoActivity.class));
                 break;
+            case R.id.personal_content_add_friend_btn:
+                addFriend();
+                break;
         }
     }
-
+    private void addFriend(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(PersonCenterActivity.this);
+        builder.setTitle("发送好友请求");
+        final EditText editText = new EditText(PersonCenterActivity.this);
+        editText.setHint("请输入申请的理由");
+        editText.setHintTextColor(getResources().getColor(R.color.second_text_color));
+        builder.setView(editText,50,50,50,50);
+        builder.setNegativeButton("发送请求", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                String reason = editText.getText().toString().trim();
+                try {
+                    EMClient.getInstance().contactManager().addContact(username, reason);
+                    ToastUtils.showShort(PersonCenterActivity.this,"已成功发送好友请求");
+                } catch (HyphenateException e) {
+                    e.printStackTrace();
+                    ToastUtils.showShort(PersonCenterActivity.this,"发送好友请求失败,请重新尝试！");
+                }
+            }
+        });
+        builder.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                builder.create().dismiss();
+            }
+        });
+        builder.create().show();
+    }
     /**
      * 监听AppLayout的展开状态
      */
@@ -285,13 +349,12 @@ public class PersonCenterActivity extends SwipeBackActivity {
     /**
      * 查询并设置用户头像
      *
-     * @param userId
      * @param imageView
      */
-    private void queryUserInfoImage(String userId, final ImageView imageView) {
+    private void queryUserInfoImage(final ImageView imageView) {
         imageView.setImageResource(R.mipmap.user_image);
         BmobQuery<UserInfoEntity> query = new BmobQuery<UserInfoEntity>("userinfo");
-        query.addWhereEqualTo("userId", userId);
+        query.addWhereEqualTo("userId", username);
         query.findObjectsByTable(new QueryListener<JSONArray>() {
             @Override
             public void done(JSONArray jsonArray, BmobException e) {
@@ -304,12 +367,12 @@ public class PersonCenterActivity extends SwipeBackActivity {
                             LogUtils.d("Position" + position);
                             Bitmap bitmap = BitmapUtils.getBitmapById(PersonCenterActivity.this, ContextSave.defPicArray[position]);
                             imageView.setImageBitmap(bitmap);
+                            addUserData(entity);
                         } else {
                             String url = entity.getUserImg().getUrl();
-                            Bitmap bitmap = BitmapUtils.returnBitMap(url);
                             cacheUtil.disPlayImage(imageView, url);
+                            addUserData(entity);
                         }
-                        addUserData(entity);
                     }
                 } else {
                     imageView.setImageResource(R.mipmap.user_image);
@@ -338,9 +401,19 @@ public class PersonCenterActivity extends SwipeBackActivity {
         if (currentName.equals(username)) {
             personalContentMsgBtn.setVisibility(View.GONE);
             personalContentVideoBtn.setVisibility(View.GONE);
+            personalContentAddFriendBtn.setVisibility(View.GONE);
             personalUserEditInfo.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             personalUserEditInfo.setVisibility(View.GONE);
+            personalContentAddFriendBtn.setVisibility(View.GONE);
+            personalContentMsgBtn.setVisibility(View.VISIBLE);
+            personalContentVideoBtn.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        queryUserInfoImage(personalUserImage);
     }
 }

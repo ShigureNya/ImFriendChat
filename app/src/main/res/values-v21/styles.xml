@@ -10,7 +10,7 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@null</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:listDivider">@drawable/chat_item_divider_shape</item>
         <item name="android:actionMenuTextAppearance">@style/MenuTextStyle</item>
@@ -37,5 +37,10 @@
     <style name="MenuTextStyle">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">18sp</item>
+    </style>
+    <!-- toolbar弹出菜单样式 -->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat">
+        <item name="android:colorBackground">@color/rippelColor</item>
+        <item name="android:textColor">@color/main_text_color</item>
     </style>
 </resources>

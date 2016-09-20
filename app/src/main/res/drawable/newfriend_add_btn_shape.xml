@@ -27,5 +27,4 @@
                 android:color="@color/main_style_color" />
         </shape>
     </item>
-
 </layer-list>

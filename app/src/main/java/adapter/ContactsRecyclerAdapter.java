@@ -90,7 +90,8 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
             holder.userImage.setImageResource(R.mipmap.user_image);
             holder.userImage.setTag(name);
             if(holder.userImage.getTag()!=null && holder.userImage.getTag().equals(name)){
-                queryUserImg(name,holder.userImage);
+                LogUtils.d("联系人",name);
+                queryUserImg(name,holder.userImage,holder.userName);
             }
         }
     }
@@ -156,7 +157,7 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
     /**
      * 查询Bmob服务器中的数据得到用户头像
      * */
-    private void queryUserImg(String userId,final ImageView imageView){
+    private synchronized void queryUserImg(String userId,final ImageView imageView,final TextView textView){
         BmobQuery<UserInfoEntity> query = new BmobQuery<UserInfoEntity>("userinfo");
         query.addWhereEqualTo("userId",userId);
         query.findObjectsByTable(new QueryListener<JSONArray>() {
@@ -175,6 +176,8 @@ public class ContactsRecyclerAdapter extends RecyclerView.Adapter<ContactsRecycl
                             String url = entity.getUserImg().getUrl();
                             cacheUtil.disPlayImage(imageView,url);
                         }
+                        String name = entity.getUserName();
+                        textView.setText(name);
                     }
                 }else{
                     imageView.setImageResource(R.mipmap.user_image);

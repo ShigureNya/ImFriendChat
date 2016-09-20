@@ -21,7 +21,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:theme="@style/AppTheme.PopupOverlay"
-                android:background="@color/main_style_color">
+                android:background="@color/main_style_color"
+                app:popupTheme="@style/ToolbarPopupTheme">
             </android.support.v7.widget.Toolbar>
             <!--内容区？-->
             <android.support.design.widget.TabLayout

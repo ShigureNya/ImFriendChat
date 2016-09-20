@@ -24,7 +24,8 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
+    <!--保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -139,6 +140,17 @@
         <activity android:name=".PersonalEditInfoActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
+        </activity>
+        <!--我的二维码-->
+        <activity android:name=".MyQRCodeActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <!--扫描二维码-->
+        <activity android:name=".QRCodeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden">
         </activity>
     </application>
 

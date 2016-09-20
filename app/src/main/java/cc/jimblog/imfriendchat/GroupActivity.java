@@ -84,7 +84,7 @@ public class GroupActivity extends SwipeBackActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.group_menu_add:
-
+                        startActivity(new Intent(GroupActivity.this,NewFriendActivity.class));
                         break;
                     case R.id.group_menu_search:
 

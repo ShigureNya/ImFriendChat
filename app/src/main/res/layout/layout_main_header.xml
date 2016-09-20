@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@drawable/default_user_bg"
+    android:background="@mipmap/new_header_bg"
     android:id="@+id/main_header_background">
     <view.CircleImageView
         android:id="@+id/main_header_userimg"

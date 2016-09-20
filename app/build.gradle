@@ -55,4 +55,13 @@ dependencies {
     compile files('src/main/jniLibs/volley.jar')
     compile 'com.github.arimorty:floatingsearchview:1.0.1'
     compile project(':sliding_lib')
+    compile 'cn.carbswang.android:NumberPickerView:1.1.0'
+    //社会化应用
+    compile files('src/main/jniLibs/ShareSDK-Core-2.7.7.jar')
+    compile files('src/main/jniLibs/ShareSDK-QQ-2.7.7.jar')
+    compile files('src/main/jniLibs/ShareSDK-QZone-2.7.7.jar')
+    compile files('src/main/jniLibs/ShareSDK-SinaWeibo-2.7.7.jar')
+    compile files('src/main/jniLibs/ShareSDK-TencentWeibo-2.7.7.jar')
+    compile files('src/main/jniLibs/MobCommons-2016.0830.1940.jar')
+    compile files('src/main/jniLibs/MobTools-2016.0830.1940.jar')
 }

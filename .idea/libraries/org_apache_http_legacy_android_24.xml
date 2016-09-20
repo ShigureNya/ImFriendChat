@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="org.apache.http.legacy-android-24">
     <CLASSES>
-      <root url="jar://E:/AndroidSdk/platforms/android-24/optional/org.apache.http.legacy.jar!/" />
+      <root url="jar://$USER_HOME$/Library/android-sdk-macosx/platforms/android-24/optional/org.apache.http.legacy.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

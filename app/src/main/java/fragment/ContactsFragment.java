@@ -32,6 +32,7 @@ import cc.jimblog.imfriendchat.GroupActivity;
 import cc.jimblog.imfriendchat.NewFriendActivity;
 import cc.jimblog.imfriendchat.PersonCenterActivity;
 import cc.jimblog.imfriendchat.R;
+import entity.ContextSave;
 import util.LogUtils;
 import util.NetWorkUtils;
 import util.ToastUtils;
@@ -200,6 +201,7 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         public void handleMessage(Message msg) {
             if(msg.arg1 == 1 && msg.obj != null){
                 List<String> contactsLists = (List<String>) msg.obj;
+                ContextSave.friendList = contactsLists;
                 if (contactsLists != null) {
                     for (String name : contactsLists) {
                         if(!mList.contains(name)){
@@ -255,5 +257,4 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         }
 
     }
-    
 }

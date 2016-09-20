@@ -136,9 +136,6 @@ public class NewFriendActivity extends SwipeBackActivity {
         newfriendToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(NewFriendActivity.this, MainActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
                 finish();
             }
         });
@@ -159,6 +156,7 @@ public class NewFriendActivity extends SwipeBackActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.newfriend_qr_layout:
+                startActivity(new Intent(NewFriendActivity.this,QRCodeActivity.class));
                 break;
             case R.id.newfriend_add_contacts_layout:
                 break;

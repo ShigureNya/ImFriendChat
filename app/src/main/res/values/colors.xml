@@ -30,4 +30,8 @@
     <color name="super_light_grey">#dedede</color>
     <color name="WHITE">#fff</color>
     <color name="layout_click">#e8e8e8</color>
+    <!--二维码扫描器-->
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
 </resources>

@@ -1,13 +1,11 @@
 package cc.jimblog.imfriendchat;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -40,6 +39,8 @@ import adapter.GroupMembersAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.imid.swipebacklayout.lib.SwipeBackLayout;
+import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
@@ -50,7 +51,7 @@ import util.LogUtils;
 /**
  * Created by jimhao on 16/9/13.
  */
-public class GroupChatActivity extends AppCompatActivity {
+public class GroupChatActivity extends SwipeBackActivity {
     @BindView(R.id.tool_bar)
     Toolbar toolBar;
     @BindView(R.id.group_chat_edit_voice_btn)
@@ -85,12 +86,15 @@ public class GroupChatActivity extends AppCompatActivity {
     private EMConversation converasation ;
     private List<String> mMembersList =  new ArrayList<String>();
     private List<EMMessage> chatLists ;
+    private SwipeBackLayout mBackLayout;   //侧滑关闭Activity所用
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_group);
         ButterKnife.bind(this);
+        mBackLayout = getSwipeBackLayout();
+        mBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
         groupId = getIntent().getStringExtra("GroupId");
         LogUtils.i("GroupId:"+groupId);
         initToolbar();
@@ -108,10 +112,18 @@ public class GroupChatActivity extends AppCompatActivity {
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GroupChatActivity.this, GroupActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
                 finish();
+            }
+        });
+        toolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.group_chat_menu_members:
+                        menu.showMenu();
+                        break;
+                }
+                return true ;
             }
         });
     }
@@ -139,7 +151,7 @@ public class GroupChatActivity extends AppCompatActivity {
         menu = new SlidingMenu(this);
         menu.setMode(SlidingMenu.RIGHT);
         // 设置触摸屏幕的模式
-        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
         menu.setShadowWidthRes(R.dimen.shadow_width);
         menu.setShadowDrawable(R.drawable.sliding_shadow);
         // 设置滑动菜单视图的宽度

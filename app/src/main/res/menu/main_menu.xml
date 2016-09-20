@@ -6,12 +6,32 @@
     tools:context=".MainActivity">
     <item android:id="@+id/main_menu_add"
         android:title="add Function"
-        android:orderInCategory="80"
+        android:orderInCategory="75"
         app:showAsAction="ifRoom"
-        android:icon="@mipmap/ic_contacts_add_friend_btn"/>
+        android:icon="@mipmap/ic_contacts_add_friend_btn"
+        >
+        <menu>
+            <item android:id="@+id/main_menu_add_group_chat"
+                android:icon="@drawable/ic_group_add_black_18dp"
+                android:title="发起群聊">
+            </item>
+            <item android:id="@+id/main_menu_add_new_friend"
+                android:icon="@drawable/ic_person_add_black_18dp"
+                android:title="添加好友">
+            </item>
+            <item android:id="@+id/main_menu_add_qr_code"
+                android:icon="@drawable/ic_center_focus_weak_black_18dp"
+                android:title="扫扫二维码">
+            </item>
+            <item android:id="@+id/main_menu_add_send_me"
+                android:title="联系开发者"
+                android:icon="@drawable/ic_rss_feed_black_18dp">
+            </item>
+        </menu>
+    </item>
     <item android:id="@+id/main_menu_search"
-        android:title="add Function"
-        android:orderInCategory="90"
+        android:title="search Function"
+        android:orderInCategory="80"
         app:showAsAction="ifRoom"
         android:icon="@mipmap/ic_search_btn"/>
 </menu>
