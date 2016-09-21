@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.hyphenate.EMContactListener;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMConversation;
@@ -120,7 +119,6 @@ public class ChatFragment extends Fragment {
             //设置列表点击事件
             adapter.setOnItemClickListener(new OnItemClickListener());
             adapter.setOnItemLongClickListeners(new OnItemLongClickListeners());
-            EMClient.getInstance().contactManager().setContactListener(friendListener);
         }
     }
     private void initData(){
@@ -585,33 +583,4 @@ public class ChatFragment extends Fragment {
         return str;
     }
 
-    EMContactListener friendListener = new EMContactListener(){
-
-        @Override
-        public void onContactAgreed(String username) {
-            //好友请求被同意
-            refresh();
-        }
-
-        @Override
-        public void onContactRefused(String username) {
-            //好友请求被拒绝
-        }
-
-        @Override
-        public void onContactInvited(String username, String reason) {
-            //收到好友邀请
-        }
-
-        @Override
-        public void onContactDeleted(String username) {
-            //被删除时回调此方法
-        }
-
-
-        @Override
-        public void onContactAdded(String username) {
-            //增加了联系人时回调此方法
-        }
-    };
 }

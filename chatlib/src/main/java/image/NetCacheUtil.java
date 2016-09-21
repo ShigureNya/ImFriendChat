@@ -20,6 +20,7 @@ public class NetCacheUtil {
         this.memoryCacheUtil = memoryCacheUtil;
         this.localCacheUtil = localCacheUtil;
     }
+
     public void downloadBitmapFromNet(String url , ImageView imageView , final ContentLoadingProgressBar progress){
         BitmapTask task = new BitmapTask();
         if(progress != null){

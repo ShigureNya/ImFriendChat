@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.hyphenate.EMContactListener;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 
@@ -87,6 +88,7 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         super.onViewCreated(view, savedInstanceState);
         //如网络正常连接则加载数据
         if(NetWorkUtils.isNetworkAvailable(mView.getContext())){
+            EMClient.getInstance().contactManager().setContactListener(friendListener);
             refreshData();
             adapter.setItemClickListener(new ContactsRecyclerAdapter.OnContactsItemCLickListener() {
                 @Override
@@ -257,4 +259,45 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
         }
 
     }
+    Handler mMsgHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            //收到消息
+            refreshData();
+        }
+    };
+
+    EMContactListener friendListener = new EMContactListener(){
+
+        @Override
+        public void onContactAgreed(String username) {
+            //好友请求被同意
+            Message msg = mMsgHandler.obtainMessage() ;
+            msg.sendToTarget();
+        }
+
+        @Override
+        public void onContactRefused(String username) {
+            //好友请求被拒绝
+        }
+
+        @Override
+        public void onContactInvited(String username, String reason) {
+            //收到好友邀请
+        }
+
+        @Override
+        public void onContactDeleted(String username) {
+            //被删除时回调此方法
+            //好友请求被同意
+            Message msg = mMsgHandler.obtainMessage() ;
+            msg.sendToTarget();
+        }
+
+
+        @Override
+        public void onContactAdded(String username) {
+            //增加了联系人时回调此方法
+        }
+    };
 }

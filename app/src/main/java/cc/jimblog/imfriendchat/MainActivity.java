@@ -1,9 +1,15 @@
 package cc.jimblog.imfriendchat;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -28,6 +34,7 @@ import com.hyphenate.chat.EMClient;
 
 import org.json.JSONArray;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +42,13 @@ import adapter.MainPageAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.QueryListener;
+import cn.bmob.v3.listener.UpdateListener;
+import cn.bmob.v3.listener.UploadFileListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import entity.ContextSave;
 import entity.UserInfoEntity;
 import fragment.ChatFragment;
@@ -47,6 +59,7 @@ import image.LocalCacheUtil;
 import image.MyBitmapCacheUtil;
 import service.MessageService;
 import util.BitmapUtils;
+import util.FileTools;
 import util.JsonUtil;
 import util.LogUtils;
 import util.NetWorkUtils;
@@ -80,7 +93,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     private MainPageAdapter mAdapter;  //主页适配器
     private LocalCacheUtil localCacheUtil ;
     public static final int IS_BACKGROUND_PERMISSON = 1;  //权限管理
+    private long maxImageSize = 1024 * 1024 * 2;
 
+    private String objectId ;
     /**
      * 初始化数据的方法
      */
@@ -204,7 +219,9 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
                     break;
                 case R.id.drawer_setting_share:
                     //分享
-                    break;
+                    showShare();
+                    mainDrawerLayout.closeDrawer(GravityCompat.START);
+                    return false;
             }
             item.setCheckable(true);    //设为选中
             mainDrawerLayout.closeDrawer(GravityCompat.START);  //关闭抽屉
@@ -308,6 +325,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     private ImageButton userInfoEdit;
     private RelativeLayout userLayout;
     private MyBitmapCacheUtil cacheUtil;
+    private TextView userSign ;
     /**
      * 初始化NavigationView数据的方法
      */
@@ -317,6 +335,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         userName = (TextView) mView.findViewById(R.id.main_header_username);
         userInfoEdit = (ImageButton) mView.findViewById(R.id.main_header_edit);
         userLayout = (RelativeLayout) mView.findViewById(R.id.main_header_background);
+        userSign = (TextView) mView.findViewById(R.id.main_header_sign);
         cacheUtil = new MyBitmapCacheUtil();
         queryUserInfoImage(userImageView);
         userImageView.setImageResource(R.mipmap.user_image);
@@ -341,6 +360,8 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
                     List<UserInfoEntity> userInfo = new JsonUtil().jsonToList(jsonArray.toString());
                     for (UserInfoEntity entity : userInfo) {
                         boolean flag = entity.isDefImg();
+                        String sign = entity.getUserSign();
+                        objectId = entity.getObjectId();
                         if (flag) {   //是否使用默认的用户头像
                             int position = Integer.parseInt(entity.getDefImgPosition());
                             LogUtils.d("Position" + position);
@@ -355,6 +376,7 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
                                 ContextSave.userBitmap = bitmap ;
                             }
                         }
+                        userSign.setText(sign);
                         userName.setText(entity.getUserName());
                     }
                 } else {
@@ -376,11 +398,16 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
         }
     }
 
+    private int RESULT_IMAGE_CODE = 200;
+    /**
+     * 修改背景图片
+     */
     class EditUserInfoClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
-
+//            Intent pictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//            startActivityForResult(pictureIntent, RESULT_IMAGE_CODE);
         }
     }
 
@@ -396,6 +423,95 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     protected void onResume() {
         super.onResume();
         queryUserInfoImage(userImageView);
+    }
+    private void showShare() {
+        ShareSDK.initSDK(this);
+        OnekeyShare oks = new OnekeyShare();
+        //关闭sso授权
+        oks.disableSSOWhenAuthorize();
+        // 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+        oks.setTitle("友信");
+        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+        oks.setTitleUrl("http://uchat.bmob.cn/");
+        // text是分享文本，所有平台都需要这个字段
+        oks.setText("我正在使用友信App，实时聊天的新方式，快来体验吧！");
+        //分享网络图片，新浪微博分享网络图片需要通过审核后申请高级写入接口，否则请注释掉测试新浪微博
+        oks.setImageUrl("http://jimblog.cc/icons.png");
+        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+        // url仅在微信（包括好友和朋友圈）中使用
+        oks.setUrl("http://uchat.bmob.cn/");
+        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+        //        oks.setComment("");
+        // site是分享此内容的网站名称，仅在QQ空间使用
+        oks.setSite(getString(R.string.app_name));
+        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+        oks.setSiteUrl("http://uchat.bmob.cn/");
+
+        // 启动分享GUI
+        oks.show(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_IMAGE_CODE && resultCode == Activity.RESULT_OK && null != data) {
+            //发送图片的方法
+            Uri selectedImage = data.getData();
+            String[] filePathColumns = {MediaStore.Images.Media.DATA};
+            Cursor c = this.getContentResolver().query(selectedImage, filePathColumns, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePathColumns[0]);
+            final String picturePath = c.getString(columnIndex);
+            c.close();
+            if (FileTools.isFoundFilePath(picturePath)) {
+                if(FileTools.getFileSize(picturePath) > maxImageSize){
+                    ToastUtils.showShort(MainActivity.this, "图片过大");
+                    return ;
+                }
+                final BmobFile bmobimage = new BmobFile(new File(picturePath));
+                bmobimage.uploadblock(new UploadFileListener() {
+                    @Override
+                    public void done(BmobException e) {
+                        if (e == null) {
+                            //bmobFile.getFileUrl()--返回的上传文件的完整地址
+                            BitmapFactory.Options options = new BitmapFactory.Options();
+                            options.inSampleSize = 2;
+                            Bitmap bitmap = BitmapUtils.getBitmapByFile(picturePath, options);
+                            submitBackGround(bmobimage,bitmap);
+                        } else {
+                            userLayout.setBackgroundResource(R.mipmap.new_header_bg);
+                        }
+                    }
+                    @Override
+                    public void onProgress(Integer value) {
+                        // 返回的上传进度（百分比）
+                    }
+                });
+            }
+        }
+    }
+
+    /**
+     * 提交到背景图片
+     */
+    private void submitBackGround(BmobFile bmobFile, final Bitmap bitmap){
+        UserInfoEntity entity = new UserInfoEntity();
+        entity.setBg(bmobFile);
+        entity.update(objectId,new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                if(e == null){
+                    ToastUtils.showShort(MainActivity.this, "图片上传成功");
+                    userLayout.setBackground(new BitmapDrawable(bitmap));
+                }else{
+                    ToastUtils.showShort(MainActivity.this, "图片上传失败");
+                    userLayout.setBackgroundResource(R.mipmap.new_header_bg);
+                }
+            }
+        });
     }
 }
 

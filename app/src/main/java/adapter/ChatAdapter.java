@@ -184,7 +184,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             imageView.setImageResource(R.mipmap.ic_launcher); //APK文件
         }else if(address.equals("rar")||address.equals("zip")||address.equals("7z")){
             imageView.setImageResource(R.mipmap.ic_file_rar); //压缩文件
-        }else if(address.equals("word")){
+        }else if(address.equals("doc")||address.equals("docx")){
             imageView.setImageResource(R.mipmap.ic_file_word);
         }else if(address.equals("txt")||address.equals("pdf")||address.equals("log")){
             imageView.setImageResource(R.mipmap.ic_file_default);

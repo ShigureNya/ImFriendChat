@@ -205,6 +205,18 @@ public class NewFriendActivity extends SwipeBackActivity {
         newfriendList.setAdapter(adapter);
         //设置数据监听
         adapter.setOnBtnClickListener(new OnItemsClickListener());
+        adapter.setImageOnClickListener(new OnImageItemClickListener());
+    }
+    private class OnImageItemClickListener implements NewFriendAdapter.ImageOnClickListener{
+
+        @Override
+        public void onClick(View view, int position) {
+            String userName = mList.get(position).getUserId();
+            Intent startUserInfoIntent = new Intent(NewFriendActivity.this, PersonCenterActivity.class);
+            startUserInfoIntent.putExtra("UserName",userName);
+            startUserInfoIntent.putExtra("AddFriendState","Ok");
+            startActivity(startUserInfoIntent);
+        }
     }
     private class OnItemsClickListener implements NewFriendAdapter.BtnOnClickListener{
 

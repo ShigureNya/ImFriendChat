@@ -169,8 +169,7 @@ public class MessageService extends Service {
                 .setPriority(Notification.PRIORITY_DEFAULT)
                 .setCategory(Notification.CATEGORY_MESSAGE)
                 .setContentTitle("收到了来自"+name+"的好友请求")
-                .setContentText(content)
-                .setDefaults(Notification.DEFAULT_SOUND);   //设置默认声音
+                .setContentText(content);
         Intent push = new Intent();
         push.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);// 关键的一步，设置启动模式
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, push, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -200,6 +199,7 @@ public class MessageService extends Service {
         builder.setWhen(System.currentTimeMillis()); //设置时间发生时间
         builder.setContentIntent(pendingIntent);
         builder.setSmallIcon(R.mipmap.small_icon);
+        builder.setDefaults(Notification.DEFAULT_SOUND);   //设置默认声音
         builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_lanuch));
         builder.setAutoCancel(true);
         builder.setContentTitle("来自"+name+"的新消息");

@@ -79,13 +79,34 @@ public class NewFriendAdapter extends RecyclerView.Adapter<NewFriendAdapter.MyVi
             userName = (TextView) itemView.findViewById(R.id.newfriend_item_name);
             addBtn = (Button) itemView.findViewById(R.id.newfriend_add_btn);
             addBtn.setOnClickListener(this);
+            userImage.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            onClickListener.onClick(view,getPosition());
+            switch (view.getId()){
+                case R.id.newfriend_add_btn:
+                    if(onClickListener!=null){
+                        onClickListener.onClick(view,getPosition());
+                    }
+                    break;
+                case R.id.newfriend_item_img:
+                    if(onImageClickListener!=null){
+                        onImageClickListener.onClick(view,getPosition());
+                    }
+                    break;
+            }
         }
     }
+    public interface ImageOnClickListener{
+        void onClick(View view , int position);
+    }
+    public ImageOnClickListener onImageClickListener ;
+
+    public void setImageOnClickListener(ImageOnClickListener imageClick){
+        this.onImageClickListener = imageClick;
+    }
+
     public interface BtnOnClickListener{
         void onClick(View view , int position);
     }

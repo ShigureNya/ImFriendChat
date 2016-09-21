@@ -1,7 +1,13 @@
 package cc.jimblog.imfriendchat;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,6 +33,7 @@ import qrcode.QRCodeUtil;
 import util.BitmapUtils;
 import util.JsonUtil;
 import util.LogUtils;
+import util.PermissionCheckerUtil;
 import util.ToastUtils;
 import view.CircleImageView;
 
@@ -50,6 +57,12 @@ public class MyQRCodeActivity extends SwipeBackActivity {
     private LocalCacheUtil localUtil;
     private MemoryCacheUtil memoryUtil ;
 
+    private boolean isRequireCheck; // 是否需要系统权限检测
+
+    private String[] PERMISSIONS = new String[]{Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private static final int REQUEST_CODE = 0; // 请求码
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +77,7 @@ public class MyQRCodeActivity extends SwipeBackActivity {
         localUtil = new LocalCacheUtil();
         memoryUtil = new MemoryCacheUtil();
 
-        initUserInfo();
+        initPermissionState();
     }
 
     @Override
@@ -135,5 +148,42 @@ public class MyQRCodeActivity extends SwipeBackActivity {
         String requestInfo = "UserId:"+ContextSave.userId;
         Bitmap requestBitmap = QRCodeUtil.createQRCodeWithLogo(requestInfo, 500, bitmap);
         qrcodeUserCode.setImageBitmap(requestBitmap);
+    }
+    @TargetApi(Build.VERSION_CODES.M)
+    private void initPermissionState() {
+        if(PermissionCheckerUtil.getInstance().lacksPermissions(this,PERMISSIONS)){
+            ActivityCompat.requestPermissions(this,PERMISSIONS,REQUEST_CODE);
+        }else{
+            //如果包含所有权限
+            initUserInfo();
+        }
+    }
+    /**
+     * 用户权限处理,
+     * 如果全部获取, 则直接过.
+     * 如果权限缺失, 则提示Dialog.
+     *
+     * @param requestCode  请求码
+     * @param permissions  权限
+     * @param grantResults 结果
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CODE && hasAllPermissionsGranted(grantResults)) {
+            isRequireCheck = true;
+            initUserInfo();
+        } else {
+            isRequireCheck = false;
+            finish();
+        }
+    }
+    // 含有全部的权限
+    private boolean hasAllPermissionsGranted(@NonNull int[] grantResults) {
+        for (int grantResult : grantResults) {
+            if (grantResult == PackageManager.PERMISSION_DENIED) {
+                return false;
+            }
+        }
+        return true;
     }
 }

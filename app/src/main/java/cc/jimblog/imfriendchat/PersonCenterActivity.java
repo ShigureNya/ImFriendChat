@@ -108,6 +108,7 @@ public class PersonCenterActivity extends SwipeBackActivity {
         if(username.equals(ContextSave.userId)){
             return;
         }
+        //如果好友列表不为空
         if(!ContextSave.friendList.isEmpty() && ContextSave.friendList!=null){
             if (ContextSave.friendList.contains(username)) {
                 //如果好友列表数据中包含了该用户 则显示聊天

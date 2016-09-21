@@ -76,5 +76,9 @@ public class TestActivity extends AppCompatActivity {
         builder.setContentText("Heads-Up Notification on Android 5.0")
                 .setFullScreenIntent(pendingIntent, true);
         notificationManager.notify(NOTIFICATION_ID, builder.build());
+
+    }
+    public enum TestENum{
+        green,litet;
     }
 }
