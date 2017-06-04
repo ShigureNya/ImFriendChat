@@ -167,7 +167,7 @@ public class PersonalEditInfoActivity extends SwipeBackActivity {
                         }
                     },2000);
                 }else{
-                    ToastUtils.showShort(PersonalEditInfoActivity.this,"资料修改失败"+e.toString());
+                    ToastUtils.showShort(PersonalEditInfoActivity.this,"资料修改失败");
                     LogUtils.e("Error:",e.toString());
                 }
             }
@@ -197,6 +197,7 @@ public class PersonalEditInfoActivity extends SwipeBackActivity {
                         if (isDefImage) {
                             int position = Integer.parseInt(entity.getDefImgPosition());
                             bitmap = BitmapUtils.getBitmapById(PersonalEditInfoActivity.this, ContextSave.defPicArray[position]);
+                            personalInfoImage.setImageBitmap(bitmap);
                         } else {
                             String url = entity.getUserImg().getUrl();
                             cacheUtil.disPlayImage(personalInfoImage, url);

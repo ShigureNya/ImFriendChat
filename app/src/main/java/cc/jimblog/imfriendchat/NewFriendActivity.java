@@ -1,6 +1,5 @@
 package cc.jimblog.imfriendchat;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -92,13 +90,7 @@ public class NewFriendActivity extends SwipeBackActivity {
      * 显示添加好友的Dialog
      */
     public void showAddFriendDialog(final String name , String reason){
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (imm != null) {
-            //关闭软键盘的重要方法
-            imm.hideSoftInputFromWindow(newfriendEdit.getWindowToken(), 0);
-            //关闭后使EditText失去焦点
-            newfriendEdit.clearFocus();
-        }
+        JianPanUtils.closeKeybord(newfriendEdit,NewFriendActivity.this);
         AlertDialog.Builder builder = new AlertDialog.Builder(NewFriendActivity.this);
         builder.setTitle("来自"+name+"的好友申请");
         builder.setMessage(reason);

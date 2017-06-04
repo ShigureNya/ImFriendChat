@@ -91,11 +91,11 @@ public class MainActivity extends AppCompatActivity implements SettingFragment.O
     private List<Fragment> mFragmentList = new ArrayList<Fragment>();   //存放Fragment对象
     private ActionBarDrawerToggle mDrawerToggle;   //监听DrawerLayout滑动和弹出事件
     private MainPageAdapter mAdapter;  //主页适配器
-    private LocalCacheUtil localCacheUtil ;
+    private LocalCacheUtil localCacheUtil ; //本地缓存类
     public static final int IS_BACKGROUND_PERMISSON = 1;  //权限管理
-    private long maxImageSize = 1024 * 1024 * 2;
+    private long maxImageSize = 1024 * 1024 * 2;    //设置文件背景上传的最大大小
 
-    private String objectId ;
+    private String objectId ;   //用户在bmob服务器上的Id
     /**
      * 初始化数据的方法
      */

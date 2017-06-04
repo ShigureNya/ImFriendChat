@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\androidTest\\debug\\values-w720dp-v13\\values-w720dp-v13.xml",
+        "outputFile": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-w720dp-v13/values-w720dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,31 +11,7 @@
                     "endOffset": 127
                 },
                 "from": {
-                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\values-w720dp\\values-w720dp.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 293,
-                        "endColumn": 76,
-                        "endOffset": 365
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/androidTest/debug/values-w720dp-v13/values-w720dp-v13.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 76,
-                    "endOffset": 127
-                },
-                "from": {
-                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/values-w720dp/values-w720dp.xml",
+                    "file": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/values-w720dp/values-w720dp.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,

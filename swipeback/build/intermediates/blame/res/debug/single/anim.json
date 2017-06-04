@@ -1,82 +1,42 @@
 [
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_popup_exit.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_slide_in_bottom.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_popup_enter.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_popup_exit.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_popup_enter.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_popup_enter.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_slide_out_bottom.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_slide_out_bottom.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_slide_in_top.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_slide_out_top.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_slide_out_bottom.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_fade_out.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_slide_out_top.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_grow_fade_in_from_bottom.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_slide_in_top.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_slide_in_top.xml"
     },
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_fade_out.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_slide_in_bottom.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_fade_in.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\swipeback\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\22.2.0\\res\\anim\\abc_fade_in.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_fade_out.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_popup_exit.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_slide_out_top.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/swipeback/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/guhaoran/.android/build-cache/64bc8ac810345f1bb43ed87bedfbe9857248178a/output/res/anim/abc_fade_in.xml"
     }
 ]

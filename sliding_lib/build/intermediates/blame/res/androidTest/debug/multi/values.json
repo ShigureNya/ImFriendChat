@@ -1,47 +1,23 @@
 [
     {
-        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\sliding_lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
+        "outputFile": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 961,
+                    "startOffset": 1092,
                     "endColumn": 42,
-                    "endOffset": 999
+                    "endOffset": 1130
                 },
                 "from": {
-                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\sliding_lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "file": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/bundles/debug/res/values/values.xml",
                     "position": {
-                        "startLine": 3,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 961,
+                        "startOffset": 1092,
                         "endColumn": 42,
-                        "endOffset": 999
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/res/merged/androidTest/debug/values/values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 961,
-                    "endColumn": 42,
-                    "endOffset": 999
-                },
-                "from": {
-                    "file": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/bundles/debug/res/values/values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 961,
-                        "endColumn": 42,
-                        "endOffset": 999
+                        "endOffset": 1130
                     }
                 }
             }

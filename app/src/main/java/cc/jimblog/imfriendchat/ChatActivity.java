@@ -262,13 +262,13 @@ public class ChatActivity extends SwipeBackActivity {
         }
 
         @Override
-        public void onMessageReadAckReceived(List<EMMessage> messages) {
-            //收到已读回执
+        public void onMessageRead(List<EMMessage> list) {
+
         }
 
         @Override
-        public void onMessageDeliveryAckReceived(List<EMMessage> message) {
-            //收到已送达回执
+        public void onMessageDelivered(List<EMMessage> list) {
+
         }
 
         @Override

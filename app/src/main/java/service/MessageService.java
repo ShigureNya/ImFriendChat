@@ -65,15 +65,6 @@ public class MessageService extends Service {
     private void registerAddFriendCallBack(){
         EMClient.getInstance().contactManager().setContactListener(new EMContactListener() {
 
-            @Override
-            public void onContactAgreed(String username) {
-                //好友请求被同意
-            }
-
-            @Override
-            public void onContactRefused(String username) {
-                //好友请求被拒绝
-            }
 
             @Override
             public void onContactInvited(String username, String reason) {
@@ -82,6 +73,16 @@ public class MessageService extends Service {
                 hashMap.put("Name",username);
                 hashMap.put("Reason",reason);
                 receiveNotification(hashMap);
+            }
+
+            @Override
+            public void onFriendRequestAccepted(String s) {
+
+            }
+
+            @Override
+            public void onFriendRequestDeclined(String s) {
+
             }
 
             @Override
@@ -118,15 +119,14 @@ public class MessageService extends Service {
         }
 
         @Override
-        public void onMessageReadAckReceived(List<EMMessage> messages) {
-            //收到已读回执
+        public void onMessageRead(List<EMMessage> list) {
+
         }
 
         @Override
-        public void onMessageDeliveryAckReceived(List<EMMessage> message) {
-            //收到已送达回执
-        }
+        public void onMessageDelivered(List<EMMessage> list) {
 
+        }
         @Override
         public void onMessageChanged(EMMessage message, Object change) {
             //消息状态变动

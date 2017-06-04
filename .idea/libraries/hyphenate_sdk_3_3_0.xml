@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="hyphenate-sdk-3.3.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/44011a7c80d5178ef5574d3f499d8f411bee597d/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/44011a7c80d5178ef5574d3f499d8f411bee597d/output/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hyphenate/hyphenate-sdk/3.3.0/ecc9549c660823e07d6fee138901a40a6908d83a/hyphenate-sdk-3.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

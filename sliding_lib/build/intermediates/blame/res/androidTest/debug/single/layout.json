@@ -1,10 +1,6 @@
 [
     {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\sliding_lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/D:\\ImFriendChat\\sliding_lib\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
-    },
-    {
-        "merged": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/res/merged/androidTest/debug/layout/slidingmenumain.xml",
-        "source": "/Users/jimhao/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/bundles/debug/res/layout/slidingmenumain.xml"
+        "merged": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/res/merged/androidTest/debug/layout/slidingmenumain.xml",
+        "source": "/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/sliding_lib/build/intermediates/bundles/debug/res/layout/slidingmenumain.xml"
     }
 ]

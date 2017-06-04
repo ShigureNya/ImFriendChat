@@ -124,12 +124,12 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter<ChatRecyclerAdapte
         //设置用户名显示  - update 更新群组设置
         String nickname = null ;
         if(conversation.isGroup()){
-            String groupId = conversation.getUserName();
+            String groupId = conversation.conversationId();
             //根据群组ID从服务器获取群组基本信息
             EMGroup group = EMClient.getInstance().groupManager().getGroup(groupId);
             nickname = group.getGroupName();
         }else{
-            nickname = conversation.getUserName();
+            nickname = conversation.conversationId();
         }
         holder.mUserName.setText(nickname);
         //设置Message

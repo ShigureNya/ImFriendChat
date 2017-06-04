@@ -270,20 +270,20 @@ public class ContactsFragment extends Fragment implements View.OnClickListener{
     EMContactListener friendListener = new EMContactListener(){
 
         @Override
-        public void onContactAgreed(String username) {
+        public void onContactInvited(String username, String reason) {
+            //收到好友邀请
+        }
+
+        @Override
+        public void onFriendRequestAccepted(String s) {
             //好友请求被同意
             Message msg = mMsgHandler.obtainMessage() ;
             msg.sendToTarget();
         }
 
         @Override
-        public void onContactRefused(String username) {
-            //好友请求被拒绝
-        }
+        public void onFriendRequestDeclined(String s) {
 
-        @Override
-        public void onContactInvited(String username, String reason) {
-            //收到好友邀请
         }
 
         @Override

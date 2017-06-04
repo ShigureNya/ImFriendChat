@@ -1,3 +1,428 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/eff0743dc4f2c02e4cb70c47e84e163a0e07e2ec/output/jars/libs/internal_impl-24.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f78c2f395cb096f9dc1dc07e729922b8fcd3c4f5">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.1.1_279d21d693037be989375da35e9d77dc39273047/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/7fef36af8d2878ceec44a9605839d3f235694d4b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ece40b09e9d4d488bc270cf6af5a9af73bc1cfa3">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b21baded76baca903960d25c7437c2bfb3f19fea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/b022c966acfd57ba4be8e32e522c8058559af3f2/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="59a16a4a42d25b2c243dd1e8aea87d06895b4a06">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9a2f8216b91a5651aaf65cc3f28c13b95359da59/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/2e40d3e4d0018ae63a7ab4cac0e5d744fa6376da/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="787871951412550519b0222aba3c9df4cea49875">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0435aabfa8dcf5e93f3cb78329442e2c9d319569/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/1a4d42b8bda356825aa3809452cb4a73944264fb/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="618485fef3ebe12127f7622abbc9b5b39057b5c2">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_34e629b5927e7f5f2b70fa3325590d24ad71a861/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/volley.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f571127a905f0b03d812f1eec5e8e4995b6c7280">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/volley_3d0312b2450becf3640de7d2befd1852f62979c3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3606b7bb69e4b632e791b6af47ac876162c39d6d">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_e699239a42b9f156bcaaf8e04aa71f1c54859d32/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/7f777751eecc40c4940ab3ca81b7c4a31f20eb29/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ca5e58104f56f918f0fb3a5b1b371ab599ae56b2">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8722140861919e363e66bca6788dad0202552cfb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/490f453a1d73c9829b567343aaa5834ae81f620b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8a36d229011e75f0caef408e1adf0d3fd4d94e02">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_745aad13d578ebc15f632418368b26153e451b4e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/MobCommons-2016.0830.1940.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ca36dc249a46648f8c8f53ad5ee4a935e80956a8">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/MobCommons-2016.0830.1940_3fbeae203bfac64eb2c29ecf037efd64f0146cf3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/ShareSDK-SinaWeibo-2.7.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9d6f84355d4f6252240aebc751ba21eaea07e2dd">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/ShareSDK-SinaWeibo-2.7.7_f6df75417ca8a127666ffaab18b954b5f787dfa8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/6bfa180f78d4255d2bee7e55b3d5f233a3ca9db9/output/jars/libs/gson-2.6.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="dd625f5e7bba8235782b5dc4244c3fd26953190f">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.6.2_93358af1583c2405906c7c291fe7d7fc6188da83/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/ShareSDK-Core-2.7.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b060c818956585ebc16be9c034ba4970e5552d25">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/ShareSDK-Core-2.7.7_7d6438bf50164498b04a8cd269a4ea0c761424d3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/1b131d33d90cdef2c293a79d0128ef597e7c9297/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e195bd694d5389acfba27ff4fdfa64c4c65b2c05">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1b42702596d835c56e2e0aec43993b3981e77d7f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/MobTools-2016.0830.1940.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="210bf77409df74387b9df1d7987de310a2e0b145">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/MobTools-2016.0830.1940_eb7e01f1fa085aefaac80cc7d8e2d57bd36668a2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/1fe4f875347fcf679165200bb58392ce9bdc5514/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="81db45283d36bfc6e3380c325fb09b2283f36775">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0f1c51752df3a37a6cb83d97ea4879b51b571ead/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/789f9f887183616fe63854b20dcd953bd066111a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c936c1bd42f0c018c18920c7bec619ef056b24f8">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ab2eba9a90ddbb6840da37ce067df59a701413ec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/ShareSDK-QQ-2.7.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5b1593b719931c6c1902ab80998b7fb5cf73e488">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/ShareSDK-QQ-2.7.7_f0b338316297bcf582e30fd14cc782d356680207/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/com.baidu.speechsynthesizer_1.1.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3d2893f5d247abdb660dbeb015240be59531df24">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/com.baidu.speechsynthesizer_1.1.2_9a9afab0a727f841b7a037e21a7673d805fcca2d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/6bfa180f78d4255d2bee7e55b3d5f233a3ca9db9/output/jars/libs/okio-1.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="bbeca71da43c8f4bc9ceedec002060f53437ad26">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.7.0_ec30d655077916687be4f478e42a96c60512bae6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/cd744fe5acba459dd4a5255f5477a86596830ecc/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f62e763609f65e47dc6c498760a4accf02776788">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cfde276bf90b091af844f6a8f578819f5d1c75f9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/6bfa180f78d4255d2bee7e55b3d5f233a3ca9db9/output/jars/libs/BmobSDK_3.5.0_20160630.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8eb5c605a02f792e326c5ac8e4feb2c18dd171ad">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/BmobSDK_3.5.0_20160630_7ed09e542ead4d925510879fc407f9df496b6aa3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/6bfa180f78d4255d2bee7e55b3d5f233a3ca9db9/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e47f10299673ab68f24c595f96b18086cc9a8384">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e046f254c881eeb305fd500a574869582383856d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/feac54b0a759600d94b1452f736de474f3432761/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="975c4cc0f83fc777a6c4407163e268da25b09e23">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1173cd43ac9327eaead7b1beaf66bbd8005ac5c3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/VoiceRecognition-1.6.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a702cb623acb07816253dba097c21c4eae0f0882">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/VoiceRecognition-1.6.2_35e1925dc92120a6e3de3af0ae3c56a61c6a3807/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/eff0743dc4f2c02e4cb70c47e84e163a0e07e2ec/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6d7d803871e3203465f71a163e7af104f807b446">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_44df8479ded6cae4db573916e8f4c47d3bf7fb41/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/com.baidu.android.localasr_1.1.22.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8fe29092eb0bf9fb86f3ff4f9f9bd4c1d78238ed">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/com.baidu.android.localasr_1.1.22_b243d1931e0d70d51db659990abdcfe9966a5256/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/6bfa180f78d4255d2bee7e55b3d5f233a3ca9db9/output/jars/libs/okhttp-3.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7cb33d9f82d3b8521c6594b180f4dd9fc6d49f2">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.3.1_83f642a1025f480ef25b23607fa006886848ac72/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.1.1/support-annotations-24.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3af19f153122737b372622fa6c81dd11a1c6b999">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.1.1_025d8614c319f1ea2406fd24f7af6b5791f25437/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/ShareSDK-TencentWeibo-2.7.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="40eed754fe184a04a0adbe9157e8772a0ff301ef">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/ShareSDK-TencentWeibo-2.7.7_3272831b1c13d2e847772be49f27dbd69a2bdace/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="510aa6efc159983dfbffa676a0dae37568c0a46f">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_60d23fc704b2677759bf5ca152cb7e0167f04d67/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/a7d8a45f3bb0fe21f768b2bded737da0c04bc27a/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4add8aa95c9f4e9a2ad64b7e2bf08e97e28955c1">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_425730db1920ed5668b242e0cb4ccbae114ed1d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/turinghttp_1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="985007997833af11c4f2faa5a79df2064373db5e">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/turinghttp_1.0_a271671975c518d667bff09c292e4a3a1d639c6b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/ShareSDK-QZone-2.7.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="558713df8d3cc7543375e51e63a0638aeb0e2e9f">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/ShareSDK-QZone-2.7.7_8f3cfe06e12518bc91c9ceb6030f9f37c3a13f6a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.2.1/d6f54d76edfbe779a50a8636b10fd3f555d8f780/butterknife-annotations-8.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d6f54d76edfbe779a50a8636b10fd3f555d8f780">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-annotations-8.2.1_7eed92c751735fff0097fde636edf977553d88a3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/gson-2.6.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f1bc476cc167b18e66c297df599b2377131a8947">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/gson-2.6.2_5d0e181092d2833ab05d52647b150bd04b997b84/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/chatlib/build/intermediates/bundles/default/libs/core.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ce53c77399b98cb4488c40ca2349fa39d86d5653">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/8/core_49a1ce5edd8f2e5ab851a2451b3937f80e440e5d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/f1c00cee066801efc88dbf1b9627ea0a387786a7/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="755f07b81c359d2186c4683805043b7ab3a75eb0">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b5cf87e65d3286a4a77aa1d456524a6288442b82/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/44011a7c80d5178ef5574d3f499d8f411bee597d/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="79c9934f520952defa2dde5b6f8210cf720540be">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ca67933c26376e71292a5cfc7d7bcb56dddf9580/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/tulingSDK1.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7788283937b116bd3ed1df2aa8f356a3fbece2ec">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/tulingSDK1.4_c7b9c168cc2a69491c43358424ebe3e405006ae7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/Baidu-SpeechRecognitionUI-SDK-Android-1.6.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c2d6ed323a79937a41ac5d8d5a72f34af3747021">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/Baidu-SpeechRecognitionUI-SDK-Android-1.6.2_18c13cb3669cd14186ff76d25628764ed227b6f1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/cb3f7c369cb072cee929bd84ce78b17490b75f6c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3dee4ce5844d39d843d503fb8fe04e51e5bfffac">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_72e6c552e43ad7310c771248a5441dc353457505/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/6bfa180f78d4255d2bee7e55b3d5f233a3ca9db9/output/jars/libs/rxjava-1.1.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ac615240b277e7fd3950d7b35f73b733f310cede">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/rxjava-1.1.6_2b829d6c538861c36dc971825adca76f0ccc87b7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/9e0e4f985503735656d5a793a74550abce04532b/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1256c10604bb098490eab070d76754ac5ceab35c">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_88097f8d9415e5f006f3c4874bc016e79cfa3229/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/chatlib/build/intermediates/bundles/default/libs/rsa.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="3fc362beb3348c7ced984668fb58f346cfd83047">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/8/rsa_5b8362a0e13d52004ead11559481c3ead92ea0fd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/src/main/jniLibs/galaxy.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="34545ff3c9ca539c62095d104a6723eafeeea18f">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/2/galaxy_a746c8e72a487b9a60f9bc0983fb20ce63a159e8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/guhaoran/.android/build-cache/6bfa180f78d4255d2bee7e55b3d5f233a3ca9db9/output/jars/libs/rxandroid-1.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="19beef6debb6a22febc28777464c71bfccbafe3d">
+        <dex dex="/Users/guhaoran/Documents/AndroidStudioProjects/ImFriendChat/app/build/intermediates/transforms/dex/debug/folders/1000/10/rxandroid-1.2.0_6d5f8185bf7427adc3a5e47bb210028f0b47780d/classes.dex" />
+    </item>
+
+</items>

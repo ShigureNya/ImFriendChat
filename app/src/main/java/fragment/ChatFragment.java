@@ -226,13 +226,13 @@ public class ChatFragment extends Fragment {
             boolean isGroup = conversation.isGroup();   //如果是聊天室或者群聊的话则会返回True
             if(!isGroup){
                 Intent intent = new Intent(getActivity(), ChatActivity.class);
-                String username = conversation.getUserName();
+                String username = conversation.conversationId();
                 LogUtils.i("UserName:"+username);
                 intent.putExtra("Username", username);
                 startActivity(intent);
             }else{
                 Intent intent = new Intent(getActivity(), GroupChatActivity.class);
-                String groupId = conversation.getUserName();
+                String groupId = conversation.conversationId();
                 //根据群组ID从服务器获取群组基本信息
                 EMGroup group = EMClient.getInstance().groupManager().getGroup(groupId);
                 String groupName = group.getGroupName();
@@ -253,7 +253,7 @@ public class ChatFragment extends Fragment {
         @Override
         public void onLongItemClick(final View view, final int position) {
             final EMConversation userConversation = conversationList.get(position);
-            final String userName = conversationList.get(position).getUserName();
+            final String userName = conversationList.get(position).conversationId();
             view.setBackgroundResource(R.drawable.recycler_bg);
             final AlertDialog.Builder builder = new AlertDialog.Builder(mView.getContext());
             if(userConversation.isGroup()){
@@ -366,7 +366,7 @@ public class ChatFragment extends Fragment {
         List<EMConversation> list = new ArrayList<EMConversation>();
         for (Pair<Long, EMConversation> sortItem : sortList) {
             EMConversation conversation = sortItem.second;
-            String name = conversation.getUserName();
+            String name = conversation.conversationId();
             LogUtils.i("名字",name);
             if(name.equals("") ||  name.contentEquals("")){ //此处需要contentEquals方法去过滤空值内容
                 break ;
@@ -456,14 +456,15 @@ public class ChatFragment extends Fragment {
         }
 
         @Override
-        public void onMessageReadAckReceived(List<EMMessage> messages) {
-            //收到已读回执
+        public void onMessageRead(List<EMMessage> list) {
+
         }
 
         @Override
-        public void onMessageDeliveryAckReceived(List<EMMessage> message) {
-            //收到已送达回执
+        public void onMessageDelivered(List<EMMessage> list) {
+
         }
+
 
         @Override
         public void onMessageChanged(EMMessage message, Object change) {
